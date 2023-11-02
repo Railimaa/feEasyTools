@@ -8,4 +8,5 @@ export const Container = styled.div<{ open: boolean }>`
   height: 100%;
   left: ${({ open }) => (open ? '0' : '100%')};
   z-index: 200px;
+  transition: all 0.4s ease-in-out;
 `;
