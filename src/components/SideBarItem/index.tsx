@@ -1,5 +1,6 @@
 import {
   ArrowTopRightIcon,
+  HeartFilledIcon,
   PersonIcon,
   ReaderIcon,
   SunIcon,
@@ -36,7 +37,10 @@ export function SideBarItem() {
         Clima
         <SunIcon color="#5f3dc4" width={20} height={20} />
       </NavLink>
-      <NavLink to="/sobre">Sobre</NavLink>
+      <NavLink to="/sobre">
+        Sobre nós
+        <HeartFilledIcon color="#5f3dc4" width={20} height={20} />
+      </NavLink>
     </Container>
   );
 }

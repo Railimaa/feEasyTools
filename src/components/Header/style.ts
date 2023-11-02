@@ -9,34 +9,24 @@ export const HeaderC = styled.header`
   padding-left: 20px;
   box-shadow: 0px 22px 70px 4px #5f3dc4;
 
-  @media (min-width: 576px) {
-    padding-left: 80px;
+  @media (min-width: 676px) {
+    padding-left: 40px;
   }
 
   .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 
-    .nameLogo {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      h2 {
-        color: #5f3dc4;
-        text-transform: uppercase;
-      }
-
-      span {
-        color: #5f3dc4;
-        font-weight: bold;
-      }
+    h2 {
+      color: #5f3dc4;
     }
   }
 
   .toogle {
     display: flex;
+    align-items: center;
+    gap: 60px;
     padding-right: 20px;
 
     button {
@@ -45,30 +35,25 @@ export const HeaderC = styled.header`
     }
 
     @media (min-width: 1000px) {
-      display: none;
-    }
-  }
-
-  .content {
-    width: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 80px;
-
-    @media (min-width: 676px) {
-      display: flex;
+      padding-right: 40px;
     }
 
-    .hide {
+    .userMenu {
       display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 80px;
 
       @media (min-width: 1000px) {
         display: flex;
       }
+    }
+  }
+
+  .content {
+    display: none;
+    align-items: center;
+    gap: 80px;
+
+    @media (min-width: 723px) {
+      display: flex;
     }
   }
 

@@ -17,11 +17,8 @@ export function Header() {
   return (
     <HeaderC>
       <div className="logo">
-        <div className="nameLogo">
-          <h2>Easy</h2>
-          <span>Tools</span>
-        </div>
         <GearIcon width={24} height={24} color="#5F3DC4" />
+        <h2>easytools</h2>
       </div>
 
       <div className="content">
@@ -34,19 +31,13 @@ export function Header() {
         <NavLink id="headerLink" to="/task">
           Tarefas
         </NavLink>
-
-        <div className="hide">
-          <NavLink id="headerLink" to="/">
-            Clima
-          </NavLink>
-          <NavLink id="headerLink" to="/">
-            Sobre
-          </NavLink>
-          <UserMenu />
-        </div>
       </div>
 
       <div className="toogle">
+        <div className="userMenu">
+          <UserMenu />
+        </div>
+
         <button type="button" onClick={handleToogleSideBar}>
           {!sideBarOpen && (
             <HamburgerMenuIcon width={28} height={28} color="#5F3DC4" />
@@ -56,7 +47,7 @@ export function Header() {
         </button>
       </div>
 
-      <SideBar open={sideBarOpen} />
+      <SideBar open={sideBarOpen} handleCloseSideBar={handleToogleSideBar} />
     </HeaderC>
   );
 }
