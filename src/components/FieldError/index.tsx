@@ -1,3 +1,5 @@
+import { CrossCircledIcon } from '@radix-ui/react-icons';
+
 import { Container } from './style';
 
 interface IFieldErrorProps {
@@ -7,6 +9,7 @@ interface IFieldErrorProps {
 export function FieldError({ error }: IFieldErrorProps) {
   return (
     <Container>
+      <CrossCircledIcon />
       <span>{error}</span>
     </Container>
   );
