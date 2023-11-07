@@ -6,8 +6,9 @@ export const HeaderC = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  width: 100%;
   padding-left: 20px;
-  box-shadow: 0px 22px 70px 4px #5f3dc4;
+  /* box-shadow: 0px 22px 70px 4px #6741d9; */
 
   @media (min-width: 676px) {
     padding-left: 40px;
@@ -63,6 +64,8 @@ export const HeaderC = styled.header`
     color: #fff;
     text-decoration: none;
     outline: none;
+    border-radius: 8px;
+    padding: 4px;
 
     &:hover {
       color: #fff;
