@@ -11,11 +11,6 @@ import { UserMenu } from '../UserMenu';
 
 import { Container } from './style';
 
-// interface ISideBarItemProps {
-//   text: string;
-//   path: string;
-// }
-
 export function SideBarItem() {
   return (
     <Container>

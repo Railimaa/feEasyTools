@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div<{ open: boolean }>`
   background: #272727;
+  box-shadow: ${({ open }) => (open ? '0px 22px 70px 4px #5f3dc4' : '')};
   position: fixed;
   top: 0;
   width: 300px;
@@ -25,5 +26,9 @@ export const Container = styled.div<{ open: boolean }>`
       border: none;
       background: transparent;
     }
+  }
+
+  button {
+    background: transparent;
   }
 `;

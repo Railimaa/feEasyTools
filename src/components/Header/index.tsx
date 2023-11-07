@@ -17,18 +17,18 @@ export function Header() {
   return (
     <HeaderC>
       <div className="logo">
-        <GearIcon width={24} height={24} color="#5F3DC4" />
         <h2>easytools</h2>
+        <GearIcon width={20} height={20} color="#5F3DC4" />
       </div>
 
       <div className="content">
-        <NavLink id="headerLink" to="/">
+        <NavLink className="navLink" to="/">
           YourFinances
         </NavLink>
-        <NavLink id="headerLink" to="/contacts">
+        <NavLink className="navLink" to="/contacts">
           Contacts
         </NavLink>
-        <NavLink id="headerLink" to="/task">
+        <NavLink className="navLink" to="/task">
           Tarefas
         </NavLink>
       </div>

@@ -19,6 +19,7 @@ export const HeaderC = styled.header`
     gap: 8px;
 
     h2 {
+      font-size: 20px;
       color: #5f3dc4;
     }
   }
@@ -57,7 +58,7 @@ export const HeaderC = styled.header`
     }
   }
 
-  #headerLink {
+  .navLink {
     font-size: 20px;
     color: #fff;
     text-decoration: none;
@@ -71,6 +72,11 @@ export const HeaderC = styled.header`
       border-radius: 8px;
       padding: 2px;
       box-shadow: 0px 22px 70px 4px #6741d9;
+    }
+
+    &.active {
+      border-bottom: 2px solid #5f3dc4;
+      padding-bottom: 2px;
     }
   }
 `;
