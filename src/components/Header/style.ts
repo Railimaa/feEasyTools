@@ -77,6 +77,7 @@ export const HeaderC = styled.header`
     &.active {
       border-bottom: 2px solid #5f3dc4;
       padding-bottom: 2px;
+      box-shadow: 0px 22px 70px 4px #6741d9;
     }
   }
 `;
