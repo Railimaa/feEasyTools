@@ -24,5 +24,14 @@ export const Container = styled.div`
       border-radius: 8px;
       box-shadow: 0px 22px 70px 4px #5f3dc4;
     }
+
+    &.active {
+      color: #fff;
+      transition: all 0.2s ease-in-out;
+      background: transparent;
+      border-radius: 8px;
+      box-shadow: 0px 10px 30px 2px #5f3dc4;
+      border-bottom: 2px solid #5f3dc4;
+    }
   }
 `;
