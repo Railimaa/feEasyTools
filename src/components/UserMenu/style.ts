@@ -13,3 +13,17 @@ export const Container = styled.div`
     color: #fff;
   }
 `;
+
+export const ContainerItem = styled.div`
+  width: 100%;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e5dbff;
+  small {
+    display: block;
+    font-size: 14px;
+  }
+
+  &:hover {
+    border-bottom: 1px solid #e5dbff;
+  }
+`;
