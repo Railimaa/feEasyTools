@@ -1,13 +1,28 @@
-import Global from '../../assets/styles/global';
-import { Router } from '../../Router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
 
-function App() {
+import Global from '../../assets/styles/global';
+import { AuthProvider } from '../../contexts/AuthContext';
+import { Router } from '../../router';
+
+const queryCliente = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+export function App() {
   return (
-    <>
-      <Global />
-      <Router />
-    </>
+    <QueryClientProvider client={queryCliente}>
+      <AuthProvider>
+        <Global />
+
+        <Router />
+        <Toaster />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
-
-export default App;
