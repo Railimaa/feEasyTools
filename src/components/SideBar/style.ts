@@ -8,7 +8,7 @@ export const Container = styled.div<{ open: boolean }>`
   width: 300px;
   height: 100%;
   left: ${({ open }) => (open ? '0' : '100%')};
-  z-index: 200px;
+  z-index: 200;
   transition: all 0.4s ease-in-out;
 
   .closeIcon {
