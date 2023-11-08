@@ -23,12 +23,7 @@ export function useSignup() {
       .min(8, 'Senha deve conter pelo menos 8 digitos'),
   });
 
-  type FormData = {
-    name: string;
-    secondName: string;
-    email: string;
-    password: string;
-  };
+  type FormData = z.infer<typeof schema>;
 
   const {
     handleSubmit: hookFormHandleSubmit,
