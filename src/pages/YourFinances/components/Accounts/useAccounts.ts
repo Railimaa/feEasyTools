@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useBankAccounts } from '../../../../hooks/useBankAccounts';
 import { UseWindowWidth } from '../../../../hooks/UseWindowWidht';
 
 export function useAccounts() {
@@ -10,11 +11,13 @@ export function useAccounts() {
 
   const windowWidth = UseWindowWidth();
 
+  const { accounts, isFetching } = useBankAccounts();
+
   return {
     sliderState,
     setSliderState,
     windowWidth,
-    isLoading: false,
-    accounts: [1],
+    isLoading: isFetching,
+    accounts,
   };
 }

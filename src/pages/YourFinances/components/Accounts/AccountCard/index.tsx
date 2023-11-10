@@ -1,21 +1,15 @@
 import { BankAccountTypeIcon } from '../../../../../assets/Icons/BankAccountTypeIcon';
+import { IBankAccount } from '../../../../../types/BankAccount';
 import { FormatCurrency } from '../../../../../utils/formatCurrency';
 
 import { Container } from './style';
 
 interface IAccountCardProps {
-  name: string;
-  color: string;
-  type: 'CASH' | 'CHECKING' | 'INVESTMENT';
-  currentBalance: number;
+  account: IBankAccount;
 }
 
-export function AccountCard({
-  name,
-  color,
-  type,
-  currentBalance,
-}: IAccountCardProps) {
+export function AccountCard({ account }: IAccountCardProps) {
+  const { color, name, type, currentBalance } = account;
   return (
     <Container color={color}>
       <div className="content">
