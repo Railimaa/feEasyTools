@@ -39,9 +39,7 @@ function DropdownMenuContent({ children, style, side }: IDropdownMenuContent) {
 interface IDropdownMenuItem {
   children: React.ReactNode;
   style?: CSSProperties;
-  colorFont?: string;
   colorHover?: string;
-  colorFontHover?: string;
   onSelect?: () => void;
 }
 
@@ -49,8 +47,6 @@ function DropdownMenuItem({
   children,
   style,
   colorHover,
-  colorFontHover,
-  colorFont,
   onSelect,
 }: IDropdownMenuItem) {
   return (
@@ -58,12 +54,7 @@ function DropdownMenuItem({
       style={{ border: 'none', outline: 'none' }}
       onSelect={onSelect}
     >
-      <ContainerItem
-        style={style}
-        color={colorHover}
-        colorFontHover={colorFontHover}
-        colorFont={colorFont}
-      >
+      <ContainerItem style={style} color={colorHover}>
         {children}
       </ContainerItem>
     </RdxDropdownMenu.Item>

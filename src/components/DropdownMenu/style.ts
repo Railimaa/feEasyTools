@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { keyframes, styled } from 'styled-components';
 
 const slideUpAndFade = keyframes`
@@ -19,11 +20,7 @@ export const ContainerContent = styled.div`
   margin-top: 8px;
 `;
 
-export const ContainerItem = styled.div<{
-  color?: string;
-  colorFontHover?: string;
-  colorFont?: string;
-}>`
+export const ContainerItem = styled.div<{ color?: string }>`
   display: flex;
   align-items: center;
   padding-left: 16px;
@@ -32,12 +29,12 @@ export const ContainerItem = styled.div<{
   padding-bottom: 8px;
   min-height: 40px;
   cursor: pointer;
-  color: ${({ colorFont }) => colorFont || '#6741d9'};
+  color: '#6741d9';
   font-size: 14px;
   font-weight: bold;
 
   &:hover {
-    color: ${({ colorFontHover }) => colorFontHover || '#fff'};
+    color: '#fff';
     font-weight: bold;
     background: ${({ color }) => color || '#845ef7'};
     border-radius: 16px;
