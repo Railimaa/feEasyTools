@@ -1,6 +1,7 @@
 import { Header } from '../../components/Header';
 
 import { Accounts } from './components/Accounts';
+import { Fab } from './components/Fab';
 import { Transactions } from './components/Transactions';
 import { Container } from './style';
 
@@ -19,6 +20,8 @@ export function YourFinances() {
             <Transactions />
           </div>
         </div>
+
+        <Fab />
       </Container>
     </>
   );
