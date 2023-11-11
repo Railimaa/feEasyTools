@@ -3,11 +3,13 @@ import { Header } from '../../components/Header';
 import { Accounts } from './components/Accounts';
 import { Fab } from './components/Fab';
 import { Transactions } from './components/Transactions';
+import { YourFinancesProvider } from './components/YourFinancesContext';
+import { NewAccountModal } from './Modals/NewAccountModal';
 import { Container } from './style';
 
 export function YourFinances() {
   return (
-    <>
+    <YourFinancesProvider>
       <Header />
 
       <Container>
@@ -22,7 +24,8 @@ export function YourFinances() {
         </div>
 
         <Fab />
+        <NewAccountModal />
       </Container>
-    </>
+    </YourFinancesProvider>
   );
 }
