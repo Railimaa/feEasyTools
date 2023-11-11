@@ -13,8 +13,16 @@ import { Container } from './style';
 import { useAccounts } from './useAccounts';
 
 export function Accounts() {
-  const { sliderState, setSliderState, windowWidth, isLoading, accounts } =
-    useAccounts();
+  const {
+    sliderState,
+    setSliderState,
+    windowWidth,
+    isLoading,
+    accounts,
+    arValuesVisible,
+    handleVisibleArValues,
+    handleOpenNewAccountModal,
+  } = useAccounts();
 
   const hasAccounts = accounts.length > 0;
 
@@ -31,9 +39,11 @@ export function Accounts() {
           <span id="title">Saldo total</span>
 
           <div className="saldoTotal">
-            <strong>{FormatCurrency(1000)}</strong>
-            <button type="button">
-              <EyIcon open />
+            <strong style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}>
+              {FormatCurrency(1000)}
+            </strong>
+            <button type="button" onClick={handleVisibleArValues}>
+              <EyIcon open={arValuesVisible} />
             </button>
           </div>
 
@@ -44,7 +54,7 @@ export function Accounts() {
               </div>
 
               <div className="ContainerButton">
-                <button type="button">
+                <button type="button" onClick={handleOpenNewAccountModal}>
                   <PlusIcon width={24} height={24} color="#fff" />
                 </button>
                 <span>Cadastrar uma nova conta</span>
@@ -76,7 +86,10 @@ export function Accounts() {
 
                   {accounts.map((account) => (
                     <SwiperSlide key={account.id}>
-                      <AccountCard account={account} />
+                      <AccountCard
+                        account={account}
+                        valuesVisible={arValuesVisible}
+                      />
                     </SwiperSlide>
                   ))}
                 </Swiper>

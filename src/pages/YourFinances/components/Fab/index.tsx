@@ -3,10 +3,13 @@ import { PlusIcon } from '@radix-ui/react-icons';
 import { BankAccountIcon } from '../../../../assets/Icons/BankAccountIcon';
 import { CategoryIcon } from '../../../../assets/Icons/categories/CategoryIcon';
 import { DropdownMenu } from '../../../../components/DropdownMenu';
+import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesContext';
 
 import { Container } from './style';
 
 export function Fab() {
+  const { handleOpenNewAccountModal } = useYourFinancesContext();
+
   return (
     <Container>
       <DropdownMenu.Root>
@@ -25,7 +28,11 @@ export function Fab() {
             Nova Despesa
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item colorHover="#E5DBFF" style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            colorHover="#E5DBFF"
+            style={{ gap: '8px' }}
+            onSelect={handleOpenNewAccountModal}
+          >
             <BankAccountIcon />
             Nova Conta
           </DropdownMenu.Item>

@@ -6,9 +6,10 @@ import { Container } from './style';
 
 interface IAccountCardProps {
   account: IBankAccount;
+  valuesVisible: boolean;
 }
 
-export function AccountCard({ account }: IAccountCardProps) {
+export function AccountCard({ account, valuesVisible }: IAccountCardProps) {
   const { color, name, type, currentBalance } = account;
   return (
     <Container color={color}>
@@ -18,7 +19,9 @@ export function AccountCard({ account }: IAccountCardProps) {
       </div>
 
       <div className="saldo">
-        <span>{FormatCurrency(currentBalance)}</span>
+        <span style={{ filter: valuesVisible ? 'blur(8px)' : 'none' }}>
+          {FormatCurrency(currentBalance)}
+        </span>
 
         <small>Saldo atual</small>
       </div>

@@ -19,6 +19,7 @@ export function Transactions() {
     isInitialLoading,
     isloading,
     transactions,
+    arValuesVisible,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
@@ -78,16 +79,16 @@ export function Transactions() {
 
             {!isloading && hasTransactions && (
               <>
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
-                <TransactionCard />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
+                <TransactionCard valuesVisible={arValuesVisible} />
               </>
             )}
           </div>

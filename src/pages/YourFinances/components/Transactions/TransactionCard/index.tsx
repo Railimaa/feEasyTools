@@ -3,7 +3,11 @@ import { FormatCurrency } from '../../../../../utils/formatCurrency';
 
 import { Container } from './style';
 
-export function TransactionCard() {
+interface ITransactionCardProps {
+  valuesVisible: boolean;
+}
+
+export function TransactionCard({ valuesVisible }: ITransactionCardProps) {
   return (
     <Container>
       <div className="nameAndDate">
@@ -15,7 +19,12 @@ export function TransactionCard() {
         </div>
       </div>
 
-      <span id="INCOME">+ {FormatCurrency(123)}</span>
+      <span
+        id="INCOME"
+        style={{ filter: valuesVisible ? 'blur(8px)' : 'none' }}
+      >
+        + {FormatCurrency(123)}
+      </span>
     </Container>
   );
 }

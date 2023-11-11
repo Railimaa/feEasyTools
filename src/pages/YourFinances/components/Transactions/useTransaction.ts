@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
+import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesContext';
+
 export function useTransaction() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const { arValuesVisible } = useYourFinancesContext();
 
   return {
     activeIndex,
@@ -9,5 +13,6 @@ export function useTransaction() {
     isInitialLoading: false,
     isloading: false,
     transactions: [1],
+    arValuesVisible,
   };
 }
