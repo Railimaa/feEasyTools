@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import { keyframes, styled } from 'styled-components';
+
+const overlayShow = keyframes`
+   from {
+    opacity: 0;
+  }
+   to {
+    opacity: 1;
+    }
+`;
 
 export const Container = styled.div`
   .overlay {
@@ -10,6 +19,7 @@ export const Container = styled.div`
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(4px);
     z-index: 401;
+    animation: ${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .content {
