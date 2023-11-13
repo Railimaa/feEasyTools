@@ -5,8 +5,8 @@ export const SelectC = styled.select`
   height: 52px;
   border: 2px solid #9775fa;
   border-radius: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
   outline: none;
   background: #f3f0ff;
   margin-top: 20px;
