@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const InputC = styled.input`
   width: 100%;
   height: 52px;
-  border: 3px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
+  border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
   border-radius: 8px;
   padding-left: 12px;
   padding-right: 12px;

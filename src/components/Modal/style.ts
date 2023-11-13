@@ -31,7 +31,7 @@ export const Container = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: #f3f0ff;
     box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.1);
     z-index: 402;
     outline: none;
