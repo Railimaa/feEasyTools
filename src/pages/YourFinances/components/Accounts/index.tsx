@@ -22,6 +22,7 @@ export function Accounts() {
     arValuesVisible,
     handleVisibleArValues,
     handleOpenNewAccountModal,
+    currentBalance,
   } = useAccounts();
 
   const hasAccounts = accounts.length > 0;
@@ -40,7 +41,7 @@ export function Accounts() {
 
           <div className="saldoTotal">
             <strong style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}>
-              {FormatCurrency(1000)}
+              {FormatCurrency(currentBalance)}
             </strong>
             <button type="button" onClick={handleVisibleArValues}>
               <EyIcon open={arValuesVisible} />

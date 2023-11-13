@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useBankAccounts } from '../../../../hooks/useBankAccounts';
 import { UseWindowWidth } from '../../../../hooks/UseWindowWidht';
@@ -17,6 +17,17 @@ export function useAccounts() {
 
   const { accounts, isFetching } = useBankAccounts();
 
+  const currentBalance = useMemo(() => {
+    if (!accounts) {
+      return 0;
+    }
+
+    return accounts.reduce(
+      (total, account) => total + account.currentBalance,
+      0,
+    );
+  }, [accounts]);
+
   return {
     sliderState,
     setSliderState,
@@ -26,5 +37,6 @@ export function useAccounts() {
     arValuesVisible,
     handleVisibleArValues,
     handleOpenNewAccountModal,
+    currentBalance,
   };
 }
