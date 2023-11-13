@@ -30,7 +30,7 @@ export function Modal({
           <RdxDialog.Content className="content">
             <header>
               <button type="button" onClick={onClose}>
-                <Cross2Icon width={24} height={24} />
+                <Cross2Icon width={24} height={24} color="#fff" />
               </button>
 
               <strong>{title}</strong>

@@ -31,7 +31,7 @@ export const Container = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #f3f0ff;
+    background: #212529;
     box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.1);
     z-index: 402;
     outline: none;
@@ -57,7 +57,7 @@ export const Container = styled.div`
         font-size: 18px;
         letter-spacing: -1px;
         font-weight: 700;
-        color: #343a40;
+        color: #fff;
       }
 
       .rightAction {

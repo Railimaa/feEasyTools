@@ -1,23 +1,35 @@
-import { ComponentProps, forwardRef } from 'react';
+/* eslint-disable react/require-default-props */
 
-import { SelectC } from './style';
+import { FieldError } from '../FieldError';
 
-interface ISelectProps extends ComponentProps<'select'> {
+import { Container, SelectC } from './style';
+
+interface ISelectProps {
   options: {
     value: string;
     label: string;
   }[];
+  error?: string;
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
-export const Select = forwardRef<HTMLSelectElement, ISelectProps>(
-  ({ options }, ref) => (
-    <SelectC ref={ref}>
-      <option value="" hidden>
-        Tipo
-      </option>
-      {options.map((option) => (
-        <option key={option.value}>{option.label}</option>
-      ))}
-    </SelectC>
-  ),
-);
+export function Select({ options, error, onChange, value }: ISelectProps) {
+  return (
+    <Container>
+      <SelectC
+        value={value}
+        onChange={(event) => onChange?.(event.target.value)}
+        placeholder="Tipo"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </SelectC>
+
+      {error && <FieldError error={error} />}
+    </Container>
+  );
+}

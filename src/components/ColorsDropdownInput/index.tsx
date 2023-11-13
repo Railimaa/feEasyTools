@@ -1,10 +1,18 @@
+/* eslint-disable react/require-default-props */
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 
 import { ColorIcon } from '../../assets/Icons/ColorIcon';
 import { DropdownMenu } from '../DropdownMenu';
+import { FieldError } from '../FieldError';
 
 import { Container } from './style';
+
+interface IColorsDropdownInputProps {
+  error?: string;
+  onChange?: (value: string) => void;
+  value?: string;
+}
 
 type Color = {
   color: string;
@@ -30,11 +38,24 @@ const colors: Color[] = [
   { color: '#fff', bg: '#DEE2E6' },
 ];
 
-export function ColorsDropdownInput() {
-  const [selectedColor, setSelectedColor] = useState<null | Color>(null);
+export function ColorsDropdownInput({
+  error,
+  onChange,
+  value,
+}: IColorsDropdownInputProps) {
+  const [selectedColor, setSelectedColor] = useState<null | Color>(() => {
+    if (!value) {
+      return null;
+    }
+
+    const color = colors.find((c) => c.color === value) ?? null;
+
+    return color;
+  });
 
   function handleSelectedColor(color: Color) {
     setSelectedColor(color);
+    onChange?.(color.color);
   }
 
   return (
@@ -71,6 +92,8 @@ export function ColorsDropdownInput() {
           ))}
         </DropdownMenu.Content>
       </DropdownMenu.Root>
+
+      {error && <FieldError error={error} />}
     </Container>
   );
 }
