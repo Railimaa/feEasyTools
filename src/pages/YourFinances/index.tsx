@@ -3,29 +3,40 @@ import { Header } from '../../components/Header';
 import { Accounts } from './components/Accounts';
 import { Fab } from './components/Fab';
 import { Transactions } from './components/Transactions';
-import { YourFinancesProvider } from './components/YourFinancesContext';
+import {
+  YourFinancesContext,
+  YourFinancesProvider,
+} from './components/YourFinancesContext';
+import { EditAccountModal } from './Modals/EditAccountModal';
 import { NewAccountModal } from './Modals/NewAccountModal';
 import { Container } from './style';
 
 export function YourFinances() {
   return (
     <YourFinancesProvider>
-      <Header />
+      <YourFinancesContext.Consumer>
+        {({ accountIsBeingEdited }) => (
+          <>
+            <Header />
 
-      <Container>
-        <div className="main">
-          <div className="left">
-            <Accounts />
-          </div>
+            <Container>
+              <div className="main">
+                <div className="left">
+                  <Accounts />
+                </div>
 
-          <div className="right">
-            <Transactions />
-          </div>
-        </div>
+                <div className="right">
+                  <Transactions />
+                </div>
+              </div>
 
-        <Fab />
-        <NewAccountModal />
-      </Container>
+              <Fab />
+              <NewAccountModal />
+              {accountIsBeingEdited && <EditAccountModal />}
+            </Container>
+          </>
+        )}
+      </YourFinancesContext.Consumer>
     </YourFinancesProvider>
   );
 }

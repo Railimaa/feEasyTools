@@ -1,11 +1,17 @@
 import React, { createContext, useCallback, useMemo, useState } from 'react';
 
+import { IBankAccount } from '../../../../types/BankAccount';
+
 interface IYourFinancesContextValue {
   openNewAccountModal: boolean;
   handleOpenNewAccountModal: () => void;
   handleCloseNewAccountModal: () => void;
   arValuesVisible: boolean;
   handleVisibleArValues: () => void;
+  accountIsBeingEdited: null | IBankAccount;
+  openEditAccountModal: boolean;
+  handleOpenEditAccountModal: (account: IBankAccount) => void;
+  handleCloseEditAccountModal: () => void;
 }
 
 export const YourFinancesContext = createContext(
@@ -17,8 +23,13 @@ export function YourFinancesProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [openNewAccountModal, setOpenNewAccountModal] = useState(false);
-  const [arValuesVisible, setArValuesVisible] = useState(false);
+  const [openNewAccountModal, setOpenNewAccountModal] =
+    useState<boolean>(false);
+  const [arValuesVisible, setArValuesVisible] = useState<boolean>(false);
+  const [openEditAccountModal, setOpenEditAccountModal] =
+    useState<boolean>(false);
+  const [accountIsBeingEdited, setAccountIsBeingEdited] =
+    useState<null | IBankAccount>(null);
 
   const handleOpenNewAccountModal = useCallback(() => {
     setOpenNewAccountModal(true);
@@ -32,6 +43,16 @@ export function YourFinancesProvider({
     setArValuesVisible((prevState) => !prevState);
   }, []);
 
+  const handleOpenEditAccountModal = useCallback((account: IBankAccount) => {
+    setOpenEditAccountModal(true);
+    setAccountIsBeingEdited(account);
+  }, []);
+
+  const handleCloseEditAccountModal = useCallback(() => {
+    setOpenEditAccountModal(false);
+    setAccountIsBeingEdited(null);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewAccountModal,
@@ -39,6 +60,10 @@ export function YourFinancesProvider({
       handleCloseNewAccountModal,
       arValuesVisible,
       handleVisibleArValues,
+      accountIsBeingEdited,
+      openEditAccountModal,
+      handleOpenEditAccountModal,
+      handleCloseEditAccountModal,
     }),
     [
       openNewAccountModal,
@@ -46,6 +71,10 @@ export function YourFinancesProvider({
       handleCloseNewAccountModal,
       arValuesVisible,
       handleVisibleArValues,
+      accountIsBeingEdited,
+      openEditAccountModal,
+      handleOpenEditAccountModal,
+      handleCloseEditAccountModal,
     ],
   );
 
