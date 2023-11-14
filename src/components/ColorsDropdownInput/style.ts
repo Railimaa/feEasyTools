@@ -9,7 +9,7 @@ export const Container = styled.div`
     padding-right: 12px;
     position: relative;
     background: #f3f0ff;
-    border: 2px solid #9775fa;
+    border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
     border-radius: 8px;
     margin-top: 20px;
     color: #272727;

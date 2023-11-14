@@ -5,10 +5,10 @@ export const Container = styled.div``;
 export const SelectC = styled.select`
   width: 100%;
   height: 52px;
-  border: 2px solid #9775fa;
+  border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
   border-radius: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
   outline: none;
   background: #f3f0ff;
   margin-top: 20px;
@@ -16,7 +16,7 @@ export const SelectC = styled.select`
   font-weight: bold;
 
   &:focus {
-    border-color: #5f3dc4;
+    border-color: ${({ color }) => (color ? '#C92A2A' : '#5f3dc4')};
     box-shadow:
       rgba(103, 65, 217, 0.09) 0px 2px 1px,
       rgba(103, 65, 217, 0.09) 0px 4px 2px,

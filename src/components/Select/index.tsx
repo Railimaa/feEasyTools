@@ -21,6 +21,7 @@ export function Select({ options, error, onChange, value }: ISelectProps) {
         value={value}
         onChange={(event) => onChange?.(event.target.value)}
         placeholder="Tipo"
+        color={error}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

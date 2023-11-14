@@ -59,7 +59,7 @@ export function ColorsDropdownInput({
   }
 
   return (
-    <Container>
+    <Container color={error}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           Cor
