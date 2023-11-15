@@ -3,7 +3,7 @@ export function currencyStringToNumber(value: string | number) {
     return value;
   }
 
-  const sanitizedString = value.replace(/\./g, '').replace(',', '.');
+  const sanitaze = value.replace(/,/g, '.');
 
-  return Number(sanitizedString);
+  return Number(sanitaze);
 }
