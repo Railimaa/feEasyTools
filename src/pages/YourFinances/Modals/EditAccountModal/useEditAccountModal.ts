@@ -17,6 +17,15 @@ export function useEditAccountModal() {
   } = useYourFinancesContext();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
+
+  function handleOpenDeleteModal() {
+    setOpenDeleteModal(true);
+  }
+
+  function handleCloseDeleteModal() {
+    setOpenDeleteModal(false);
+  }
 
   const schema = z.object({
     initialBalance: z.union([
@@ -56,6 +65,7 @@ export function useEditAccountModal() {
         id: accountIsBeingEdited!.id,
       });
       useQuery.invalidateQueries({ queryKey: ['bankAccounts'] });
+      useQuery.invalidateQueries({ queryKey: ['transactions'] });
       toast.success('Conta editada com sucesso!');
       handleCloseEditAccountModal();
     } catch {
@@ -64,6 +74,22 @@ export function useEditAccountModal() {
       setIsLoading(false);
     }
   });
+
+  async function handleDeleteAccount() {
+    try {
+      setIsLoading(true);
+
+      await bankAccountService.deleted(accountIsBeingEdited!.id);
+      useQuery.invalidateQueries({ queryKey: ['bankAccounts'] });
+      useQuery.invalidateQueries({ queryKey: ['transactions'] });
+      toast.success('Conta deletada com sucesso!');
+      handleCloseEditAccountModal();
+    } catch {
+      toast.error('Erro ao deletar a conta!');
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return {
     openEditAccountModal,
@@ -74,5 +100,9 @@ export function useEditAccountModal() {
     control,
     handleSubmit,
     accountIsBeingEdited,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteAccount,
   };
 }

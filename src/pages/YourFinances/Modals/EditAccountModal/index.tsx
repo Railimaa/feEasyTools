@@ -1,7 +1,9 @@
 import { Controller } from 'react-hook-form';
 
+import { Trash } from '../../../../assets/Icons/Trash';
 import { Button } from '../../../../components/Button';
 import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Input } from '../../../../components/Input';
 import { InputCurrency } from '../../../../components/InputCurrency';
 import { Modal } from '../../../../components/Modal';
@@ -34,7 +36,23 @@ export function EditAccountModal() {
     errors,
     register,
     handleSubmit,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteAccount,
   } = useEditAccountModal();
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title="conta"
+        description="Ao excluir a conta, também serão excluídos todos os registros de receita e despesas relacionados."
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleDeleteAccount}
+        isLoading={isLoading}
+      />
+    );
+  }
 
   return (
     <Container>
@@ -42,6 +60,11 @@ export function EditAccountModal() {
         open={openEditAccountModal}
         onClose={handleCloseEditAccountModal}
         title="Editar Conta"
+        rightAction={
+          <button type="button" onClick={handleOpenDeleteModal}>
+            <Trash />
+          </button>
+        }
       >
         <Form onSubmit={handleSubmit}>
           <span id="saldoInicial">Saldo inicial</span>
