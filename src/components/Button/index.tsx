@@ -7,17 +7,19 @@ import { ButtonC, Container } from './style';
 
 interface IButtonProps extends ComponentProps<'button'> {
   isLoading?: boolean;
+  variant?: 'danger' | 'ghost';
 }
 
 export function Button({
   isLoading,
+  variant,
   disabled,
   children,
   ...props
 }: IButtonProps) {
   return (
     <Container>
-      <ButtonC {...props} disabled={isLoading || disabled}>
+      <ButtonC disabled={isLoading || disabled} color={variant} {...props}>
         {!isLoading && children}
 
         {isLoading && (
