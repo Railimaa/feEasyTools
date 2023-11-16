@@ -12,6 +12,10 @@ interface IYourFinancesContextValue {
   openEditAccountModal: boolean;
   handleOpenEditAccountModal: (account: IBankAccount) => void;
   handleCloseEditAccountModal: () => void;
+  openNewTransactionModal: boolean;
+  newTransactionType: null | 'INCOME' | 'EXPENSE';
+  handleOpenNewTransactionModal: (type: 'INCOME' | 'EXPENSE') => void;
+  handleCloseNewTransactionModal: () => void;
 }
 
 export const YourFinancesContext = createContext(
@@ -30,6 +34,11 @@ export function YourFinancesProvider({
     useState<boolean>(false);
   const [accountIsBeingEdited, setAccountIsBeingEdited] =
     useState<null | IBankAccount>(null);
+  const [openNewTransactionModal, setOpenNewTransactionModal] =
+    useState<boolean>(false);
+  const [newTransactionType, setNewTransactionType] = useState<
+    null | 'INCOME' | 'EXPENSE'
+  >(null);
 
   const handleOpenNewAccountModal = useCallback(() => {
     setOpenNewAccountModal(true);
@@ -53,6 +62,19 @@ export function YourFinancesProvider({
     setAccountIsBeingEdited(null);
   }, []);
 
+  const handleOpenNewTransactionModal = useCallback(
+    (type: 'INCOME' | 'EXPENSE') => {
+      setOpenNewTransactionModal(true);
+      setNewTransactionType(type);
+    },
+    [],
+  );
+
+  const handleCloseNewTransactionModal = useCallback(() => {
+    setOpenNewTransactionModal(false);
+    setNewTransactionType(null);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewAccountModal,
@@ -64,6 +86,10 @@ export function YourFinancesProvider({
       openEditAccountModal,
       handleOpenEditAccountModal,
       handleCloseEditAccountModal,
+      openNewTransactionModal,
+      newTransactionType,
+      handleOpenNewTransactionModal,
+      handleCloseNewTransactionModal,
     }),
     [
       openNewAccountModal,
@@ -75,6 +101,10 @@ export function YourFinancesProvider({
       openEditAccountModal,
       handleOpenEditAccountModal,
       handleCloseEditAccountModal,
+      openNewTransactionModal,
+      newTransactionType,
+      handleOpenNewTransactionModal,
+      handleCloseNewTransactionModal,
     ],
   );
 

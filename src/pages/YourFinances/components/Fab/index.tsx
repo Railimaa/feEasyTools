@@ -8,7 +8,8 @@ import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesCo
 import { Container } from './style';
 
 export function Fab() {
-  const { handleOpenNewAccountModal } = useYourFinancesContext();
+  const { handleOpenNewAccountModal, handleOpenNewTransactionModal } =
+    useYourFinancesContext();
 
   return (
     <Container>
@@ -18,12 +19,20 @@ export function Fab() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content side="top">
-          <DropdownMenu.Item colorHover="#E5DBFF" style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            colorHover="#E5DBFF"
+            style={{ gap: '8px' }}
+            onSelect={() => handleOpenNewTransactionModal('INCOME')}
+          >
             <CategoryIcon type="income" />
             Nova Receita
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item colorHover="#E5DBFF" style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            colorHover="#E5DBFF"
+            style={{ gap: '8px' }}
+            onSelect={() => handleOpenNewTransactionModal('EXPENSE')}
+          >
             <CategoryIcon type="expense" />
             Nova Despesa
           </DropdownMenu.Item>

@@ -12,9 +12,16 @@ interface ISelectProps {
   error?: string;
   onChange?: (value: string) => void;
   value?: string;
+  label: string;
 }
 
-export function Select({ options, error, onChange, value }: ISelectProps) {
+export function Select({
+  options,
+  error,
+  onChange,
+  value,
+  label,
+}: ISelectProps) {
   return (
     <Container>
       <SelectC
@@ -29,6 +36,8 @@ export function Select({ options, error, onChange, value }: ISelectProps) {
           </option>
         ))}
       </SelectC>
+
+      <div className="label">{label}</div>
 
       {error && <FieldError error={error} />}
     </Container>

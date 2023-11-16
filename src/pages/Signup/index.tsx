@@ -19,28 +19,28 @@ export function Signup() {
       >
         <Input
           type="text"
-          placeholder="Nome"
+          label="Nome"
           error={errors.name?.message}
           {...register('name')}
         />
 
         <Input
           type="text"
-          placeholder="Sobrenome"
+          label="Sobrenome"
           error={errors.secondName?.message}
           {...register('secondName')}
         />
 
         <Input
           type="email"
-          placeholder="E-mail"
+          label="E-mail"
           error={errors.email?.message}
           {...register('email')}
         />
 
         <Input
           type="password"
-          placeholder="Senha"
+          label="Senha"
           error={errors.password?.message}
           showPassword
           {...register('password')}

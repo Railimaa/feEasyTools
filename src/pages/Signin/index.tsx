@@ -19,14 +19,14 @@ export function Signin() {
       >
         <Input
           type="email"
-          placeholder="E-mail"
+          label="E-mail"
           error={errors.email?.message}
           {...register('email')}
         />
 
         <Input
           type="password"
-          placeholder="Senha"
+          label="Senha"
           error={errors.password?.message}
           showPassword
           {...register('password')}

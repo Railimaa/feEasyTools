@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/require-default-props */
 import { ComponentProps, forwardRef, useState } from 'react';
 
 import { EyIcon } from '../../assets/Icons/EyeIcon';
 import { FieldError } from '../FieldError';
 
-import { Container, InputC } from './style';
+import { Container, InputC, Label } from './style';
 
 interface IInputProps extends ComponentProps<'input'> {
   error?: string;
   showPassword?: boolean;
+  label?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ error, showPassword, type, ...props }, ref) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  ({ error, showPassword, label, type, value, ...props }, ref) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(true);
 
     function handleShowPassword() {
       setIsPasswordVisible((prevState) => !prevState);
@@ -27,6 +29,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
           type={!isPasswordVisible ? 'text' : type}
           color={error}
         />
+
+        <Label>{label}</Label>
 
         {showPassword && (
           <button

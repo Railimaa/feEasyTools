@@ -86,7 +86,7 @@ export function EditAccountModal() {
 
           <div className="inputs">
             <Input
-              placeholder="Nome da conta"
+              label="Nome da conta"
               error={errors.name?.message}
               {...register('name')}
             />
@@ -100,6 +100,7 @@ export function EditAccountModal() {
                   error={errors.type?.message}
                   onChange={onChange}
                   value={value}
+                  label="Tipo"
                 />
               )}
             />

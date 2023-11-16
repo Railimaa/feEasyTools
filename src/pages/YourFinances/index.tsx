@@ -9,6 +9,7 @@ import {
 } from './components/YourFinancesContext';
 import { EditAccountModal } from './Modals/EditAccountModal';
 import { NewAccountModal } from './Modals/NewAccountModal';
+import { NewTransactionModal } from './Modals/NewTransactionModa';
 import { Container } from './style';
 
 export function YourFinances() {
@@ -33,6 +34,7 @@ export function YourFinances() {
               <Fab />
               <NewAccountModal />
               {accountIsBeingEdited && <EditAccountModal />}
+              <NewTransactionModal />
             </Container>
           </>
         )}

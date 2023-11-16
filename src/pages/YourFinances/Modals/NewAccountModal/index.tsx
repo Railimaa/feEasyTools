@@ -64,7 +64,7 @@ export function NewAccountModal() {
 
           <div className="inputs">
             <Input
-              placeholder="Nome da conta"
+              label="Nome da conta"
               error={errors.name?.message}
               {...register('name')}
             />
@@ -79,6 +79,7 @@ export function NewAccountModal() {
                   onChange={onChange}
                   value={value}
                   error={errors.type?.message}
+                  label="Tipo"
                 />
               )}
             />
