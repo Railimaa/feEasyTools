@@ -54,7 +54,7 @@ export function useEditAccountModal() {
     },
   });
 
-  const useQuery = useQueryClient();
+  const queryClient = useQueryClient();
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     try {
       setIsLoading(true);
@@ -64,8 +64,8 @@ export function useEditAccountModal() {
         initialBalance: currencyStringToNumber(data.initialBalance),
         id: accountIsBeingEdited!.id,
       });
-      useQuery.invalidateQueries({ queryKey: ['bankAccounts'] });
-      useQuery.invalidateQueries({ queryKey: ['transactions'] });
+      queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
+      queryClient.invalidateQueries({ queryKey: ['transactions'] });
       toast.success('Conta editada com sucesso!');
       handleCloseEditAccountModal();
     } catch {
@@ -80,8 +80,8 @@ export function useEditAccountModal() {
       setIsLoading(true);
 
       await bankAccountService.deleted(accountIsBeingEdited!.id);
-      useQuery.invalidateQueries({ queryKey: ['bankAccounts'] });
-      useQuery.invalidateQueries({ queryKey: ['transactions'] });
+      queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
+      queryClient.invalidateQueries({ queryKey: ['transactions'] });
       toast.success('Conta deletada com sucesso!');
       handleCloseEditAccountModal();
     } catch {

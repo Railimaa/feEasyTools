@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/require-default-props */
 
 import { FieldError } from '../FieldError';
@@ -30,6 +31,7 @@ export function Select({
         placeholder="Tipo"
         color={error}
       >
+        <option value="" />
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

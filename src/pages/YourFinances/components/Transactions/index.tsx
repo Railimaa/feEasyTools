@@ -17,7 +17,7 @@ export function Transactions() {
     activeIndex,
     setActiveIndex,
     isInitialLoading,
-    isloading,
+    isLoading,
     transactions,
     arValuesVisible,
   } = useTransaction();
@@ -64,33 +64,28 @@ export function Transactions() {
           </div>
 
           <div className="content">
-            {isloading && (
+            {isLoading && (
               <div className="isLoading">
                 <Spinner width="28" height="28" color="#5f3dc4" />
               </div>
             )}
 
-            {!isloading && !hasTransactions && (
+            {!isLoading && !hasTransactions && (
               <div className="isEmpty">
                 <img src={emptyState} alt="" />
                 <span>Não encontramos nenhuma transação!</span>
               </div>
             )}
 
-            {!isloading && hasTransactions && (
-              <>
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-                <TransactionCard valuesVisible={arValuesVisible} />
-              </>
-            )}
+            {!isLoading &&
+              hasTransactions &&
+              transactions.map((transaction) => (
+                <TransactionCard
+                  key={transaction.id}
+                  transaction={transaction}
+                  valuesVisible={arValuesVisible}
+                />
+              ))}
           </div>
         </>
       )}

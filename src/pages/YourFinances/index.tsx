@@ -9,7 +9,7 @@ import {
 } from './components/YourFinancesContext';
 import { EditAccountModal } from './Modals/EditAccountModal';
 import { NewAccountModal } from './Modals/NewAccountModal';
-import { NewTransactionModal } from './Modals/NewTransactionModa';
+import { NewTransactionModal } from './Modals/NewTransactionModal';
 import { Container } from './style';
 
 export function YourFinances() {

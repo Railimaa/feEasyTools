@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useTransactions } from '../../../../hooks/useTransactions';
 import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesContext';
 
 export function useTransaction() {
@@ -7,12 +8,14 @@ export function useTransaction() {
 
   const { arValuesVisible } = useYourFinancesContext();
 
+  const { transactions, isInitialLoading, isLoading } = useTransactions();
+
   return {
     activeIndex,
     setActiveIndex,
-    isInitialLoading: false,
-    isloading: false,
-    transactions: [1],
+    isInitialLoading,
+    isLoading,
+    transactions,
     arValuesVisible,
   };
 }
