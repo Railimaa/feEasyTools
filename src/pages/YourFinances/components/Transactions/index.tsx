@@ -4,6 +4,7 @@ import { FilterIcon } from '../../../../assets/Icons/FIlterIcon';
 import emptyState from '../../../../assets/images/empty-state.svg';
 import { Spinner } from '../../../../components/Spinner';
 import { MONTHS } from '../../../../utils/constants';
+import { EditTransactionModal } from '../../Modals/EditTransactionModal';
 
 import { SliderNavigation } from './SliderNavigation';
 import { SliderOption } from './SliderOption';
@@ -20,6 +21,10 @@ export function Transactions() {
     isLoading,
     transactions,
     arValuesVisible,
+    openEditTransactionModal,
+    handleOpenEditTransactionModal,
+    handleCloseEditTransactionModal,
+    transactionIsBeingEdited,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
@@ -77,15 +82,26 @@ export function Transactions() {
               </div>
             )}
 
-            {!isLoading &&
-              hasTransactions &&
-              transactions.map((transaction) => (
-                <TransactionCard
-                  key={transaction.id}
-                  transaction={transaction}
-                  valuesVisible={arValuesVisible}
-                />
-              ))}
+            {!isLoading && hasTransactions && (
+              <>
+                {transactionIsBeingEdited && (
+                  <EditTransactionModal
+                    open={openEditTransactionModal}
+                    handleCloseModal={handleCloseEditTransactionModal}
+                    transaction={transactionIsBeingEdited}
+                  />
+                )}
+
+                {transactions.map((transaction) => (
+                  <TransactionCard
+                    key={transaction.id}
+                    transaction={transaction}
+                    valuesVisible={arValuesVisible}
+                    handleOpenEditModal={handleOpenEditTransactionModal}
+                  />
+                ))}
+              </>
+            )}
           </div>
         </>
       )}

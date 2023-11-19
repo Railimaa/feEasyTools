@@ -8,18 +8,20 @@ import { Container } from './style';
 interface ITransactionCardProps {
   transaction: ITransactions;
   valuesVisible: boolean;
+  handleOpenEditModal: (transaction: ITransactions) => void;
 }
 
 export function TransactionCard({
   transaction,
   valuesVisible,
+  handleOpenEditModal,
 }: ITransactionCardProps) {
   return (
-    <Container>
+    <Container onClick={() => handleOpenEditModal(transaction)} role="button">
       <div className="nameAndDate">
         <CategoryIcon
           type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
-          category={transaction.category.icon}
+          category={transaction.categoryTransaction?.icon}
         />
 
         <div className="block">

@@ -51,6 +51,7 @@ export function useNewTransactionModal() {
         type: newTransactionType!,
         date: data.date.toISOString(),
       });
+      reset();
       useQuery.invalidateQueries(['transactions']);
       useQuery.invalidateQueries(['bankAccounts']);
       toast.success(
@@ -59,7 +60,6 @@ export function useNewTransactionModal() {
           : 'Receita cadastrada com sucesso!',
       );
       handleCloseNewTransactionModal();
-      reset();
     } catch {
       toast.error(
         newTransactionType === 'EXPENSE'

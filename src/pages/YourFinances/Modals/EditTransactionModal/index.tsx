@@ -1,36 +1,66 @@
 import { Controller } from 'react-hook-form';
 
+import { Trash } from '../../../../assets/Icons/Trash';
 import { Button } from '../../../../components/Button';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { DatePickerInput } from '../../../../components/DatePickerInput';
 import { Input } from '../../../../components/Input';
 import { InputCurrency } from '../../../../components/InputCurrency';
 import { Modal } from '../../../../components/Modal';
 import { Select } from '../../../../components/Select';
+import { ITransactions } from '../../../../types/Transaction';
 
 import { Container, Form } from './style';
-import { useNewTransactionModal } from './useNewTransactionModal';
+import { useEditTransactionModal } from './useEditTransactionModal';
 
-export function NewTransactionModal() {
+interface IEditTransactionModalProps {
+  open: boolean;
+  handleCloseModal: () => void;
+  transaction: ITransactions;
+}
+
+export function EditTransactionModal({
+  open,
+  handleCloseModal,
+  transaction,
+}: IEditTransactionModalProps) {
   const {
-    openNewTransactionModal,
-    handleCloseNewTransactionModal,
-    newTransactionType,
-    categories,
     accounts,
+    categories,
     handleSubmit,
     register,
-    control,
     errors,
+    control,
     isLoading,
-  } = useNewTransactionModal();
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteTransaction,
+  } = useEditTransactionModal(transaction, handleCloseModal);
 
-  const isExpense = newTransactionType === 'EXPENSE';
+  const isExpense = transaction.type === 'EXPENSE';
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title={isExpense ? 'despesa' : 'receita'}
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleDeleteTransaction}
+        isLoading={isLoading}
+      />
+    );
+  }
 
   return (
     <Modal
-      title={isExpense ? 'Nova Despesa' : 'Nova Receita'}
-      open={openNewTransactionModal}
-      onClose={handleCloseNewTransactionModal}
+      open={open}
+      title={isExpense ? 'Editar despesa' : 'Editar receita'}
+      onClose={handleCloseModal}
+      rightAction={
+        <button type="button" onClick={handleOpenDeleteModal}>
+          <Trash />
+        </button>
+      }
     >
       <Container>
         <Form onSubmit={handleSubmit}>
@@ -58,9 +88,8 @@ export function NewTransactionModal() {
           <div className="inputs">
             <Input
               label={isExpense ? 'Nome da despesa' : 'Nome da receita'}
-              type="text"
-              {...register('name')}
               error={errors.name?.message}
+              {...register('name')}
             />
 
             <Controller
@@ -69,11 +98,11 @@ export function NewTransactionModal() {
               defaultValue=""
               render={({ field: { onChange, value } }) => (
                 <Select
-                  options={categories.map((category) => ({
-                    value: category.id,
-                    label: category.name,
-                  }))}
                   label="Categoria"
+                  options={categories.map((category) => ({
+                    label: category.name,
+                    value: category.id,
+                  }))}
                   onChange={onChange}
                   value={value}
                   error={errors.categoryId?.message}
@@ -87,11 +116,11 @@ export function NewTransactionModal() {
               defaultValue=""
               render={({ field: { onChange, value } }) => (
                 <Select
-                  options={accounts.map((account) => ({
-                    value: account.id,
-                    label: account.name,
-                  }))}
                   label={isExpense ? 'Pagar com' : 'Receber com'}
+                  options={accounts.map((account) => ({
+                    label: account.name,
+                    value: account.id,
+                  }))}
                   onChange={onChange}
                   value={value}
                   error={errors.bankAccountId?.message}
@@ -113,7 +142,7 @@ export function NewTransactionModal() {
             />
           </div>
 
-          <Button isLoading={isLoading}>Criar</Button>
+          <Button isLoading={isLoading}>Salvar</Button>
         </Form>
       </Container>
     </Modal>

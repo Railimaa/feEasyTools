@@ -6,7 +6,7 @@ export interface ITransactions {
   categoryId: string;
   date: string;
   type: 'INCOME' | 'EXPENSE';
-  category: {
+  categoryTransaction: {
     id: string;
     name: string;
     icon: string;

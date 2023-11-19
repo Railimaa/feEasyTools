@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { DayPickerProvider } from 'react-day-picker';
 import { Toaster } from 'react-hot-toast';
 
 import Global from '../../assets/styles/global';
@@ -20,7 +21,10 @@ export function App() {
       <AuthProvider>
         <Global />
 
-        <Router />
+        <DayPickerProvider initialProps={{}}>
+          <Router />
+        </DayPickerProvider>
+
         <Toaster />
       </AuthProvider>
     </QueryClientProvider>
