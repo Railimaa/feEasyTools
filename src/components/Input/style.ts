@@ -16,6 +16,12 @@ export const Container = styled.div`
     border: none;
     outline: none;
   }
+
+  .icon {
+    position: absolute;
+    top: 37px;
+    left: 12px;
+  }
 `;
 
 export const Label = styled.label`
@@ -29,14 +35,14 @@ export const Label = styled.label`
   transition: all 0.2s ease-in-out;
 `;
 
-export const InputC = styled.input`
+export const InputC = styled.input<{ label?: string }>`
   width: 100%;
   height: 52px;
   border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
   border-radius: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 20px;
+  padding-left: ${({ label }) => (label ? '12px' : '40px')};
+  padding-right: ${({ label }) => (label ? '12px' : '40px')};
+  padding-top: ${({ label }) => (label ? '20px' : 'none')};
   outline: none;
   color: #272727;
   font-weight: bold;

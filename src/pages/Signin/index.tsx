@@ -1,3 +1,5 @@
+import { LockClosedIcon, PersonIcon } from '@radix-ui/react-icons';
+
 import { Button } from '../../components/Button';
 import { FormSigninAndSignup } from '../../components/FormSigninAndSignup';
 import { Input } from '../../components/Input';
@@ -19,14 +21,16 @@ export function Signin() {
       >
         <Input
           type="email"
-          label="E-mail"
+          placeholder="E-mail"
+          icon={<PersonIcon width={20} height={20} color="#5f3dc4" />}
           error={errors.email?.message}
           {...register('email')}
         />
 
         <Input
           type="password"
-          label="Senha"
+          placeholder="Senha"
+          icon={<LockClosedIcon width={20} height={20} color="#5f3dc4" />}
           error={errors.password?.message}
           showPassword
           {...register('password')}
