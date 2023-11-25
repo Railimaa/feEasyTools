@@ -16,6 +16,9 @@ interface IYourFinancesContextValue {
   newTransactionType: null | 'INCOME' | 'EXPENSE';
   handleOpenNewTransactionModal: (type: 'INCOME' | 'EXPENSE') => void;
   handleCloseNewTransactionModal: () => void;
+  openNewCategoryModal: boolean;
+  handleOpenNewCategoryModal: () => void;
+  handleCloseNewCategoryModal: () => void;
 }
 
 export const YourFinancesContext = createContext(
@@ -39,6 +42,8 @@ export function YourFinancesProvider({
   const [newTransactionType, setNewTransactionType] = useState<
     null | 'INCOME' | 'EXPENSE'
   >(null);
+  const [openNewCategoryModal, setOpenNewCategoryModal] =
+    useState<boolean>(false);
 
   const handleOpenNewAccountModal = useCallback(() => {
     setOpenNewAccountModal(true);
@@ -75,6 +80,14 @@ export function YourFinancesProvider({
     setNewTransactionType(null);
   }, []);
 
+  const handleOpenNewCategoryModal = useCallback(() => {
+    setOpenNewCategoryModal(true);
+  }, []);
+
+  const handleCloseNewCategoryModal = useCallback(() => {
+    setOpenNewCategoryModal(false);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewAccountModal,
@@ -90,6 +103,9 @@ export function YourFinancesProvider({
       newTransactionType,
       handleOpenNewTransactionModal,
       handleCloseNewTransactionModal,
+      openNewCategoryModal,
+      handleOpenNewCategoryModal,
+      handleCloseNewCategoryModal,
     }),
     [
       openNewAccountModal,
@@ -105,6 +121,9 @@ export function YourFinancesProvider({
       newTransactionType,
       handleOpenNewTransactionModal,
       handleCloseNewTransactionModal,
+      openNewCategoryModal,
+      handleOpenNewCategoryModal,
+      handleCloseNewCategoryModal,
     ],
   );
 

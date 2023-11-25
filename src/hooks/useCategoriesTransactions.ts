@@ -6,6 +6,7 @@ export function useCategoriesTransaction() {
   const { data, isFetching } = useQuery({
     queryKey: ['categoriesTransaction'],
     queryFn: categoriesTransactionService.getAll,
+    staleTime: Infinity,
   });
 
   return { categoriesTransaction: data ?? [], isFetching };

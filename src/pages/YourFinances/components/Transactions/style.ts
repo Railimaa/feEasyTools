@@ -30,7 +30,7 @@ export const Container = styled.div`
     margin-top: 16px;
     flex: 1;
     overflow-y: auto;
-    max-height: 70vh;
+    max-height: 50vh;
 
     .isLoading {
       display: flex;

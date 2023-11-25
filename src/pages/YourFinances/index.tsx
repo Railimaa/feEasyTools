@@ -1,6 +1,8 @@
 import { Header } from '../../components/Header';
 
 import { Accounts } from './components/Accounts';
+import { CategoriesExpense } from './components/CategoriesExpense';
+import { CategoriesIncome } from './components/CategoriesIncome';
 import { Fab } from './components/Fab';
 import { Transactions } from './components/Transactions';
 import {
@@ -9,6 +11,7 @@ import {
 } from './components/YourFinancesContext';
 import { EditAccountModal } from './Modals/EditAccountModal';
 import { NewAccountModal } from './Modals/NewAccountModal';
+import { NewCategoryModal } from './Modals/NewCategoryModal';
 import { NewTransactionModal } from './Modals/NewTransactionModal';
 import { Container } from './style';
 
@@ -31,10 +34,25 @@ export function YourFinances() {
                 </div>
               </div>
 
+              <div className="title">
+                <h2>Categorias</h2>
+              </div>
+
+              <div className="categories">
+                <div className="income">
+                  <CategoriesIncome />
+                </div>
+
+                <div className="expense">
+                  <CategoriesExpense />
+                </div>
+              </div>
+
               <Fab />
               <NewAccountModal />
               {accountIsBeingEdited && <EditAccountModal />}
               <NewTransactionModal />
+              <NewCategoryModal />
             </Container>
           </>
         )}
