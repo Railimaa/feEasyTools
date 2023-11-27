@@ -12,8 +12,12 @@ import { CardCategorie, Container } from './style';
 import { useCategorieExpense } from './useCategorieExpense';
 
 export function CategoriesExpense() {
-  const { categories, isLoading, handleOpenNewCategoryModal } =
-    useCategorieExpense();
+  const {
+    categories,
+    isLoading,
+    handleOpenNewCategoryModal,
+    handleOpenEditCategoryModal,
+  } = useCategorieExpense();
 
   const hasCategories = categories.length > 0;
 
@@ -58,7 +62,10 @@ export function CategoriesExpense() {
                   <span>{category.name}</span>
                 </div>
 
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => handleOpenEditCategoryModal(category)}
+                >
                   <Pencil1Icon width={24} height={24} color="#6741d9" />
                 </button>
               </CardCategorie>

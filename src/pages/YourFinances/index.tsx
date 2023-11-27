@@ -10,6 +10,7 @@ import {
   YourFinancesProvider,
 } from './components/YourFinancesContext';
 import { EditAccountModal } from './Modals/EditAccountModal';
+import { EditCategoryModal } from './Modals/EditCategoryModal';
 import { NewAccountModal } from './Modals/NewAccountModal';
 import { NewCategoryModal } from './Modals/NewCategoryModal';
 import { NewTransactionModal } from './Modals/NewTransactionModal';
@@ -19,7 +20,7 @@ export function YourFinances() {
   return (
     <YourFinancesProvider>
       <YourFinancesContext.Consumer>
-        {({ accountIsBeingEdited }) => (
+        {({ accountIsBeingEdited, categoryIsBeingEdited }) => (
           <>
             <Header />
 
@@ -53,6 +54,7 @@ export function YourFinances() {
               {accountIsBeingEdited && <EditAccountModal />}
               <NewTransactionModal />
               <NewCategoryModal />
+              {categoryIsBeingEdited && <EditCategoryModal />}
             </Container>
           </>
         )}

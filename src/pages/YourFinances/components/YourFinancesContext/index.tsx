@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useMemo, useState } from 'react';
 
 import { IBankAccount } from '../../../../types/BankAccount';
+import { ICategoryTransaction } from '../../../../types/CategoryTransaction';
 
 interface IYourFinancesContextValue {
   openNewAccountModal: boolean;
@@ -19,6 +20,10 @@ interface IYourFinancesContextValue {
   openNewCategoryModal: boolean;
   handleOpenNewCategoryModal: () => void;
   handleCloseNewCategoryModal: () => void;
+  openEditCategoryModal: boolean;
+  categoryIsBeingEdited: null | ICategoryTransaction;
+  handleOpenEditCategoryModal: (category: ICategoryTransaction) => void;
+  handleCloseEditCategoryModal: () => void;
 }
 
 export const YourFinancesContext = createContext(
@@ -44,6 +49,10 @@ export function YourFinancesProvider({
   >(null);
   const [openNewCategoryModal, setOpenNewCategoryModal] =
     useState<boolean>(false);
+  const [openEditCategoryModal, setOpenEditCategoryModal] =
+    useState<boolean>(false);
+  const [categoryIsBeingEdited, setCategoryIsBeingEdited] =
+    useState<null | ICategoryTransaction>(null);
 
   const handleOpenNewAccountModal = useCallback(() => {
     setOpenNewAccountModal(true);
@@ -88,6 +97,19 @@ export function YourFinancesProvider({
     setOpenNewCategoryModal(false);
   }, []);
 
+  const handleOpenEditCategoryModal = useCallback(
+    (category: ICategoryTransaction) => {
+      setOpenEditCategoryModal(true);
+      setCategoryIsBeingEdited(category);
+    },
+    [],
+  );
+
+  const handleCloseEditCategoryModal = useCallback(() => {
+    setOpenEditCategoryModal(false);
+    setCategoryIsBeingEdited(null);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewAccountModal,
@@ -106,6 +128,10 @@ export function YourFinancesProvider({
       openNewCategoryModal,
       handleOpenNewCategoryModal,
       handleCloseNewCategoryModal,
+      openEditCategoryModal,
+      categoryIsBeingEdited,
+      handleOpenEditCategoryModal,
+      handleCloseEditCategoryModal,
     }),
     [
       openNewAccountModal,
@@ -124,6 +150,10 @@ export function YourFinancesProvider({
       openNewCategoryModal,
       handleOpenNewCategoryModal,
       handleCloseNewCategoryModal,
+      openEditCategoryModal,
+      categoryIsBeingEdited,
+      handleOpenEditCategoryModal,
+      handleCloseEditCategoryModal,
     ],
   );
 

@@ -5,7 +5,8 @@ import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesCo
 
 export function useCategorieExpense() {
   const { categoriesTransaction, isFetching } = useCategoriesTransaction();
-  const { handleOpenNewCategoryModal } = useYourFinancesContext();
+  const { handleOpenNewCategoryModal, handleOpenEditCategoryModal } =
+    useYourFinancesContext();
 
   const categoriesExpense = useMemo(
     () =>
@@ -17,5 +18,6 @@ export function useCategorieExpense() {
     categories: categoriesExpense,
     isLoading: isFetching,
     handleOpenNewCategoryModal,
+    handleOpenEditCategoryModal,
   };
 }

@@ -12,8 +12,12 @@ import { CardCategorie, Container } from './style';
 import { useCategoriesIncome } from './useCategoriesIncome';
 
 export function CategoriesIncome() {
-  const { categories, isLoading, handleOpenNewCategoryModal } =
-    useCategoriesIncome();
+  const {
+    categories,
+    isLoading,
+    handleOpenNewCategoryModal,
+    handleOpenEditCategoryModal,
+  } = useCategoriesIncome();
 
   const hasCategories = categories.length > 0;
 
@@ -58,7 +62,10 @@ export function CategoriesIncome() {
                   <span>{categorie.name}</span>
                 </div>
 
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => handleOpenEditCategoryModal(categorie)}
+                >
                   <Pencil1Icon width={24} height={24} color="#6741d9" />
                 </button>
               </CardCategorie>
