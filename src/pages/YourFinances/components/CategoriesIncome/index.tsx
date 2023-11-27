@@ -1,14 +1,11 @@
-import {
-  ArrowTopRightIcon,
-  MagnifyingGlassIcon,
-  Pencil1Icon,
-} from '@radix-ui/react-icons';
+import { ArrowTopRightIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
-import { CategoryIcon } from '../../../../assets/Icons/categories/CategoryIcon';
 import { Button } from '../../../../components/Button';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Spinner } from '../../../../components/Spinner';
 
-import { CardCategorie, Container } from './style';
+import { CardCategory } from './components/CardCategory';
+import { Container } from './style';
 import { useCategoriesIncome } from './useCategoriesIncome';
 
 export function CategoriesIncome() {
@@ -17,7 +14,23 @@ export function CategoriesIncome() {
     isLoading,
     handleOpenNewCategoryModal,
     handleOpenEditCategoryModal,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    isLoadingDelete,
+    handleDeleteCategory,
   } = useCategoriesIncome();
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title="categoria"
+        onClose={handleCloseDeleteModal}
+        isLoading={isLoadingDelete}
+        onConfirm={handleDeleteCategory}
+      />
+    );
+  }
 
   const hasCategories = categories.length > 0;
 
@@ -52,23 +65,13 @@ export function CategoriesIncome() {
           )}
 
           {hasCategories &&
-            categories.map((categorie) => (
-              <CardCategorie key={categorie.id}>
-                <div className="iconAndName">
-                  <CategoryIcon
-                    type={categorie.type === 'EXPENSE' ? 'expense' : 'income'}
-                    category={categorie?.icon}
-                  />
-                  <span>{categorie.name}</span>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => handleOpenEditCategoryModal(categorie)}
-                >
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-              </CardCategorie>
+            categories.map((category) => (
+              <CardCategory
+                key={category.id}
+                category={category}
+                handleOpenDeleteModal={handleOpenDeleteModal}
+                handleOpenEditCategoryModal={handleOpenEditCategoryModal}
+              />
             ))}
         </>
       )}

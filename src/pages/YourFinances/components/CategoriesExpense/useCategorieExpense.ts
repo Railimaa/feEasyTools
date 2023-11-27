@@ -24,6 +24,7 @@ export function useCategorieExpense() {
 
   function handleCloseDeleteModal() {
     setOpenDeleteModal(false);
+    setCategoryId(null);
   }
 
   const useQuery = useQueryClient();
