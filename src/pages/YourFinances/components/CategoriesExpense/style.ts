@@ -85,9 +85,16 @@ export const CardCategorie = styled.div`
     }
   }
 
-  button {
-    border: none;
-    outline: none;
-    background: none;
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    button {
+      border: none;
+      outline: none;
+      background: none;
+    }
   }
 `;

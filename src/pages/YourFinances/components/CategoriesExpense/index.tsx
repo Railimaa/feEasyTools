@@ -5,7 +5,9 @@ import {
 } from '@radix-ui/react-icons';
 
 import { CategoryIcon } from '../../../../assets/Icons/categories/CategoryIcon';
+import { Trash } from '../../../../assets/Icons/Trash';
 import { Button } from '../../../../components/Button';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Spinner } from '../../../../components/Spinner';
 
 import { CardCategorie, Container } from './style';
@@ -17,7 +19,23 @@ export function CategoriesExpense() {
     isLoading,
     handleOpenNewCategoryModal,
     handleOpenEditCategoryModal,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteCategory,
+    isLoadingDelete,
   } = useCategorieExpense();
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title="categoria"
+        onClose={handleCloseDeleteModal}
+        isLoading={isLoadingDelete}
+        onConfirm={handleDeleteCategory}
+      />
+    );
+  }
 
   const hasCategories = categories.length > 0;
 
@@ -62,12 +80,21 @@ export function CategoriesExpense() {
                   <span>{category.name}</span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => handleOpenEditCategoryModal(category)}
-                >
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
+                <div className="actions">
+                  <button
+                    type="button"
+                    onClick={() => handleOpenEditCategoryModal(category)}
+                  >
+                    <Pencil1Icon width={24} height={24} color="#6741d9" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleOpenDeleteModal(category)}
+                  >
+                    <Trash />
+                  </button>
+                </div>
               </CardCategorie>
             ))}
         </>
