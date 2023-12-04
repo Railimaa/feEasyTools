@@ -1,3 +1,9 @@
+import { Container } from './style';
+
 export function Task() {
-  return <p>Task</p>;
+  return (
+    <Container>
+      <p>Tasks</p>
+    </Container>
+  );
 }
