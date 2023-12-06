@@ -4,6 +4,7 @@ import { Categories } from './components/Categories';
 import { Contact } from './components/Contact';
 import { ContactProvider } from './components/ContactContext';
 import { Fab } from './components/Fab';
+import { NewContactModal } from './components/Modals/NewContactModal';
 import { Container } from './style';
 
 export function Contacts() {
@@ -26,6 +27,7 @@ export function Contacts() {
         </div>
 
         <Fab />
+        <NewContactModal />
       </Container>
     </ContactProvider>
   );

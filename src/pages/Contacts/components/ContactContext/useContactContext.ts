@@ -2,6 +2,6 @@ import { useContext } from 'react';
 
 import { ContactContext } from '.';
 
-export function useContextContact() {
+export function useContactContext() {
   return useContext(ContactContext);
 }

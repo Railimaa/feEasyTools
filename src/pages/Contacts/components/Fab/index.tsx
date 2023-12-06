@@ -1,10 +1,13 @@
 import { AvatarIcon, MagicWandIcon, PlusIcon } from '@radix-ui/react-icons';
 
 import { DropdownMenu } from '../../../../components/DropdownMenu';
+import { useContactContext } from '../ContactContext/useContactContext';
 
 import { Container } from './style';
 
 export function Fab() {
+  const { handleOpenNewContactModal } = useContactContext();
+
   return (
     <Container>
       <DropdownMenu.Root>
@@ -13,7 +16,10 @@ export function Fab() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content side="top">
-          <DropdownMenu.Item style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            style={{ gap: '8px' }}
+            onSelect={handleOpenNewContactModal}
+          >
             <AvatarIcon width={24} height={24} color="#6741d9" />
             Novo contato
           </DropdownMenu.Item>
