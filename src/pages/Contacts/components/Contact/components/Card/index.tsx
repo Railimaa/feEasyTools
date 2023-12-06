@@ -18,8 +18,13 @@ export function Card() {
       </div>
 
       <div className="actions">
-        <Pencil2Icon width={24} height={24} color="#6741d9" />
-        <Trash />
+        <button type="button">
+          <Pencil2Icon width={24} height={24} color="#6741d9" />
+        </button>
+
+        <button type="button">
+          <Trash />
+        </button>
       </div>
     </Container>
   );

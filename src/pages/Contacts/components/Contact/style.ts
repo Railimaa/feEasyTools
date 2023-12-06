@@ -34,6 +34,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -56,7 +58,7 @@ export const InputSearch = styled.input`
   }
 
   &:focus {
-    border: 2px solid #6741d9;
+    border: 3px solid #6741d9;
     transition: all ease-in-out;
   }
 `;

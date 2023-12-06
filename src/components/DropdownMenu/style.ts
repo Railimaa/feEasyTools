@@ -15,7 +15,7 @@ const slideUpAndFade = keyframes`
 export const ContainerContent = styled.div`
   animation: ${slideUpAndFade} 0.2s ease-in-out;
   padding: 8px;
-  background: #f3f0ff;
+  background: #272727;
   border-radius: 16px;
   margin-top: 8px;
 `;
@@ -29,14 +29,14 @@ export const ContainerItem = styled.div<{ color?: string }>`
   padding-bottom: 8px;
   min-height: 40px;
   cursor: pointer;
-  color: '#6741d9';
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
 
   &:hover {
     color: '#fff';
     font-weight: bold;
-    background: ${({ color }) => color || '#845ef7'};
+    background: ${({ color }) => color || '#4e4e4e'};
     border-radius: 16px;
     transition: all ease-in-out 0.1s;
   }

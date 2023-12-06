@@ -18,7 +18,7 @@ export function UserMenu() {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content style={{ width: '200px' }}>
-        <DropdownMenu.Item colorHover="#E5DBFF">
+        <DropdownMenu.Item>
           <ContainerItem>
             <small>
               {user?.name} {user?.secondName}
@@ -30,7 +30,6 @@ export function UserMenu() {
         <DropdownMenu.Item
           onSelect={signOut}
           style={{ justifyContent: 'space-between' }}
-          colorHover="#E5DBFF"
         >
           Sair
           <ExitIcon />

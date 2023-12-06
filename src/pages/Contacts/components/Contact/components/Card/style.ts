@@ -4,9 +4,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #272727;
   padding: 16px;
-  margin-top: 10px;
+  margin-top: 12px;
   box-shadow: 0px 4px 10px 0px #6741d9;
   border-radius: 8px;
 
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
       strong {
         font-size: 16px;
-        color: #222222;
+        color: #fff;
       }
 
       small {
@@ -43,5 +43,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+
+    button {
+      background: none;
+      outline: none;
+      border: none;
+    }
   }
 `;

@@ -23,7 +23,6 @@ export function Fab() {
 
         <DropdownMenu.Content side="top">
           <DropdownMenu.Item
-            colorHover="#E5DBFF"
             style={{ gap: '8px' }}
             onSelect={() => handleOpenNewTransactionModal('INCOME')}
           >
@@ -32,7 +31,6 @@ export function Fab() {
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
-            colorHover="#E5DBFF"
             style={{ gap: '8px' }}
             onSelect={() => handleOpenNewTransactionModal('EXPENSE')}
           >
@@ -41,7 +39,6 @@ export function Fab() {
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
-            colorHover="#E5DBFF"
             style={{ gap: '8px' }}
             onSelect={handleOpenNewAccountModal}
           >
@@ -50,7 +47,6 @@ export function Fab() {
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
-            colorHover="#E5DBFF"
             style={{ gap: '30px' }}
             onSelect={handleOpenNewCategoryModal}
           >

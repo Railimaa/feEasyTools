@@ -17,13 +17,9 @@ export const Container = styled.div`
 export const ContainerItem = styled.div`
   width: 100%;
   padding-bottom: 4px;
-  border-bottom: 1px solid #e5dbff;
+  border-bottom: 1px solid #4e4e4e;
   small {
     display: block;
     font-size: 14px;
-  }
-
-  &:hover {
-    border-bottom: 1px solid #e5dbff;
   }
 `;
