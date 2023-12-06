@@ -9,6 +9,10 @@ export function Contacts() {
     <>
       <Header />
       <Container>
+        <div className="title">
+          <h1>YourContacts</h1>
+        </div>
+
         <div className="main">
           <div className="left">
             <Contact />
