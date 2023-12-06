@@ -12,7 +12,7 @@ export const Container = styled.div`
   padding-top: 32px;
   padding-bottom: 32px;
   border-radius: 16px;
-  background: #343a40;
+  background: #0a0a0a;
 
   @media (min-width: 768px) {
     padding: 40px;

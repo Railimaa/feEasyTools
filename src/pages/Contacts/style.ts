@@ -18,6 +18,7 @@ export const Container = styled.div`
   height: 100vh;
   padding: 16px;
   padding-top: 100px;
+  background: #000000;
 
   @media (min-width: 768px) {
     padding-left: 32px;

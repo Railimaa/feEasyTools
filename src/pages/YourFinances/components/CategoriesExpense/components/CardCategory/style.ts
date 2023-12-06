@@ -6,8 +6,8 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 16px;
   border-radius: 16px;
-  background: #e5dbff;
-  margin-top: 18px;
+  background: #272727;
+  margin-top: 8px;
 
   .iconAndName {
     display: flex;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     gap: 8px;
 
     span {
-      color: #343a40;
+      color: #fff;
       font-weight: 700;
       font-size: 16px;
       letter-spacing: -0.5px;

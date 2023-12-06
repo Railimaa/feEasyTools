@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   gap: 16px;
   margin-top: 8px;
-  background: #fff;
+  background: #272727;
   border-radius: 16px;
   padding: 16px;
   cursor: pointer;
@@ -24,7 +24,7 @@ export const Container = styled.div`
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -0.5px;
-        color: #343a40;
+        color: #fff;
       }
 
       small {

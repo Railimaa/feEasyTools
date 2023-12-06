@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding-right: 16px;
   padding-top: 32px;
   padding-bottom: 32px;
-  background: #000;
+  background: #0a0a0a;
   color: #fff;
 
   @media (min-width: 768px) {

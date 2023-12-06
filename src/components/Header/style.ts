@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderC = styled.header`
-  background: #000000;
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: space-between;
