@@ -39,110 +39,21 @@ export function Categories() {
           </header>
 
           <div className="content">
-            <Card>
-              <small>instagram</small>
+            {categories.map((category) => (
+              <Card>
+                <small>{category.name}</small>
 
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
+                <div className="actions">
+                  <button type="button">
+                    <Pencil1Icon width={24} height={24} color="#6741d9" />
+                  </button>
 
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <small>instagram</small>
-
-              <div className="actions">
-                <button type="button">
-                  <Pencil1Icon width={24} height={24} color="#6741d9" />
-                </button>
-
-                <button type="button">
-                  <Trash />
-                </button>
-              </div>
-            </Card>
+                  <button type="button">
+                    <Trash />
+                  </button>
+                </div>
+              </Card>
+            ))}
           </div>
         </>
       )}

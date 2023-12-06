@@ -1,6 +1,10 @@
+import { useCategoriesContacts } from '../../../../hooks/useCategoriesContact';
+
 export function useCategories() {
+  const { categoriesContact, isFetching } = useCategoriesContacts();
+
   return {
-    isLoading: false,
-    categories: [1],
+    categories: categoriesContact,
+    isLoading: isFetching,
   };
 }
