@@ -35,7 +35,11 @@ export function Contact() {
 
           <Header orderBy={orderBy} handleOrderBy={handleOrderBy} />
 
-          <Card />
+          <div className="content">
+            {contacts.map((contact) => (
+              <Card key={contact.id} contact={contact} />
+            ))}
+          </div>
         </>
       )}
     </Container>

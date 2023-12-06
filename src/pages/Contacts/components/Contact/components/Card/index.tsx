@@ -1,20 +1,27 @@
 import { Pencil2Icon } from '@radix-ui/react-icons';
 
 import { Trash } from '../../../../../../assets/Icons/Trash';
+import { IContact } from '../../../../../../types/Contact';
 
 import { Container } from './style';
 
-export function Card() {
+interface ICardProps {
+  contact: IContact;
+}
+
+export function Card({ contact }: ICardProps) {
   return (
     <Container>
       <div className="info">
         <div className="nameAndCategory">
-          <strong>Mateus Itallo</strong>
-          <small>instagram</small>
+          <strong>{contact.name}</strong>
+          <small>
+            {contact.categoryContact.name && contact.categoryContact.name}
+          </small>
         </div>
 
-        <span>mateus@email.com</span>
-        <span>(11) 99776-8987</span>
+        <span>{contact.email}</span>
+        <span>{contact.phone}</span>
       </div>
 
       <div className="actions">

@@ -37,6 +37,13 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  .content {
+    flex: 1;
+    height: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
 `;
 
 export const InputSearch = styled.input`

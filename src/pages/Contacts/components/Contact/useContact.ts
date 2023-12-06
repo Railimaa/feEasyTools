@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useContacts } from '../../../../hooks/useContacts';
+
 export function useContact() {
   const [orderBy, setOrderBy] = useState('asc');
 
@@ -7,10 +9,12 @@ export function useContact() {
     setOrderBy((prevState) => (prevState === 'asc' ? 'desc' : 'asc'));
   }
 
+  const { contacts, isFetching } = useContacts();
+
   return {
     orderBy,
     handleOrderBy,
-    contacts: [1],
-    isLoading: false,
+    contacts,
+    isLoading: isFetching,
   };
 }

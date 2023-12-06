@@ -66,6 +66,13 @@ export const Container = styled.div`
       }
     }
   }
+
+  .content {
+    flex: 1;
+    height: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
 `;
 
 export const Card = styled.div`
