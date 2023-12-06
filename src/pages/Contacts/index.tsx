@@ -2,12 +2,13 @@ import { Header } from '../../components/Header';
 
 import { Categories } from './components/Categories';
 import { Contact } from './components/Contact';
+import { ContactProvider } from './components/ContactContext';
 import { Fab } from './components/Fab';
 import { Container } from './style';
 
 export function Contacts() {
   return (
-    <>
+    <ContactProvider>
       <Header />
       <Container>
         <div className="title">
@@ -26,6 +27,6 @@ export function Contacts() {
 
         <Fab />
       </Container>
-    </>
+    </ContactProvider>
   );
 }
