@@ -10,17 +10,19 @@ import { contactsService } from '../../../../../services/contacts';
 import { formatPhoneNumber } from '../../../../../utils/formatPhoneNumber';
 import { useContactContext } from '../../ContactContext/useContactContext';
 
-export function useNewContactModal() {
-  const { openNewContactModal, handleCloseNewContactModal } =
-    useContactContext();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export function useEditContactModal() {
+  const {
+    contactIsBeingEdited,
+    openEditContactModal,
+    handleCloseEditedContactModal,
+  } = useContactContext();
 
-  const { categoriesContact } = useCategoriesContacts();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome'),
-    phone: z.string().optional(),
     categoryId: z.string().min(1, 'Informe a categoria'),
+    phone: z.string().optional(),
     email: z
       .string()
       .refine((value) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), {
@@ -34,42 +36,52 @@ export function useNewContactModal() {
   const {
     handleSubmit: hookFormHandleSubmit,
     register,
-    formState: { errors },
     control,
     reset,
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      name: contactIsBeingEdited?.name,
+      categoryId: contactIsBeingEdited?.categoryId,
+      phone: contactIsBeingEdited?.phone,
+      email: contactIsBeingEdited?.email,
+    },
   });
 
-  const queryClient = useQueryClient();
+  const useQuery = useQueryClient();
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     try {
       setIsLoading(true);
 
-      await contactsService.create({
+      await contactsService.update({
         ...data,
         phone: data.phone && formatPhoneNumber(data.phone),
         email: data.email ? data.email : undefined,
+        id: contactIsBeingEdited!.id,
       });
-      queryClient.invalidateQueries(['contacts']);
+      useQuery.invalidateQueries(['contacts']);
       reset();
-      handleCloseNewContactModal();
-      toast.success('Contato cadastrado com sucesso!');
+      handleCloseEditedContactModal();
+      toast.success('Contato editado com sucesso!');
     } catch {
-      toast.error('Erro ao cadastrar contato!');
+      toast.error('Erro ao editar o contato!');
     } finally {
       setIsLoading(false);
     }
   });
 
+  const { categoriesContact } = useCategoriesContacts();
+
   return {
-    openNewContactModal,
-    handleCloseNewContactModal,
-    handleSubmit,
-    isLoading,
-    register,
-    errors,
-    control,
+    openEditContactModal,
+    contactIsBeingEdited,
+    handleCloseEditedContactModal,
     categoriesContact,
+    handleSubmit,
+    register,
+    control,
+    errors,
+    isLoading,
   };
 }

@@ -7,9 +7,10 @@ import { Container } from './style';
 
 interface ICardProps {
   contact: IContact;
+  handleOpenEditedContactModal: (contact: IContact) => void;
 }
 
-export function Card({ contact }: ICardProps) {
+export function Card({ contact, handleOpenEditedContactModal }: ICardProps) {
   return (
     <Container>
       <div className="info">
@@ -25,7 +26,10 @@ export function Card({ contact }: ICardProps) {
       </div>
 
       <div className="actions">
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => handleOpenEditedContactModal(contact)}
+        >
           <Pencil2Icon width={24} height={24} color="#6741d9" />
         </button>
 

@@ -9,7 +9,13 @@ import { Container, InputSearch } from './style';
 import { useContact } from './useContact';
 
 export function Contact() {
-  const { orderBy, handleOrderBy, isLoading, contacts } = useContact();
+  const {
+    orderBy,
+    handleOrderBy,
+    isLoading,
+    contacts,
+    handleOpenEditedContactModal,
+  } = useContact();
 
   const hasContacts = contacts.length > 0;
 
@@ -37,7 +43,11 @@ export function Contact() {
 
           <div className="content">
             {contacts.map((contact) => (
-              <Card key={contact.id} contact={contact} />
+              <Card
+                key={contact.id}
+                contact={contact}
+                handleOpenEditedContactModal={handleOpenEditedContactModal}
+              />
             ))}
           </div>
         </>
