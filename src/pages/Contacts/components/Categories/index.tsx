@@ -40,7 +40,7 @@ export function Categories() {
 
           <div className="content">
             {categories.map((category) => (
-              <Card>
+              <Card key={category.id}>
                 <small>{category.name}</small>
 
                 <div className="actions">

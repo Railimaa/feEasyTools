@@ -8,12 +8,6 @@ import { Select } from '../../../../../components/Select';
 import { Form } from './style';
 import { useNewContactModal } from './useNewContactModal';
 
-const options = [
-  { label: 'Instagram', value: 'insta' },
-  { label: 'Whatsaap', value: 'wpp' },
-  { label: 'Facebook', value: 'face' },
-];
-
 export function NewContactModal() {
   const {
     openNewContactModal,
@@ -23,6 +17,7 @@ export function NewContactModal() {
     register,
     errors,
     control,
+    categoriesContact,
   } = useNewContactModal();
 
   return (
@@ -57,7 +52,10 @@ export function NewContactModal() {
           defaultValue=""
           render={({ field: { onChange, value } }) => (
             <Select
-              options={options}
+              options={categoriesContact.map((category) => ({
+                label: category.name,
+                value: category.id,
+              }))}
               label="Categoria"
               error={errors.categoryId?.message}
               onChange={onChange}
