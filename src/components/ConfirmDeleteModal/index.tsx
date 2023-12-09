@@ -9,8 +9,8 @@ interface IConfirmDeleteModalProps {
   title: string;
   description?: string;
   onClose: () => void;
-  onConfirm?: () => void;
-  isLoading?: boolean;
+  onConfirm: () => void;
+  isLoading: boolean;
   subtitle?: string;
 }
 

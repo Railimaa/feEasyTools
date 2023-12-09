@@ -5,6 +5,7 @@ import { Contact } from './components/Contact';
 import { ContactContext, ContactProvider } from './components/ContactContext';
 import { Fab } from './components/Fab';
 import { EditContactModal } from './components/Modals/EditdContactModal';
+import { NewCategoryModal } from './components/Modals/NewCategoryModal';
 import { NewContactModal } from './components/Modals/NewContactModal';
 import { Container } from './style';
 
@@ -33,6 +34,7 @@ export function Contacts() {
               <Fab />
               <NewContactModal />
               {contactIsBeingEdited && <EditContactModal />}
+              <NewCategoryModal />
             </Container>
           </>
         )}

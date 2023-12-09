@@ -6,7 +6,8 @@ import { useContactContext } from '../ContactContext/useContactContext';
 import { Container } from './style';
 
 export function Fab() {
-  const { handleOpenNewContactModal } = useContactContext();
+  const { handleOpenNewContactModal, handleOpenNewCategoryContactModal } =
+    useContactContext();
 
   return (
     <Container>
@@ -24,7 +25,10 @@ export function Fab() {
             Novo contato
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            style={{ gap: '8px' }}
+            onSelect={handleOpenNewCategoryContactModal}
+          >
             <MagicWandIcon width={24} height={24} color="#6741d9" />
             Nova categoria
           </DropdownMenu.Item>
