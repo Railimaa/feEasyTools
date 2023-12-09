@@ -1,11 +1,11 @@
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-
 import { Spinner } from '../../../../components/Spinner';
 
-import { Card } from './components/Card';
+import Card from './components/Card';
 import { EmptyList } from './components/EmptyList';
 import { Header } from './components/Header';
-import { Container, InputSearch } from './style';
+import { SearchInput } from './components/SearchInput';
+import { SearchNotFound } from './components/SearchNotFound';
+import { Container } from './style';
 import { useContact } from './useContact';
 
 export function Contact() {
@@ -15,9 +15,13 @@ export function Contact() {
     isLoading,
     contacts,
     handleOpenEditedContactModal,
+    searchTerm,
+    handleChangeSearchTerm,
+    filteredContacts,
   } = useContact();
 
   const hasContacts = contacts.length > 0;
+  const isSearchEmpty = contacts.length > 0 && filteredContacts.length < 1;
 
   return (
     <Container>
@@ -31,24 +35,25 @@ export function Contact() {
 
       {!isLoading && hasContacts && (
         <>
-          <div className="inputSearch">
-            <InputSearch type="text" placeholder="Pesquisar contato..." />
+          <SearchInput
+            value={searchTerm}
+            onChange={handleChangeSearchTerm}
+            placeholder="Pesquisar contato..."
+          />
 
-            <div className="icon">
-              <MagnifyingGlassIcon />
-            </div>
-          </div>
+          <Header
+            orderBy={orderBy}
+            handleOrderBy={handleOrderBy}
+            qtyOfContacts={filteredContacts.length}
+          />
 
-          <Header orderBy={orderBy} handleOrderBy={handleOrderBy} />
+          {isSearchEmpty && <SearchNotFound searchValue={searchTerm} />}
 
           <div className="content">
-            {contacts.map((contact) => (
-              <Card
-                key={contact.id}
-                contact={contact}
-                handleOpenEditedContactModal={handleOpenEditedContactModal}
-              />
-            ))}
+            <Card
+              filteredContact={filteredContacts}
+              handleOpenEditedContactModal={handleOpenEditedContactModal}
+            />
           </div>
         </>
       )}

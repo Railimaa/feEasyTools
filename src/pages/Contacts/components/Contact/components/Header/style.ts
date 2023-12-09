@@ -7,6 +7,7 @@ export const Container = styled.header<{ $orderBy?: string }>`
   max-width: 500px;
   margin-top: 40px;
   margin-bottom: 40px;
+  padding-bottom: 10px;
 
   strong {
     font-size: 24px;

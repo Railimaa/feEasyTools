@@ -6,12 +6,20 @@ import { Container } from './style';
 interface IHeaderProps {
   orderBy?: string;
   handleOrderBy: () => void;
+  qtyOfContacts: number;
 }
 
-export function Header({ orderBy, handleOrderBy }: IHeaderProps) {
+export function Header({
+  orderBy,
+  handleOrderBy,
+  qtyOfContacts,
+}: IHeaderProps) {
   return (
     <Container $orderBy={orderBy}>
-      <strong>{3} contatos</strong>
+      <strong>
+        {qtyOfContacts}{' '}
+        {qtyOfContacts === 1 || qtyOfContacts === 0 ? 'contato' : 'contatos'}
+      </strong>
 
       <div className="orderName">
         <button type="button" onClick={handleOrderBy}>

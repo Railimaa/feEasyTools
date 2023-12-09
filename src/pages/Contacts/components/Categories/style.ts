@@ -11,6 +11,7 @@ export const Container = styled.div`
   padding-top: 32px;
   padding-bottom: 32px;
   border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   @media (min-width: 768px) {
     padding: 40px;
@@ -20,7 +21,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #4e4e4e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 10px;
     margin-bottom: 20px;
 

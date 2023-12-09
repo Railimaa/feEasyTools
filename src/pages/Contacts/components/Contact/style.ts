@@ -11,23 +11,10 @@ export const Container = styled.div`
   padding-bottom: 32px;
   border-radius: 16px;
   background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   @media (min-width: 768px) {
     padding: 40px;
-  }
-
-  .inputSearch {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    .icon {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      top: 18px;
-      left: 24px;
-    }
   }
 
   .isLoading {
@@ -43,29 +30,5 @@ export const Container = styled.div`
     height: 100%;
     max-height: 50vh;
     overflow-y: auto;
-  }
-`;
-
-export const InputSearch = styled.input`
-  width: 100%;
-  max-width: 500px;
-  height: 52px;
-  background: #ffffff;
-  border-radius: 25px;
-  padding-left: 48px;
-  padding-right: 48px;
-  border: none;
-  outline: none;
-
-  &::placeholder {
-    color: #999999;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20.16px;
-  }
-
-  &:focus {
-    border: 3px solid #6741d9;
-    transition: all ease-in-out;
   }
 `;

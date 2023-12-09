@@ -42,6 +42,7 @@ export function EditContactModal() {
         <Input
           label="Telefone"
           error={errors.phone?.message}
+          maxLength={15}
           {...register('phone')}
         />
 

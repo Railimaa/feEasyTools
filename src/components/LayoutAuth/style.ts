@@ -1,6 +1,24 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  /* background-image: linear-gradient(
+    210deg,
+    hsl(261deg 96% 19%) 1%,
+    hsl(263deg 90% 29%) 38%,
+    hsl(264deg 85% 39%) 46%,
+    hsl(265deg 81% 50%) 50%,
+    hsl(266deg 84% 51%) 51%,
+    hsl(267deg 85% 48%) 51%,
+    hsl(268deg 88% 45%) 50%,
+    hsl(268deg 81% 47%) 50%,
+    hsl(267deg 76% 53%) 49%,
+    hsl(266deg 81% 60%) 49%,
+    hsl(265deg 77% 62%) 50%,
+    hsl(265deg 61% 46%) 54%,
+    hsl(265deg 76% 33%) 62%,
+    hsl(265deg 94% 21%) 99%
+  ); */
+
   display: flex;
   align-items: center;
   justify-content: center;

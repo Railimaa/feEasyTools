@@ -9,8 +9,9 @@ interface IConfirmDeleteModalProps {
   title: string;
   description?: string;
   onClose: () => void;
-  onConfirm: () => void;
-  isLoading: boolean;
+  onConfirm?: () => void;
+  isLoading?: boolean;
+  subtitle?: string;
 }
 
 export function ConfirmDeleteModal({
@@ -19,6 +20,7 @@ export function ConfirmDeleteModal({
   onClose,
   onConfirm,
   isLoading,
+  subtitle,
 }: IConfirmDeleteModalProps) {
   return (
     <Modal open title="Excluir" onClose={onClose}>
@@ -27,7 +29,9 @@ export function ConfirmDeleteModal({
           <Trash />
         </div>
 
-        <p className="text">Tem certeza que deseja excluir esta {title}?</p>
+        <p className="text">
+          Tem certeza que deseja excluir {subtitle || 'esta'} {title}?
+        </p>
 
         {description && (
           <div className="description">
