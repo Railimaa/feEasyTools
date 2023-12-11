@@ -1,16 +1,41 @@
-import { Pencil1Icon } from '@radix-ui/react-icons';
-
-import { Trash } from '../../../../assets/Icons/Trash';
-import { Button } from '../../../../components/Button';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Spinner } from '../../../../components/Spinner';
 
-import { Card, Container } from './style';
+import Card from './Card';
+import { EmptyList } from './EmptyList';
+import { InputSearch } from './SearchInput';
+import { SearchNotFound } from './SearchNotFounder';
+import { Container } from './style';
 import { useCategories } from './useCategories';
 
 export function Categories() {
-  const { isLoading, categories } = useCategories();
+  const {
+    isLoading,
+    categories,
+    handleOpenEditedCategoryModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteCategory,
+    isLoadingDelete,
+    openDeleteModal,
+    searchValue,
+    handleChangeSearchValue,
+    categoriesFiltered,
+  } = useCategories();
 
   const hasCategories = categories.length > 0;
+  const searchNotFound = categories.length > 0 && categoriesFiltered.length < 1;
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title="categoria"
+        onConfirm={handleDeleteCategory}
+        onClose={handleCloseDeleteModal}
+        isLoading={isLoadingDelete}
+      />
+    );
+  }
 
   return (
     <Container>
@@ -20,17 +45,7 @@ export function Categories() {
         </div>
       )}
 
-      {!isLoading && !hasCategories && (
-        <div className="emptyList">
-          <div className="button">
-            <Button>Nova categoria</Button>
-          </div>
-          <p>
-            Você ainda não tem nenhuma categoria cadastrada! Clique no botão{' '}
-            <span>”Nova categoria”</span> à cima para cadastrar sua primeira!
-          </p>
-        </div>
-      )}
+      {!isLoading && !hasCategories && <EmptyList />}
 
       {!isLoading && hasCategories && (
         <>
@@ -38,22 +53,16 @@ export function Categories() {
             <h3>Categorias</h3>
           </header>
 
+          <InputSearch value={searchValue} onChange={handleChangeSearchValue} />
+
+          {searchNotFound && <SearchNotFound searchValue={searchValue} />}
+
           <div className="content">
-            {categories.map((category) => (
-              <Card key={category.id}>
-                <small>{category.name}</small>
-
-                <div className="actions">
-                  <button type="button">
-                    <Pencil1Icon width={24} height={24} color="#6741d9" />
-                  </button>
-
-                  <button type="button">
-                    <Trash />
-                  </button>
-                </div>
-              </Card>
-            ))}
+            <Card
+              categoriesFiltered={categoriesFiltered}
+              handleOpenEditedCategoryModal={handleOpenEditedCategoryModal}
+              handleOpenDeleteModal={handleOpenDeleteModal}
+            />
           </div>
         </>
       )}

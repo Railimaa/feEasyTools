@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const HeaderC = styled.header`
-  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
   width: 100%;
   padding-left: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
   /* box-shadow: 0px 22px 70px 4px #6741d9; */
 
   @media (min-width: 676px) {

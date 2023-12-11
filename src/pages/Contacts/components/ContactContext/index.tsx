@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useMemo, useState } from 'react';
 
+import { ICategoryContact } from '../../../../types/CategoryContact';
 import { IContact } from '../../../../types/Contact';
 
 interface IContactContextValue {
@@ -13,6 +14,10 @@ interface IContactContextValue {
   openNewCategoryContact: boolean;
   handleOpenNewCategoryContactModal: () => void;
   handleCloseNewCategoryContactModal: () => void;
+  openEditCategoryContact: boolean;
+  categoryBeingEdited: null | ICategoryContact;
+  handleOpenEditedCategoryModal: (category: ICategoryContact) => void;
+  handleCloseEditedCategoryModal: () => void;
 }
 
 export const ContactContext = createContext({} as IContactContextValue);
@@ -26,6 +31,10 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
     useState<null | IContact>(null);
   const [openNewCategoryContact, setOpenNewCategoryContact] =
     useState<boolean>(false);
+  const [openEditCategoryContact, setOpenEditCategoryContact] =
+    useState<boolean>(false);
+  const [categoryBeingEdited, setCategoryBeingEdited] =
+    useState<null | ICategoryContact>(null);
 
   const handleOpenNewContactModal = useCallback(() => {
     setOpenNewContactModal(true);
@@ -53,6 +62,19 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
     setOpenNewCategoryContact(false);
   }, []);
 
+  const handleOpenEditedCategoryModal = useCallback(
+    (category: ICategoryContact) => {
+      setOpenEditCategoryContact(true);
+      setCategoryBeingEdited(category);
+    },
+    [],
+  );
+
+  const handleCloseEditedCategoryModal = useCallback(() => {
+    setOpenEditCategoryContact(false);
+    setCategoryBeingEdited(null);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewContactModal,
@@ -65,6 +87,10 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
       openNewCategoryContact,
       handleOpenNewCategoryContactModal,
       handleCloseNewCategoryContactModal,
+      openEditCategoryContact,
+      categoryBeingEdited,
+      handleOpenEditedCategoryModal,
+      handleCloseEditedCategoryModal,
     }),
     [
       openNewContactModal,
@@ -77,6 +103,10 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
       openNewCategoryContact,
       handleOpenNewCategoryContactModal,
       handleCloseNewCategoryContactModal,
+      openEditCategoryContact,
+      categoryBeingEdited,
+      handleOpenEditedCategoryModal,
+      handleCloseEditedCategoryModal,
     ],
   );
 

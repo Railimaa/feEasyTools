@@ -2,8 +2,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { contactsService } from '../../../../../../services/contacts';
-import { IContact } from '../../../../../../types/Contact';
+import { contactsService } from '../../../../../services/contacts';
+import { IContact } from '../../../../../types/Contact';
 
 export function useCard() {
   const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);

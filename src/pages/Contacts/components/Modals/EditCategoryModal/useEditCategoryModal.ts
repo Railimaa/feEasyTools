@@ -8,50 +8,60 @@ import { z } from 'zod';
 import { categoriesContactService } from '../../../../../services/categoriesContactService';
 import { useContactContext } from '../../ContactContext/useContactContext';
 
-export function useNewCategoryModal() {
+export function useEditCategoryModal() {
+  const {
+    openEditCategoryContact,
+    handleCloseEditedCategoryModal,
+    categoryBeingEdited,
+  } = useContactContext();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { handleCloseNewCategoryContactModal, openNewCategoryContact } =
-    useContactContext();
-
   const schema = z.object({
-    name: z.string().min(1, 'Informe o nome.'),
+    name: z.string().min(1, 'Informe o nome'),
   });
 
   type FormData = z.infer<typeof schema>;
 
   const {
-    handleSubmit: hookFormHandleSubmit,
+    handleSubmit: hookFormHanldeSubmit,
     register,
     reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      name: categoryBeingEdited?.name,
+    },
   });
 
   const useQuery = useQueryClient();
-  const handleSubmit = hookFormHandleSubmit(async (data) => {
+  const handleSubmit = hookFormHanldeSubmit(async (data) => {
     try {
       setIsLoading(true);
 
-      await categoriesContactService.create(data);
+      await categoriesContactService.update({
+        ...data,
+        id: categoryBeingEdited!.id,
+      });
       useQuery.invalidateQueries(['categoryContact']);
+      useQuery.invalidateQueries(['contacts']);
       reset();
-      handleCloseNewCategoryContactModal();
-      toast.success('Categoria criada com sucesso!');
+      handleCloseEditedCategoryModal();
+      toast.success('Categoria editada com sucesso!');
     } catch {
-      toast.error('Erro ao criar categoria!');
+      toast.error('Erro ao editar categoria!');
     } finally {
       setIsLoading(false);
     }
   });
 
   return {
+    openEditCategoryContact,
+    handleCloseEditedCategoryModal,
     handleSubmit,
     register,
     errors,
     isLoading,
-    openNewCategoryContact,
-    handleCloseNewCategoryContactModal,
   };
 }

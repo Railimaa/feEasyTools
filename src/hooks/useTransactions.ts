@@ -5,7 +5,11 @@ import { transactionsService } from '../services/transactionsService';
 export function useTransactions() {
   const { data, isFetching, isInitialLoading, refetch } = useQuery({
     queryKey: ['transactions'],
-    queryFn: transactionsService.getAll,
+    queryFn: () =>
+      transactionsService.getAll({
+        month: 10,
+        year: 2023,
+      }),
   });
 
   return {

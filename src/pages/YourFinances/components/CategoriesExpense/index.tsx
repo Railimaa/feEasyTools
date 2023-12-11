@@ -7,7 +7,7 @@ import { Button } from '../../../../components/Button';
 import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Spinner } from '../../../../components/Spinner';
 
-import { CardCategory } from './components/CardCategory';
+import { CardCategory } from './CardCategory';
 import { Container } from './style';
 import { useCategorieExpense } from './useCategorieExpense';
 

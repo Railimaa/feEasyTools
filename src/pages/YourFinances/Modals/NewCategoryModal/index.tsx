@@ -47,7 +47,6 @@ export function NewCategoryModal() {
         <Controller
           control={control}
           name="type"
-          defaultValue="INCOME"
           render={({ field: { onChange, value } }) => (
             <Select
               options={options}

@@ -3,10 +3,15 @@ import { httpClient } from '../httpClient';
 
 type TransactionResponse = Array<ITransactions>;
 
-export async function getAll() {
-  const { data } = await httpClient.get<TransactionResponse>(
-    '/transactions?month=10&year=2023',
-  );
+export type TransactionFilters = {
+  month: number;
+  year: number;
+};
+
+export async function getAll(filters: TransactionFilters) {
+  const { data } = await httpClient.get<TransactionResponse>('/transactions', {
+    params: filters,
+  });
 
   return data;
 }

@@ -1,10 +1,10 @@
 import { Spinner } from '../../../../components/Spinner';
 
-import Card from './components/Card';
-import { EmptyList } from './components/EmptyList';
-import { Header } from './components/Header';
-import { SearchInput } from './components/SearchInput';
-import { SearchNotFound } from './components/SearchNotFound';
+import Card from './Card';
+import { EmptyList } from './EmptyList';
+import { Header } from './Header';
+import { SearchInput } from './SearchInput';
+import { SearchNotFound } from './SearchNotFound';
 import { Container } from './style';
 import { useContact } from './useContact';
 

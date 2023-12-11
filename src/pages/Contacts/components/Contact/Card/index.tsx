@@ -1,9 +1,9 @@
 import { Pencil2Icon } from '@radix-ui/react-icons';
 import { memo } from 'react';
 
-import { Trash } from '../../../../../../assets/Icons/Trash';
-import { ConfirmDeleteModal } from '../../../../../../components/ConfirmDeleteModal';
-import { IContact } from '../../../../../../types/Contact';
+import { Trash } from '../../../../../assets/Icons/Trash';
+import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
+import { IContact } from '../../../../../types/Contact';
 
 import { Container } from './style';
 import { useCard } from './useCard';
@@ -39,9 +39,9 @@ function Card({ filteredContact, handleOpenEditedContactModal }: ICardProps) {
       <div className="info">
         <div className="nameAndCategory">
           <strong>{contact.name}</strong>
-          <small>
-            {contact.categoryContact.name && contact.categoryContact.name}
-          </small>
+          {contact.categoryContact?.name && (
+            <small>{contact.categoryContact.name}</small>
+          )}
         </div>
 
         <span>{contact.email}</span>

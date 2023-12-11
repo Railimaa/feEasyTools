@@ -28,7 +28,7 @@ export function useEditContactModal() {
       .refine((value) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), {
         message: 'Informe um e-mail válido',
       })
-      .nullable(),
+      .optional(),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -56,8 +56,8 @@ export function useEditContactModal() {
 
       await contactsService.update({
         ...data,
-        phone: data.phone && formatPhoneNumber(data.phone),
-        email: data.email ? data.email : undefined,
+        phone: data.phone ? formatPhoneNumber(data.phone) : null,
+        email: data.email ? data.email : null,
         id: contactIsBeingEdited!.id,
       });
       useQuery.invalidateQueries(['contacts']);

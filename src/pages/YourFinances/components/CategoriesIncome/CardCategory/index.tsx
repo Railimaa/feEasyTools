@@ -1,8 +1,8 @@
 import { Pencil1Icon } from '@radix-ui/react-icons';
 
-import { CategoryIcon } from '../../../../../../assets/Icons/categories/CategoryIcon';
-import { Trash } from '../../../../../../assets/Icons/Trash';
-import { ICategoryTransaction } from '../../../../../../types/CategoryTransaction';
+import { CategoryIcon } from '../../../../../assets/Icons/categories/CategoryIcon';
+import { Trash } from '../../../../../assets/Icons/Trash';
+import { ICategoryTransaction } from '../../../../../types/CategoryTransaction';
 
 import { Container } from './style';
 
@@ -14,8 +14,8 @@ interface ICardCategoryProps {
 
 export function CardCategory({
   category,
-  handleOpenDeleteModal,
   handleOpenEditCategoryModal,
+  handleOpenDeleteModal,
 }: ICardCategoryProps) {
   return (
     <Container>

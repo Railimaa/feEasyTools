@@ -1,4 +1,4 @@
-import emptySearch from '../../../../../../assets/images/emptySearch.svg';
+import emptySearch from '../../../../../assets/images/emptySearch.svg';
 
 import { Container } from './style';
 

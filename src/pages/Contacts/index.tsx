@@ -4,6 +4,7 @@ import { Categories } from './components/Categories';
 import { Contact } from './components/Contact';
 import { ContactContext, ContactProvider } from './components/ContactContext';
 import { Fab } from './components/Fab';
+import { EditCategoryModal } from './components/Modals/EditCategoryModal';
 import { EditContactModal } from './components/Modals/EditdContactModal';
 import { NewCategoryModal } from './components/Modals/NewCategoryModal';
 import { NewContactModal } from './components/Modals/NewContactModal';
@@ -13,9 +14,10 @@ export function Contacts() {
   return (
     <ContactProvider>
       <ContactContext.Consumer>
-        {({ contactIsBeingEdited }) => (
+        {({ contactIsBeingEdited, categoryBeingEdited }) => (
           <>
             <Header />
+
             <Container>
               <div className="title">
                 <h1>YourContacts</h1>
@@ -35,6 +37,7 @@ export function Contacts() {
               <NewContactModal />
               {contactIsBeingEdited && <EditContactModal />}
               <NewCategoryModal />
+              {categoryBeingEdited && <EditCategoryModal />}
             </Container>
           </>
         )}

@@ -1,0 +1,40 @@
+import { Pencil1Icon } from '@radix-ui/react-icons';
+import { memo } from 'react';
+
+import { Trash } from '../../../../../assets/Icons/Trash';
+import { ICategoryContact } from '../../../../../types/CategoryContact';
+
+import { Container } from './style';
+
+interface ICardProps {
+  categoriesFiltered: ICategoryContact[];
+  handleOpenEditedCategoryModal: (category: ICategoryContact) => void;
+  handleOpenDeleteModal: (category: ICategoryContact) => void;
+}
+
+function Card({
+  categoriesFiltered,
+  handleOpenEditedCategoryModal,
+  handleOpenDeleteModal,
+}: ICardProps) {
+  return categoriesFiltered.map((category) => (
+    <Container key={category.id}>
+      <small>{category.name}</small>
+
+      <div className="actions">
+        <button
+          type="button"
+          onClick={() => handleOpenEditedCategoryModal(category)}
+        >
+          <Pencil1Icon width={24} height={24} color="#6741d9" />
+        </button>
+
+        <button type="button" onClick={() => handleOpenDeleteModal(category)}>
+          <Trash />
+        </button>
+      </div>
+    </Container>
+  ));
+}
+
+export default memo(Card);
