@@ -1,4 +1,5 @@
 import { Spinner } from '../../../../components/Spinner';
+import { FilterContactModal } from '../Modals/FilterContactModal';
 
 import Card from './Card';
 import { EmptyList } from './EmptyList';
@@ -10,7 +11,7 @@ import { useContact } from './useContact';
 
 export function Contact() {
   const {
-    orderBy,
+    filters,
     handleOrderBy,
     isLoading,
     contacts,
@@ -18,6 +19,11 @@ export function Contact() {
     searchTerm,
     handleChangeSearchTerm,
     filteredContacts,
+    isInitialLoading,
+    openFilterModal,
+    handleOpenFilterModal,
+    handleCloseFilterModal,
+    handleCategoryFilter,
   } = useContact();
 
   const hasContacts = contacts.length > 0;
@@ -25,35 +31,51 @@ export function Contact() {
 
   return (
     <Container>
-      {isLoading && (
-        <div className="isLoading">
-          <Spinner />
+      {isInitialLoading && (
+        <div className="isInitialLoading">
+          <Spinner width="36" height="36" />
         </div>
       )}
 
-      {!isLoading && !hasContacts && <EmptyList />}
-
-      {!isLoading && hasContacts && (
+      {!isInitialLoading && (
         <>
+          <FilterContactModal
+            open={openFilterModal}
+            handleCloseFilterModal={handleCloseFilterModal}
+            handleCategoryFilter={handleCategoryFilter}
+          />
+
           <SearchInput
             value={searchTerm}
             onChange={handleChangeSearchTerm}
             placeholder="Pesquisar contato..."
+            qtyOfContacts={contacts.length}
           />
 
           <Header
-            orderBy={orderBy}
+            orderBy={filters.orderBy}
             handleOrderBy={handleOrderBy}
             qtyOfContacts={filteredContacts.length}
+            handleOpenFilterModal={handleOpenFilterModal}
           />
+
+          {!isLoading && !hasContacts && <EmptyList />}
 
           {isSearchEmpty && <SearchNotFound searchValue={searchTerm} />}
 
           <div className="content">
-            <Card
-              filteredContact={filteredContacts}
-              handleOpenEditedContactModal={handleOpenEditedContactModal}
-            />
+            {isLoading && (
+              <div className="isLoading">
+                <Spinner />
+              </div>
+            )}
+
+            {!isLoading && (
+              <Card
+                filteredContact={filteredContacts}
+                handleOpenEditedContactModal={handleOpenEditedContactModal}
+              />
+            )}
           </div>
         </>
       )}

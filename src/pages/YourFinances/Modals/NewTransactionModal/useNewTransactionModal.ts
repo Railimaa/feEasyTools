@@ -51,15 +51,15 @@ export function useNewTransactionModal() {
         type: newTransactionType!,
         date: data.date.toISOString(),
       });
-      reset();
       useQuery.invalidateQueries(['transactions']);
       useQuery.invalidateQueries(['bankAccounts']);
+      reset();
+      handleCloseNewTransactionModal();
       toast.success(
         newTransactionType === 'EXPENSE'
           ? 'Despesa cadastrada com sucesso!'
           : 'Receita cadastrada com sucesso!',
       );
-      handleCloseNewTransactionModal();
     } catch {
       toast.error(
         newTransactionType === 'EXPENSE'

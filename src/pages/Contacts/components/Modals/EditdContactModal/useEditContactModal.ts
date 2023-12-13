@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { useCategoriesContacts } from '../../../../../hooks/useCategoriesContact';
-import { contactsService } from '../../../../../services/contacts';
+import { contactsService } from '../../../../../services/contactsService';
 import { formatPhoneNumber } from '../../../../../utils/formatPhoneNumber';
 import { useContactContext } from '../../ContactContext/useContactContext';
 

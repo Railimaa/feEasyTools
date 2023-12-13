@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { contactsService } from '../../../../../services/contacts';
+import { contactsService } from '../../../../../services/contactsService';
 import { IContact } from '../../../../../types/Contact';
 
 export function useCard() {

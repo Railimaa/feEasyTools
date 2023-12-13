@@ -17,7 +17,7 @@ export const Container = styled.div`
     padding: 40px;
   }
 
-  .isLoading {
+  .isInitialLoading {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,5 +30,12 @@ export const Container = styled.div`
     height: 100%;
     max-height: 50vh;
     overflow-y: auto;
+
+    .isLoading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
   }
 `;

@@ -1,16 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { contactsService } from '../services/contacts';
+import { contactsService } from '../services/contactsService';
+import { ContactFilter } from '../services/contactsService/getAll';
 
-export function useContacts() {
-  const { data, isFetching } = useQuery({
+export function useContacts(filter: ContactFilter) {
+  const { data, isFetching, refetch, isInitialLoading } = useQuery({
     queryKey: ['contacts'],
-    queryFn: contactsService.getAll,
-    staleTime: Infinity,
+    queryFn: () => contactsService.getAll(filter),
   });
 
   return {
     contacts: data ?? [],
-    isFetching,
+    isLoading: isFetching,
+    isInitialLoading,
+    refetchContacts: refetch,
   };
 }

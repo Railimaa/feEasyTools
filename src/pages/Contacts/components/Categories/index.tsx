@@ -41,7 +41,7 @@ export function Categories() {
     <Container>
       {isLoading && (
         <div className="isLoading">
-          <Spinner />
+          <Spinner width="36" height="36" />
         </div>
       )}
 

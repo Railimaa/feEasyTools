@@ -9,6 +9,12 @@ export const Container = styled.header<{ $orderBy?: string }>`
   margin-bottom: 40px;
   padding-bottom: 10px;
 
+  button {
+    border: none;
+    outline: none;
+    background: none;
+  }
+
   strong {
     font-size: 24px;
     color: #fff;

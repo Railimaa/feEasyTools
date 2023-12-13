@@ -44,6 +44,7 @@ export function useEditAccountModal() {
     register,
     formState: { errors },
     control,
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -66,8 +67,9 @@ export function useEditAccountModal() {
       });
       queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
       queryClient.invalidateQueries({ queryKey: ['transactions'] });
-      toast.success('Conta editada com sucesso!');
+      reset();
       handleCloseEditAccountModal();
+      toast.success('Conta editada com sucesso!');
     } catch {
       toast.error('Erro ao editar a conta.');
     } finally {

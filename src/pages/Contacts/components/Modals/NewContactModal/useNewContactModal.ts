@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { useCategoriesContacts } from '../../../../../hooks/useCategoriesContact';
-import { contactsService } from '../../../../../services/contacts';
+import { contactsService } from '../../../../../services/contactsService';
 import { formatPhoneNumber } from '../../../../../utils/formatPhoneNumber';
 import { useContactContext } from '../../ContactContext/useContactContext';
 
@@ -19,14 +19,14 @@ export function useNewContactModal() {
 
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome'),
-    phone: z.string().optional(),
     categoryId: z.string().min(1, 'Informe a categoria'),
+    phone: z.string().optional(),
     email: z
       .string()
       .refine((value) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), {
         message: 'Informe um e-mail válido',
       })
-      .nullable(),
+      .optional(),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -48,8 +48,8 @@ export function useNewContactModal() {
 
       await contactsService.create({
         ...data,
-        phone: data.phone && formatPhoneNumber(data.phone),
-        email: data.email ? data.email : undefined,
+        phone: data.phone ? formatPhoneNumber(data.phone) : null,
+        email: data.email ? data.email : null,
       });
       queryClient.invalidateQueries(['contacts']);
       reset();

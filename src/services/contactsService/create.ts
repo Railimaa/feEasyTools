@@ -2,8 +2,8 @@ import { httpClient } from '../httpClient';
 
 interface IContactBody {
   name: string;
-  email: string | undefined;
-  phone: string | undefined;
+  email: string | null;
+  phone: string | null;
   categoryId: string;
 }
 

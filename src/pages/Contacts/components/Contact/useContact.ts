@@ -1,18 +1,46 @@
-import React, { useDeferredValue, useMemo, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
 
 import { useContacts } from '../../../../hooks/useContacts';
+import { ContactFilter } from '../../../../services/contactsService/getAll';
 import { useContactContext } from '../ContactContext/useContactContext';
 
 export function useContact() {
   const { handleOpenEditedContactModal } = useContactContext();
 
-  const { contacts, isFetching } = useContacts();
-
-  const [orderBy, setOrderBy] = useState<string>('asc');
+  const [filters, setFilters] = useState<ContactFilter>({
+    orderBy: 'asc',
+  });
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [openFilterModal, setOpenFilterModal] = useState<boolean>(false);
+
+  const { contacts, isLoading, refetchContacts, isInitialLoading } =
+    useContacts(filters);
+
+  function handleOpenFilterModal() {
+    setOpenFilterModal(true);
+  }
+
+  function handleCloseFilterModal() {
+    setOpenFilterModal(false);
+  }
+
+  useEffect(() => {
+    refetchContacts();
+  }, [filters, refetchContacts]);
 
   function handleOrderBy() {
-    setOrderBy((prevState) => (prevState === 'asc' ? 'desc' : 'asc'));
+    setFilters((prevState) => ({
+      ...prevState,
+      orderBy: prevState.orderBy === 'asc' ? 'desc' : 'asc',
+    }));
+  }
+
+  function handleCategoryFilter(categoryId: string) {
+    setFilters((prevState) => ({
+      ...prevState,
+      categoryId,
+    }));
+    handleCloseFilterModal();
   }
 
   function handleChangeSearchTerm(event: React.ChangeEvent<HTMLInputElement>) {
@@ -29,13 +57,18 @@ export function useContact() {
   );
 
   return {
-    orderBy,
+    filters,
     handleOrderBy,
     contacts,
-    isLoading: isFetching,
+    isLoading,
     handleOpenEditedContactModal,
     searchTerm,
     handleChangeSearchTerm,
     filteredContacts,
+    isInitialLoading,
+    openFilterModal,
+    handleOpenFilterModal,
+    handleCloseFilterModal,
+    handleCategoryFilter,
   };
 }

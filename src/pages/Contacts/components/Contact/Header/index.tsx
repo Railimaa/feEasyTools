@@ -1,18 +1,22 @@
 /* eslint-disable react/require-default-props */
 import { ArrowUpIcon } from '@radix-ui/react-icons';
 
+import { FilterIcon } from '../../../../../assets/Icons/FIlterIcon';
+
 import { Container } from './style';
 
 interface IHeaderProps {
   orderBy?: string;
   handleOrderBy: () => void;
   qtyOfContacts: number;
+  handleOpenFilterModal: () => void;
 }
 
 export function Header({
   orderBy,
   handleOrderBy,
   qtyOfContacts,
+  handleOpenFilterModal,
 }: IHeaderProps) {
   return (
     <Container $orderBy={orderBy}>
@@ -30,6 +34,10 @@ export function Header({
           </span>
         </button>
       </div>
+
+      <button type="button" onClick={handleOpenFilterModal}>
+        <FilterIcon />
+      </button>
     </Container>
   );
 }

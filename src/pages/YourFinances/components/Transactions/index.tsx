@@ -25,6 +25,8 @@ export function Transactions() {
     handleOpenEditTransactionModal,
     handleCloseEditTransactionModal,
     transactionIsBeingEdited,
+    filters,
+    handleChangeFilters,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
@@ -40,7 +42,10 @@ export function Transactions() {
       {!isInitialLoading && (
         <>
           <Header>
-            <TransactionTypeDropdownMenu />
+            <TransactionTypeDropdownMenu
+              onSelect={handleChangeFilters('type')}
+              selectType={filters.type}
+            />
 
             <button type="button">
               <FilterIcon />
@@ -51,9 +56,10 @@ export function Transactions() {
             <Swiper
               slidesPerView={3}
               centeredSlides
-              initialSlide={1}
+              initialSlide={filters.month}
               onSlideChange={(swiper) => {
                 setActiveIndex(swiper.activeIndex);
+                handleChangeFilters('month')(swiper.realIndex);
               }}
             >
               <SliderNavigation />
