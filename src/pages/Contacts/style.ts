@@ -1,14 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const animationTitle = keyframes`
-  to {
-    scale: 100%;
-    opacity: 100;
-  } from {
-    scale: 0%;
-    opacity: 0;
-  }
-`;
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -25,20 +15,6 @@ export const Container = styled.div`
     padding-right: 32px;
     padding-bottom: 60px;
     padding-top: 100px;
-  }
-
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 80px;
-    animation: ${animationTitle} 2s alternate-reverse infinite;
-
-    h1 {
-      color: #fff;
-      box-shadow: 0px 2px 70px 4px #6741d9;
-      border-radius: 8px;
-    }
   }
 
   .main {

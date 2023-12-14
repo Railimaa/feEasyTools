@@ -8,6 +8,7 @@ import { EditCategoryModal } from './components/Modals/EditCategoryModal';
 import { EditContactModal } from './components/Modals/EditdContactModal';
 import { NewCategoryModal } from './components/Modals/NewCategoryModal';
 import { NewContactModal } from './components/Modals/NewContactModal';
+import { Title } from './components/Title';
 import { Container } from './style';
 
 export function Contacts() {
@@ -19,9 +20,7 @@ export function Contacts() {
             <Header />
 
             <Container>
-              <div className="title">
-                <h1>YourContacts</h1>
-              </div>
+              <Title />
 
               <div className="main">
                 <div className="left">
