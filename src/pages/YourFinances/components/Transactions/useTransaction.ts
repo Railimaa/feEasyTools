@@ -17,9 +17,18 @@ export function useTransaction() {
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
+  const [openFilterModal, setOpenFilterModal] = useState<boolean>(false);
 
   const { transactions, isInitialLoading, isLoading, refetchTransactions } =
     useTransactions(filters);
+
+  function handleOpenFilterModal() {
+    setOpenFilterModal(true);
+  }
+
+  function handleCloseFilterModal() {
+    setOpenFilterModal(false);
+  }
 
   function handleChangeFilters<TFilter extends keyof TransactionFilter>(
     filter: TFilter,
@@ -32,6 +41,18 @@ export function useTransaction() {
         [filter]: value,
       }));
     };
+  }
+
+  function handleApplyFilters({
+    bankAccountId,
+    year,
+  }: {
+    bankAccountId: string | undefined;
+    year: number;
+  }) {
+    handleChangeFilters('bankAccountId')(bankAccountId);
+    handleChangeFilters('year')(year);
+    handleCloseFilterModal();
   }
 
   useEffect(() => {
@@ -61,5 +82,9 @@ export function useTransaction() {
     transactionIsBeingEdited,
     filters,
     handleChangeFilters,
+    openFilterModal,
+    handleOpenFilterModal,
+    handleCloseFilterModal,
+    handleApplyFilters,
   };
 }

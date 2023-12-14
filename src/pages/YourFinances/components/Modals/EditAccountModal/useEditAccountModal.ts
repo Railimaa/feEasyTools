@@ -5,9 +5,9 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { bankAccountService } from '../../../../services/bankAccountService';
-import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
-import { useYourFinancesContext } from '../../components/YourFinancesContext/useYourFinancesContext';
+import { bankAccountService } from '../../../../../services/bankAccountService';
+import { currencyStringToNumber } from '../../../../../utils/currencyStringToNumber';
+import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
 
 export function useEditAccountModal() {
   const {

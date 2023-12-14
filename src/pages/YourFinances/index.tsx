@@ -4,16 +4,16 @@ import { Accounts } from './components/Accounts';
 import { CategoriesExpense } from './components/CategoriesExpense';
 import { CategoriesIncome } from './components/CategoriesIncome';
 import { Fab } from './components/Fab';
+import { EditAccountModal } from './components/Modals/EditAccountModal';
+import { EditCategoryModal } from './components/Modals/EditCategoryModal';
+import { NewAccountModal } from './components/Modals/NewAccountModal';
+import { NewCategoryModal } from './components/Modals/NewCategoryModal';
+import { NewTransactionModal } from './components/Modals/NewTransactionModal';
 import { Transactions } from './components/Transactions';
 import {
   YourFinancesContext,
   YourFinancesProvider,
 } from './components/YourFinancesContext';
-import { EditAccountModal } from './Modals/EditAccountModal';
-import { EditCategoryModal } from './Modals/EditCategoryModal';
-import { NewAccountModal } from './Modals/NewAccountModal';
-import { NewCategoryModal } from './Modals/NewCategoryModal';
-import { NewTransactionModal } from './Modals/NewTransactionModal';
 import { Container } from './style';
 
 export function YourFinances() {

@@ -7,7 +7,7 @@ import { useFilterContactModal } from './useFilterContactModal';
 interface IFilterContactModalProps {
   open: boolean;
   handleCloseFilterModal: () => void;
-  handleCategoryFilter: (categoryId: string) => void;
+  handleCategoryFilter: (categoryId: string | undefined) => void;
 }
 
 export function FilterContactModal({
@@ -37,7 +37,7 @@ export function FilterContactModal({
         </Content>
 
         <div className="submit">
-          <Button onClick={() => handleCategoryFilter(selectCategory!)}>
+          <Button onClick={() => handleCategoryFilter(selectCategory)}>
             Filtar
           </Button>
         </div>

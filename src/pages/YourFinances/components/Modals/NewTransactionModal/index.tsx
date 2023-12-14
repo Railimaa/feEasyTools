@@ -1,66 +1,36 @@
 import { Controller } from 'react-hook-form';
 
-import { Trash } from '../../../../assets/Icons/Trash';
-import { Button } from '../../../../components/Button';
-import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
-import { DatePickerInput } from '../../../../components/DatePickerInput';
-import { Input } from '../../../../components/Input';
-import { InputCurrency } from '../../../../components/InputCurrency';
-import { Modal } from '../../../../components/Modal';
-import { Select } from '../../../../components/Select';
-import { ITransactions } from '../../../../types/Transaction';
+import { Button } from '../../../../../components/Button';
+import { DatePickerInput } from '../../../../../components/DatePickerInput';
+import { Input } from '../../../../../components/Input';
+import { InputCurrency } from '../../../../../components/InputCurrency';
+import { Modal } from '../../../../../components/Modal';
+import { Select } from '../../../../../components/Select';
 
 import { Container, Form } from './style';
-import { useEditTransactionModal } from './useEditTransactionModal';
+import { useNewTransactionModal } from './useNewTransactionModal';
 
-interface IEditTransactionModalProps {
-  open: boolean;
-  handleCloseModal: () => void;
-  transaction: ITransactions;
-}
-
-export function EditTransactionModal({
-  open,
-  handleCloseModal,
-  transaction,
-}: IEditTransactionModalProps) {
+export function NewTransactionModal() {
   const {
-    accounts,
+    openNewTransactionModal,
+    handleCloseNewTransactionModal,
+    newTransactionType,
     categories,
+    accounts,
     handleSubmit,
     register,
-    errors,
     control,
+    errors,
     isLoading,
-    openDeleteModal,
-    handleOpenDeleteModal,
-    handleCloseDeleteModal,
-    handleDeleteTransaction,
-  } = useEditTransactionModal(transaction, handleCloseModal);
+  } = useNewTransactionModal();
 
-  const isExpense = transaction.type === 'EXPENSE';
-
-  if (openDeleteModal) {
-    return (
-      <ConfirmDeleteModal
-        title={isExpense ? 'despesa' : 'receita'}
-        onClose={handleCloseDeleteModal}
-        onConfirm={handleDeleteTransaction}
-        isLoading={isLoading}
-      />
-    );
-  }
+  const isExpense = newTransactionType === 'EXPENSE';
 
   return (
     <Modal
-      open={open}
-      title={isExpense ? 'Editar despesa' : 'Editar receita'}
-      onClose={handleCloseModal}
-      rightAction={
-        <button type="button" onClick={handleOpenDeleteModal}>
-          <Trash />
-        </button>
-      }
+      title={isExpense ? 'Nova Despesa' : 'Nova Receita'}
+      open={openNewTransactionModal}
+      onClose={handleCloseNewTransactionModal}
     >
       <Container>
         <Form onSubmit={handleSubmit}>
@@ -88,8 +58,9 @@ export function EditTransactionModal({
           <div className="inputs">
             <Input
               label={isExpense ? 'Nome da despesa' : 'Nome da receita'}
-              error={errors.name?.message}
+              type="text"
               {...register('name')}
+              error={errors.name?.message}
             />
 
             <Controller
@@ -98,11 +69,11 @@ export function EditTransactionModal({
               defaultValue=""
               render={({ field: { onChange, value } }) => (
                 <Select
-                  label="Categoria"
                   options={categories.map((category) => ({
-                    label: category.name,
                     value: category.id,
+                    label: category.name,
                   }))}
+                  label="Categoria"
                   onChange={onChange}
                   value={value}
                   error={errors.categoryId?.message}
@@ -116,11 +87,11 @@ export function EditTransactionModal({
               defaultValue=""
               render={({ field: { onChange, value } }) => (
                 <Select
-                  label={isExpense ? 'Pagar com' : 'Receber com'}
                   options={accounts.map((account) => ({
-                    label: account.name,
                     value: account.id,
+                    label: account.name,
                   }))}
+                  label={isExpense ? 'Pagar com' : 'Receber com'}
                   onChange={onChange}
                   value={value}
                   error={errors.bankAccountId?.message}
@@ -142,7 +113,7 @@ export function EditTransactionModal({
             />
           </div>
 
-          <Button isLoading={isLoading}>Salvar</Button>
+          <Button isLoading={isLoading}>Criar</Button>
         </Form>
       </Container>
     </Modal>

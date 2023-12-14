@@ -1,13 +1,13 @@
 import { Controller } from 'react-hook-form';
 
-import { Button } from '../../../../components/Button';
-import { IconDropDownInput } from '../../../../components/IconDropDownInput';
-import { Input } from '../../../../components/Input';
-import { Modal } from '../../../../components/Modal';
-import { Select } from '../../../../components/Select';
+import { Button } from '../../../../../components/Button';
+import { IconDropDownInput } from '../../../../../components/IconDropDownInput';
+import { Input } from '../../../../../components/Input';
+import { Modal } from '../../../../../components/Modal';
+import { Select } from '../../../../../components/Select';
 
 import { Form } from './style';
-import { useEditCategoryModal } from './useEditCategoryModal';
+import { useNewCategoryModal } from './useNewCategoryModal';
 
 const options = [
   {
@@ -20,22 +20,22 @@ const options = [
   },
 ];
 
-export function EditCategoryModal() {
+export function NewCategoryModal() {
   const {
-    openEditCategoryModal,
-    handleCloseEditCategoryModal,
+    openNewCategoryModal,
+    handleCloseNewCategoryModal,
     handleSubmit,
     register,
-    control,
     errors,
+    control,
     isLoading,
-  } = useEditCategoryModal();
+  } = useNewCategoryModal();
 
   return (
     <Modal
-      open={openEditCategoryModal}
-      onClose={handleCloseEditCategoryModal}
-      title="Editar categoria"
+      open={openNewCategoryModal}
+      title="Nova categoria"
+      onClose={handleCloseNewCategoryModal}
     >
       <Form onSubmit={handleSubmit}>
         <Input
@@ -49,11 +49,11 @@ export function EditCategoryModal() {
           name="type"
           render={({ field: { onChange, value } }) => (
             <Select
-              label="Tipo"
               options={options}
-              error={errors.type?.message}
+              label="Tipo"
               onChange={onChange}
               value={value}
+              error={errors.type?.message}
             />
           )}
         />
@@ -61,6 +61,7 @@ export function EditCategoryModal() {
         <Controller
           control={control}
           name="icon"
+          defaultValue=""
           render={({ field: { onChange, value } }) => (
             <IconDropDownInput
               onChange={onChange}
@@ -70,7 +71,7 @@ export function EditCategoryModal() {
           )}
         />
 
-        <Button isLoading={isLoading}>Salvar</Button>
+        <Button isLoading={isLoading}>Criar</Button>
       </Form>
     </Modal>
   );

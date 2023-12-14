@@ -5,11 +5,11 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { useBankAccounts } from '../../../../hooks/useBankAccounts';
-import { useCategoriesTransaction } from '../../../../hooks/useCategoriesTransactions';
-import { transactionsService } from '../../../../services/transactionsService';
-import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
-import { useYourFinancesContext } from '../../components/YourFinancesContext/useYourFinancesContext';
+import { useBankAccounts } from '../../../../../hooks/useBankAccounts';
+import { useCategoriesTransaction } from '../../../../../hooks/useCategoriesTransactions';
+import { transactionsService } from '../../../../../services/transactionsService';
+import { currencyStringToNumber } from '../../../../../utils/currencyStringToNumber';
+import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
 
 export function useNewTransactionModal() {
   const [isLoading, setIsLoading] = useState<boolean>(false);

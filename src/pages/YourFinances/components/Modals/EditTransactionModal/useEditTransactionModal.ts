@@ -5,11 +5,11 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { useBankAccounts } from '../../../../hooks/useBankAccounts';
-import { useCategoriesTransaction } from '../../../../hooks/useCategoriesTransactions';
-import { transactionsService } from '../../../../services/transactionsService';
-import { ITransactions } from '../../../../types/Transaction';
-import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
+import { useBankAccounts } from '../../../../../hooks/useBankAccounts';
+import { useCategoriesTransaction } from '../../../../../hooks/useCategoriesTransactions';
+import { transactionsService } from '../../../../../services/transactionsService';
+import { ITransactions } from '../../../../../types/Transaction';
+import { currencyStringToNumber } from '../../../../../utils/currencyStringToNumber';
 
 export function useEditTransactionModal(
   transaction: ITransactions,

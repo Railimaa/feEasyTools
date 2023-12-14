@@ -4,7 +4,8 @@ import { FilterIcon } from '../../../../assets/Icons/FIlterIcon';
 import emptyState from '../../../../assets/images/empty-state.svg';
 import { Spinner } from '../../../../components/Spinner';
 import { MONTHS } from '../../../../utils/constants';
-import { EditTransactionModal } from '../../Modals/EditTransactionModal';
+import { EditTransactionModal } from '../Modals/EditTransactionModal';
+import { FilterModal } from '../Modals/FilterModal';
 
 import { SliderNavigation } from './SliderNavigation';
 import { SliderOption } from './SliderOption';
@@ -27,6 +28,10 @@ export function Transactions() {
     transactionIsBeingEdited,
     filters,
     handleChangeFilters,
+    openFilterModal,
+    handleCloseFilterModal,
+    handleOpenFilterModal,
+    handleApplyFilters,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
@@ -41,13 +46,19 @@ export function Transactions() {
 
       {!isInitialLoading && (
         <>
+          <FilterModal
+            open={openFilterModal}
+            handleCloseFilterModal={handleCloseFilterModal}
+            onApplyFilters={handleApplyFilters}
+          />
+
           <Header>
             <TransactionTypeDropdownMenu
               onSelect={handleChangeFilters('type')}
               selectType={filters.type}
             />
 
-            <button type="button">
+            <button type="button" onClick={handleOpenFilterModal}>
               <FilterIcon />
             </button>
           </Header>

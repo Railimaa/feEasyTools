@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
-import { categoriesTransactionService } from '../../../../services/categoriesTransactionService';
-import { useYourFinancesContext } from '../../components/YourFinancesContext/useYourFinancesContext';
+import { categoriesTransactionService } from '../../../../../services/categoriesTransactionService';
+import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
 
 export function useNewCategoryModal() {
   const { openNewCategoryModal, handleCloseNewCategoryModal } =

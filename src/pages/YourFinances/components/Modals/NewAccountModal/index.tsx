@@ -1,16 +1,14 @@
 import { Controller } from 'react-hook-form';
 
-import { Trash } from '../../../../assets/Icons/Trash';
-import { Button } from '../../../../components/Button';
-import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
-import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
-import { Input } from '../../../../components/Input';
-import { InputCurrency } from '../../../../components/InputCurrency';
-import { Modal } from '../../../../components/Modal';
-import { Select } from '../../../../components/Select';
+import { Button } from '../../../../../components/Button';
+import { ColorsDropdownInput } from '../../../../../components/ColorsDropdownInput';
+import { Input } from '../../../../../components/Input';
+import { InputCurrency } from '../../../../../components/InputCurrency';
+import { Modal } from '../../../../../components/Modal';
+import { Select } from '../../../../../components/Select';
 
 import { Container, Form } from './style';
-import { useEditAccountModal } from './useEditAccountModal';
+import { useNewAccountModal } from './useNewAccountModal';
 
 const options = [
   {
@@ -27,44 +25,23 @@ const options = [
   },
 ];
 
-export function EditAccountModal() {
+export function NewAccountModal() {
   const {
-    openEditAccountModal,
-    handleCloseEditAccountModal,
+    openNewAccountModal,
+    handleCloseNewAccountModal,
+    handleSubmit,
     isLoading,
-    control,
     errors,
     register,
-    handleSubmit,
-    openDeleteModal,
-    handleOpenDeleteModal,
-    handleCloseDeleteModal,
-    handleDeleteAccount,
-  } = useEditAccountModal();
-
-  if (openDeleteModal) {
-    return (
-      <ConfirmDeleteModal
-        title="conta"
-        description="Ao excluir a conta, também serão excluídos todos os registros de receita e despesas relacionados."
-        onClose={handleCloseDeleteModal}
-        onConfirm={handleDeleteAccount}
-        isLoading={isLoading}
-      />
-    );
-  }
+    control,
+  } = useNewAccountModal();
 
   return (
     <Container>
       <Modal
-        open={openEditAccountModal}
-        onClose={handleCloseEditAccountModal}
-        title="Editar Conta"
-        rightAction={
-          <button type="button" onClick={handleOpenDeleteModal}>
-            <Trash />
-          </button>
-        }
+        title="Nova Conta"
+        open={openNewAccountModal}
+        onClose={handleCloseNewAccountModal}
       >
         <Form onSubmit={handleSubmit}>
           <span id="saldoInicial">Saldo inicial</span>
@@ -74,6 +51,7 @@ export function EditAccountModal() {
             <Controller
               control={control}
               name="initialBalance"
+              defaultValue="0"
               render={({ field: { onChange, value } }) => (
                 <InputCurrency
                   error={errors.initialBalance?.message}
@@ -94,12 +72,13 @@ export function EditAccountModal() {
             <Controller
               control={control}
               name="type"
+              defaultValue="CHECKING"
               render={({ field: { onChange, value } }) => (
                 <Select
                   options={options}
-                  error={errors.type?.message}
                   onChange={onChange}
                   value={value}
+                  error={errors.type?.message}
                   label="Tipo"
                 />
               )}
@@ -119,7 +98,7 @@ export function EditAccountModal() {
             />
           </div>
 
-          <Button isLoading={isLoading}>Salvar</Button>
+          <Button isLoading={isLoading}>Criar</Button>
         </Form>
       </Modal>
     </Container>

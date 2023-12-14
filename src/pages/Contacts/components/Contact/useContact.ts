@@ -35,7 +35,7 @@ export function useContact() {
     }));
   }
 
-  function handleCategoryFilter(categoryId: string) {
+  function handleCategoryFilter(categoryId: string | undefined) {
     setFilters((prevState) => ({
       ...prevState,
       categoryId,
