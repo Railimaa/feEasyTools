@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-
   span {
     text-align: center;
     color: #fff;
@@ -22,35 +16,32 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 8px;
   width: 100%;
   height: 100%;
   max-height: 30vh;
   overflow-y: auto;
+  margin-top: 20px;
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
+    text-align: left;
+    padding: 12px;
     border-radius: 8px;
-    padding: 8px;
     background: transparent;
     border: none;
     outline: none;
     color: #fff;
-    font-size: 12px;
 
     &:hover {
-      background: #525252;
+      background: #383838;
       transition: all 0.1s ease-in-out;
     }
   }
 
   .btn-active {
-    background: #6d6d6d !important;
+    background: #525252 !important;
     transition: all 0.1s ease-in-out;
   }
 `;
