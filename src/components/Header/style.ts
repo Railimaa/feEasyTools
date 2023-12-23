@@ -7,9 +7,7 @@ export const HeaderC = styled.header`
   height: 80px;
   width: 100%;
   padding-left: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
-  /* box-shadow: 0px 22px 70px 4px #6741d9; */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   @media (min-width: 676px) {
     padding-left: 40px;
@@ -81,7 +79,6 @@ export const HeaderC = styled.header`
     &.active {
       border-bottom: 2px solid #5f3dc4;
       padding-bottom: 2px;
-      box-shadow: 0px 22px 70px 4px #6741d9;
     }
   }
 `;

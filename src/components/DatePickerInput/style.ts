@@ -10,6 +10,8 @@ export const Container = styled.div`
     outline: none;
     border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
     border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
   }
 
   .formatDate {

@@ -1,8 +1,9 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/require-default-props */
 /* eslint-disable import/no-extraneous-dependencies */
 import * as RdxDialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container } from './style';
 
@@ -21,10 +22,29 @@ export function Modal({
   onClose,
   rightAction,
 }: IModalProps) {
+  const [shouldRender, setShouldRender] = useState<boolean>(open);
+
+  useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+    }
+
+    let timeoutId: NodeJS.Timeout;
+    if (!open) {
+      timeoutId = setTimeout(() => {
+        setShouldRender(false);
+      }, 300);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [open]);
+
   return (
-    <RdxDialog.Root open={open} onOpenChange={onClose}>
+    <RdxDialog.Root open={shouldRender} onOpenChange={onClose}>
       <RdxDialog.Portal>
-        <Container>
+        <Container $isLeaving={!open}>
           <RdxDialog.Overlay className="overlay" />
 
           <RdxDialog.Content className="content">

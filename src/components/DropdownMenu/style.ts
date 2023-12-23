@@ -4,16 +4,16 @@ import { keyframes, styled } from 'styled-components';
 const slideUpAndFade = keyframes`
     from {
       opacity: 0;
-      transform: translateY(2px);
+      transform: scale(0);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
 `;
 
 export const ContainerContent = styled.div`
-  animation: ${slideUpAndFade} 0.2s ease-in-out;
+  animation: ${slideUpAndFade} 0.3s;
   padding: 8px;
   background: #272727;
   border-radius: 16px;

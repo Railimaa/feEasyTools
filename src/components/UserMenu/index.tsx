@@ -12,8 +12,8 @@ export function UserMenu() {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger style={{ border: 'none', outline: 'none' }}>
         <Container>
-          <span>{user?.name.slice(0, 1)}</span>
-          <span>{user?.secondName.slice(0, 1)}</span>
+          <span>{user?.name.slice(0, 1).toUpperCase()}</span>
+          <span>{user?.secondName.slice(0, 1).toUpperCase()}</span>
         </Container>
       </DropdownMenu.Trigger>
 
