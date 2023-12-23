@@ -9,8 +9,6 @@ export const Container = styled.div`
     top: 22px;
     font-size: 12px;
     color: #495057;
-    padding-left: 4px;
-    padding-right: 4px;
   }
 `;
 
@@ -19,8 +17,8 @@ export const SelectC = styled.select<{ style?: string }>`
   height: 52px;
   border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
   border-radius: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-top: 20px;
   outline: none;
   background: #f3f0ff;

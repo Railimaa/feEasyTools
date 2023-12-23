@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable import/no-extraneous-dependencies */
 import * as RdxPopover from '@radix-ui/react-popover';
 import React from 'react';
@@ -12,10 +13,16 @@ function PopoverTrigger({ children }: { children: React.ReactNode }) {
   return <RdxPopover.Trigger>{children}</RdxPopover.Trigger>;
 }
 
-function PopoverContent({ children }: { children: React.ReactNode }) {
+function PopoverContent({
+  children,
+  side,
+}: {
+  children: React.ReactNode;
+  side?: 'top' | 'bottom' | 'left' | 'right';
+}) {
   return (
     <RdxPopover.Portal>
-      <RdxPopover.Content style={{ zIndex: 403 }} side="top">
+      <RdxPopover.Content style={{ zIndex: 403 }} side={side || 'top'}>
         <ContainerContent>{children}</ContainerContent>
       </RdxPopover.Content>
     </RdxPopover.Portal>

@@ -1,15 +1,26 @@
-import { keyframes, styled } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 
-const overlayShow = keyframes`
-   from {
-    opacity: 0;
-  }
-   to {
-    opacity: 1;
-    }
+const fadeIn = keyframes`
+   from { opacity: 0; }
+   to { opacity: 1; }
 `;
 
-export const Container = styled.div`
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
+
+const scaleIn = keyframes`
+  from { transform: translate(-50%, -50%) scale(0); }
+  to { transform: translate(-50%, -50%) scale(1);  }
+`;
+
+const scaleOut = keyframes`
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(0); }
+`;
+
+export const Container = styled.div<{ $isLeaving: boolean }>`
   .overlay {
     position: fixed;
     top: 0;
@@ -19,22 +30,34 @@ export const Container = styled.div`
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(4px);
     z-index: 401;
-    animation: ${overlayShow} 0.1s;
+    animation: ${fadeIn} 0.3s forwards;
+
+    ${({ $isLeaving }) =>
+      $isLeaving &&
+      css`
+        animation: ${fadeOut} 0.3s forwards;
+      `}
   }
 
   .content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
     width: 100%;
     max-width: 400px;
     padding: 24px;
     border-radius: 16px;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     background: #212529;
     box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.1);
     z-index: 402;
     outline: none;
+    animation: ${scaleIn} 0.3s forwards;
+
+    ${({ $isLeaving }) =>
+      $isLeaving &&
+      css`
+        animation: ${scaleOut} 0.3s forwards;
+      `}
 
     header {
       display: flex;

@@ -1,4 +1,5 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
+import { useEffect, useState } from 'react';
 
 import { SideBarItem } from '../SideBarItem';
 
@@ -10,8 +11,31 @@ interface ISideBarProps {
 }
 
 export function SideBar({ open, handleCloseSideBar }: ISideBarProps) {
+  const [shoulderRender, setShouldRender] = useState<boolean>(open);
+
+  useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+    }
+
+    let timeoutId: NodeJS.Timeout;
+    if (!open) {
+      timeoutId = setTimeout(() => {
+        setShouldRender(false);
+      }, 300);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [open]);
+
+  if (!shoulderRender) {
+    return null;
+  }
+
   return (
-    <Container open={open}>
+    <Container open={shoulderRender} $isLeaving={!open}>
       <SideBarItem />
       <div className="closeIcon">
         <button type="button" onClick={handleCloseSideBar}>
