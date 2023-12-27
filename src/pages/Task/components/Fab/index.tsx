@@ -10,7 +10,7 @@ import { useTaskContext } from '../TaskContext/useTaskContext';
 import { Container } from './style';
 
 export function Fab() {
-  const { handleOpenNewTaskModal } = useTaskContext();
+  const { handleOpenNewTaskModal, handleOpenCategoryModal } = useTaskContext();
 
   return (
     <DropdownMenu.Root>
@@ -28,7 +28,10 @@ export function Fab() {
             Nova tarefa
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item style={{ gap: '8px' }}>
+          <DropdownMenu.Item
+            style={{ gap: '8px' }}
+            onSelect={handleOpenCategoryModal}
+          >
             <LightningBoltIcon width={18} height={18} color="#fff" />
             Nova categoria
           </DropdownMenu.Item>

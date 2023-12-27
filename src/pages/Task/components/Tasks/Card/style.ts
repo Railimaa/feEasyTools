@@ -4,35 +4,40 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  margin-top: 20px;
   padding: 16px;
   border-radius: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
 
-  .infos {
-    .titleAndDescription {
-      span {
-        display: block;
-        color: #fff;
-      }
-
-      small {
-        color: #fff;
-      }
+  .titleAndDescription {
+    span {
+      display: block;
+      font-size: 16px;
+      color: #fff;
     }
 
-    .dateAndCategory {
-      margin-top: 20px;
+    small {
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+    }
+  }
 
-      span {
-        display: block;
-        color: #fff;
-      }
+  .dateAndCategory {
+    margin-top: 20px;
 
-      small {
-        color: #fff;
-      }
+    span {
+      display: block;
+      color: #fff;
+      opacity: 0.5;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+      line-height: 20.5px;
+    }
+
+    small {
+      color: #fff;
     }
   }
 

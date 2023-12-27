@@ -12,8 +12,8 @@ const animation = keyframes`
 
 export const Container = styled.div`
   display: flex;
-  gap: 80px;
   flex-direction: column;
+  gap: 80px;
   width: 100vw;
   height: 100vh;
   padding-left: 16px;
@@ -42,7 +42,7 @@ export const Container = styled.div`
     }
   }
 
-  .tasks {
-    padding-bottom: 900px;
+  .categories {
+    padding-bottom: 300px;
   }
 `;

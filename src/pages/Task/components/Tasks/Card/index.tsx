@@ -1,4 +1,5 @@
 import { CheckCircledIcon, CrossCircledIcon } from '@radix-ui/react-icons';
+import { memo } from 'react';
 
 import { ITask } from '../../../../../types/Task';
 import { FormatDate } from '../../../../../utils/formatDate';
@@ -7,13 +8,13 @@ import { Container } from './style';
 
 interface ICardProps {
   taskFiltered: ITask[];
-  handleCloseEditTaskModal: (task: ITask) => void;
+  handleOpenEditTaskModal: (task: ITask) => void;
 }
 
-export function Card({ taskFiltered, handleCloseEditTaskModal }: ICardProps) {
+function Card({ taskFiltered, handleOpenEditTaskModal }: ICardProps) {
   return taskFiltered.map((task) => (
     <Container
-      onClick={() => handleCloseEditTaskModal(task)}
+      onClick={() => handleOpenEditTaskModal(task)}
       key={task.id}
       role="button"
     >
@@ -27,7 +28,7 @@ export function Card({ taskFiltered, handleCloseEditTaskModal }: ICardProps) {
 
         <div className="dateAndCategory">
           <span>{FormatDate(new Date(task.dueDate))}</span>
-          <small>{task.categoryTask.name}</small>
+          {task.categoryId && <small>{task.categoryTask.name}</small>}
         </div>
       </div>
 
@@ -43,3 +44,5 @@ export function Card({ taskFiltered, handleCloseEditTaskModal }: ICardProps) {
     </Container>
   ));
 }
+
+export default memo(Card);

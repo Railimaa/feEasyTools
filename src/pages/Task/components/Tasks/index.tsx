@@ -1,8 +1,9 @@
 import { EmptyTasks } from '../../../../assets/Icons/EmptyTasks';
 import { Spinner } from '../../../../components/Spinner';
 
-import { Card } from './Card';
+import Card from './Card';
 import { InputSearch } from './SearchInput';
+import { SearchNotFound } from './SearchNotFound';
 import { Container } from './style';
 import { useTasks } from './useTasks';
 
@@ -42,12 +43,12 @@ export function Tasks() {
             placeholder="Pesquisar tarefas..."
           />
 
-          {isEmptyList && <p style={{ color: '#fff' }}>Nenhuma tarefa</p>}
+          {isEmptyList && <SearchNotFound searchValue={searchInput} />}
 
           <div className="content">
             <Card
               taskFiltered={tasksFiltered}
-              handleCloseEditTaskModal={handleOpenEditTaskModal}
+              handleOpenEditTaskModal={handleOpenEditTaskModal}
             />
           </div>
         </>
