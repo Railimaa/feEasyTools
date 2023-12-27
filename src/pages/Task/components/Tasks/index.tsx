@@ -1,4 +1,5 @@
 import { EmptyTasks } from '../../../../assets/Icons/EmptyTasks';
+import { FilterIcon } from '../../../../assets/Icons/FIlterIcon';
 import { Spinner } from '../../../../components/Spinner';
 
 import Card from './Card';
@@ -37,11 +38,17 @@ export function Tasks() {
 
       {!isLoading && hasTasks && (
         <>
-          <InputSearch
-            value={searchInput}
-            onChange={handleChangeSearchInput}
-            placeholder="Pesquisar tarefas..."
-          />
+          <div className="searchAndFilters">
+            <InputSearch
+              value={searchInput}
+              onChange={handleChangeSearchInput}
+              placeholder="Pesquisar tarefas..."
+            />
+
+            <FilterIcon />
+
+            <p>aa</p>
+          </div>
 
           {isEmptyList && <SearchNotFound searchValue={searchInput} />}
 
