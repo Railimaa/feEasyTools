@@ -46,6 +46,8 @@ export function Tasks() {
             />
 
             <FilterIcon />
+
+            <p>aa</p>
           </div>
 
           {isEmptyList && <SearchNotFound searchValue={searchInput} />}
