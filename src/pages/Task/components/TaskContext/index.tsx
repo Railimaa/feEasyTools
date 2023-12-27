@@ -10,6 +10,9 @@ interface ITaskContext {
   taskBeingEdited: null | ITask;
   handleOpenEditTaskModal: (task: ITask) => void;
   handleCloseEditTaskModal: () => void;
+  openNewCategoryModal: boolean;
+  handleOpenCategoryModal: () => void;
+  handleCloseCategoryModal: () => void;
 }
 
 export const TaskContext = createContext({} as ITaskContext);
@@ -23,6 +26,8 @@ export function TaskContextProvider({
   const [openEditedTaskModal, setOpenEditedTaskModal] =
     useState<boolean>(false);
   const [taskBeingEdited, setTaskBeingEdited] = useState<null | ITask>(null);
+  const [openNewCategoryModal, setOpenNewCategoryModal] =
+    useState<boolean>(false);
 
   const handleOpenNewTaskModal = useCallback(() => {
     setOpenNewTaskModal(true);
@@ -42,6 +47,14 @@ export function TaskContextProvider({
     setTaskBeingEdited(null);
   }, []);
 
+  const handleOpenCategoryModal = useCallback(() => {
+    setOpenNewCategoryModal(true);
+  }, []);
+
+  const handleCloseCategoryModal = useCallback(() => {
+    setOpenNewCategoryModal(false);
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       openNewTaskModal,
@@ -51,6 +64,9 @@ export function TaskContextProvider({
       taskBeingEdited,
       handleOpenEditTaskModal,
       handleCloseEditTaskModal,
+      openNewCategoryModal,
+      handleOpenCategoryModal,
+      handleCloseCategoryModal,
     }),
     [
       openNewTaskModal,
@@ -60,6 +76,9 @@ export function TaskContextProvider({
       taskBeingEdited,
       handleOpenEditTaskModal,
       handleCloseEditTaskModal,
+      openNewCategoryModal,
+      handleOpenCategoryModal,
+      handleCloseCategoryModal,
     ],
   );
 
