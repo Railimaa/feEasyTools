@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { useCategoriesContacts } from '../../../../../hooks/useCategoriesContact';
 
@@ -15,11 +15,9 @@ export function useFilterContactModal() {
     );
   }
 
-  const categories = useMemo(() => categoriesContact, [categoriesContact]);
   return {
-    categoriesContact,
     selectCategory,
     handleSelectCategory,
-    categories,
+    categories: categoriesContact,
   };
 }

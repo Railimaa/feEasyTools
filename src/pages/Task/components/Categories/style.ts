@@ -40,11 +40,12 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     flex: 1;
     width: 100%;
     height: 100%;
     max-height: 30vh;
     overflow-x: auto;
+    padding-top: 40px;
   }
 `;

@@ -7,6 +7,7 @@ export function useContacts(filter: ContactFilter) {
   const { data, isFetching, refetch, isInitialLoading } = useQuery({
     queryKey: ['contacts'],
     queryFn: () => contactsService.getAll(filter),
+    staleTime: Infinity,
   });
 
   return {

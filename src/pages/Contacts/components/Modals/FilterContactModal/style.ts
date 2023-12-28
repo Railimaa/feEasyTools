@@ -33,15 +33,14 @@ export const Content = styled.div`
     border: none;
     outline: none;
     color: #fff;
+    transition: 0.3s ease-in-out;
 
     &:hover {
       background: #383838;
-      transition: all 0.1s ease-in-out;
     }
   }
 
   .btn-active {
     background: #525252 !important;
-    transition: all 0.1s ease-in-out;
   }
 `;

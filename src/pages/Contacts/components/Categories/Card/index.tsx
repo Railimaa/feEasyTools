@@ -1,5 +1,4 @@
 import { Pencil1Icon } from '@radix-ui/react-icons';
-import { memo } from 'react';
 
 import { Trash } from '../../../../../assets/Icons/Trash';
 import { ICategoryContact } from '../../../../../types/CategoryContact';
@@ -12,7 +11,7 @@ interface ICardProps {
   handleOpenDeleteModal: (category: ICategoryContact) => void;
 }
 
-function Card({
+export function Card({
   categoriesFiltered,
   handleOpenEditedCategoryModal,
   handleOpenDeleteModal,
@@ -36,5 +35,3 @@ function Card({
     </Container>
   ));
 }
-
-export default memo(Card);

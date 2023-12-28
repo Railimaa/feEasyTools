@@ -36,7 +36,7 @@ export const ContainerItem = styled.div<{ color?: string }>`
   &:hover {
     color: '#fff';
     font-weight: bold;
-    background: ${({ color }) => color || '#4e4e4e'};
+    background: ${({ color }) => color || '#1d1d1d'};
     border-radius: 16px;
     transition: all ease-in-out 0.1s;
   }

@@ -15,11 +15,19 @@ export const Container = styled.div`
     padding: 40px;
   }
 
+  .isInitialLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
   .isLoading {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    overflow-x: hidden;
   }
 
   .notTasks {
@@ -41,5 +49,17 @@ export const Container = styled.div`
     height: 100%;
     max-height: 50vh;
     overflow-x: auto;
+  }
+`;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    outline: none;
+    background: transparent;
+    border: none;
   }
 `;
