@@ -23,7 +23,7 @@ export function TextArea({ value, onChange, label }: ITextAreaProps) {
           {value ? `${value.slice(0, 14)}...` : 'Breve descrição'}
         </Popover.Trigger>
 
-        <Popover.Content>
+        <Popover.Content side="top">
           <TextAreaC
             value={value ?? ''}
             onChange={onChangeValue}

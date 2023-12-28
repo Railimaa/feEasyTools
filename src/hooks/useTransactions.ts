@@ -7,6 +7,7 @@ export function useTransactions(filter: TransactionFilter) {
   const { data, isFetching, isInitialLoading, refetch } = useQuery({
     queryKey: ['transactions'],
     queryFn: () => transactionsService.getAll(filter),
+    staleTime: Infinity,
   });
 
   return {

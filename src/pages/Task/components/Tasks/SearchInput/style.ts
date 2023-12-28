@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const InputC = styled.input<{ $openInput: boolean }>`
-  width: ${({ $openInput }) => ($openInput ? `${100}%` : `${2}%`)};
+  width: ${({ $openInput }) => ($openInput ? `${200}px` : `${2}px`)};
   height: 52px;
   padding-left: 38px;
   padding-right: 38px;
@@ -37,6 +37,6 @@ export const InputC = styled.input<{ $openInput: boolean }>`
   }
 
   @media (min-width: 768px) {
-    width: ${({ $openInput }) => ($openInput ? `${40}%` : `${2}%`)};
+    width: ${({ $openInput }) => ($openInput ? `${300}px` : `${70}px`)};
   }
 `;

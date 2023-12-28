@@ -3,8 +3,15 @@ import { httpClient } from '../httpClient';
 
 type TaskResponse = ITask[];
 
-export async function getAll() {
-  const { data } = await httpClient.get<TaskResponse>('/tasks');
+export type TaskFilter = {
+  categoryId?: string;
+  type?: boolean;
+};
+
+export async function getAll(filter: TaskFilter) {
+  const { data } = await httpClient.get<TaskResponse>('/tasks', {
+    params: filter,
+  });
 
   return data;
 }

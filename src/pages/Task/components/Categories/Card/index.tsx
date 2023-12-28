@@ -1,5 +1,4 @@
 import { Pencil2Icon } from '@radix-ui/react-icons';
-import { memo } from 'react';
 
 import { ICategoryTask } from '../../../../../types/CategoryTask';
 
@@ -10,7 +9,10 @@ interface ICardProps {
   handleOpenEditedModal: (category: ICategoryTask) => void;
 }
 
-function Card({ categoriesFiltered, handleOpenEditedModal }: ICardProps) {
+export function Card({
+  categoriesFiltered,
+  handleOpenEditedModal,
+}: ICardProps) {
   return categoriesFiltered.map((category) => (
     <Container key={category.id}>
       <span>{category.name}</span>
@@ -21,5 +23,3 @@ function Card({ categoriesFiltered, handleOpenEditedModal }: ICardProps) {
     </Container>
   ));
 }
-
-export default memo(Card);

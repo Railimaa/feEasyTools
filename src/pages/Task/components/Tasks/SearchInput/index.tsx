@@ -13,6 +13,10 @@ export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
       setOpenInput(true);
     }
 
+    function handleBlur() {
+      setOpenInput(false);
+    }
+
     return (
       <Container>
         <InputC
@@ -20,6 +24,7 @@ export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
           ref={ref}
           $openInput={openInput}
           onClick={handleOpenInput}
+          onBlur={handleBlur}
         />
 
         <MagnifyingGlassIcon color="#fff" className="icon" />

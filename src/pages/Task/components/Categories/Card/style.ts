@@ -9,7 +9,6 @@ export const Container = styled.div`
   padding: 16px;
   border-radius: 32px;
   border-bottom: 1px solid #6741d9;
-  margin-top: 20px;
 
   span {
     color: #fff;

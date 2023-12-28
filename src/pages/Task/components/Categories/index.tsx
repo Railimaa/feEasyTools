@@ -2,7 +2,7 @@ import { EmptyBox } from '../../../../assets/Icons/EmptyBox';
 import { Spinner } from '../../../../components/Spinner';
 import { EditedCategoryModal } from '../Modals/EditedCategoryModal';
 
-import Card from './Card';
+import { Card } from './Card';
 import { SearchInput } from './SearchInput';
 import { SearchNotFound } from './SearchNotFound';
 import { Container } from './style';

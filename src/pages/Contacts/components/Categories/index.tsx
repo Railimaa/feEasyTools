@@ -1,7 +1,7 @@
 import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 import { Spinner } from '../../../../components/Spinner';
 
-import Card from './Card';
+import { Card } from './Card';
 import { EmptyList } from './EmptyList';
 import { InputSearch } from './SearchInput';
 import { SearchNotFound } from './SearchNotFounder';
