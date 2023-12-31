@@ -25,6 +25,9 @@ export const Content = styled.div`
   margin-top: 20px;
 
   button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     width: 100%;
     text-align: left;
     padding: 12px;

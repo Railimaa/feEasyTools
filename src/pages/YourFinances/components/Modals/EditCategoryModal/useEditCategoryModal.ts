@@ -48,8 +48,9 @@ export function useEditCategoryModal() {
         ...data,
         id: categoryIsBeingEdited!.id,
       });
-      reset();
       useQuery.invalidateQueries(['categoriesTransaction']);
+      useQuery.invalidateQueries(['transactions']);
+      reset();
       handleCloseEditCategoryModal();
       toast.success(
         categoryIsBeingEdited?.type === 'INCOME'

@@ -22,13 +22,14 @@ export function useEditContactModal() {
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome'),
     categoryId: z.string().min(1, 'Informe a categoria'),
-    phone: z.string().optional(),
+    phone: z.string().nullable(),
     email: z
       .string()
       .refine((value) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), {
         message: 'Informe um e-mail válido',
       })
-      .optional(),
+      .optional()
+      .nullable(),
   });
 
   type FormData = z.infer<typeof schema>;

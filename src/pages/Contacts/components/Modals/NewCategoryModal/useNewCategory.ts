@@ -16,6 +16,7 @@ export function useNewCategoryModal() {
 
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome.'),
+    icon: z.string().optional(),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -24,6 +25,7 @@ export function useNewCategoryModal() {
     handleSubmit: hookFormHandleSubmit,
     register,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -34,7 +36,10 @@ export function useNewCategoryModal() {
     try {
       setIsLoading(true);
 
-      await categoriesContactService.create(data);
+      await categoriesContactService.create({
+        ...data,
+        icon: data.icon ? data.icon : null,
+      });
       useQuery.invalidateQueries(['categoryContact']);
       reset();
       handleCloseNewCategoryContactModal();
@@ -53,5 +58,6 @@ export function useNewCategoryModal() {
     isLoading,
     openNewCategoryContact,
     handleCloseNewCategoryContactModal,
+    control,
   };
 }

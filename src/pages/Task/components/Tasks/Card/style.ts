@@ -25,6 +25,10 @@ export const Container = styled.div`
   }
 
   .dateAndCategory {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 20px;
 
     span {
@@ -37,6 +41,9 @@ export const Container = styled.div`
     }
 
     small {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: #fff;
     }
   }

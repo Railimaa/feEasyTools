@@ -38,7 +38,6 @@ export const Container = styled.div`
   .content {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 30px;
     flex: 1;
@@ -46,6 +45,5 @@ export const Container = styled.div`
     height: 100%;
     max-height: 30vh;
     overflow-x: auto;
-    padding-top: 40px;
   }
 `;

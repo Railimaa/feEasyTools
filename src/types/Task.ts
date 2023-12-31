@@ -8,5 +8,6 @@ export interface ITask {
   categoryTask: {
     id: string;
     name: string;
+    icon: string;
   };
 }

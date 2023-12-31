@@ -22,11 +22,15 @@ export const Container = styled.div`
       }
 
       small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
         padding: 4px;
-        background: #e0e3ff;
-        font-size: 14px;
+        background: #000;
+        font-size: 12px;
         text-transform: uppercase;
-        color: #5061fc;
+        color: #fff;
         border-radius: 4px;
       }
     }

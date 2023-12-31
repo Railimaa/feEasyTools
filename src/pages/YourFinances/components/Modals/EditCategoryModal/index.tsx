@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 
 import { Button } from '../../../../../components/Button';
-import { IconDropDownInput } from '../../../../../components/IconDropDownInput';
+import { IconDropDownInput } from '../../../../../components/IconDropDown';
 import { Input } from '../../../../../components/Input';
 import { Modal } from '../../../../../components/Modal';
 import { Select } from '../../../../../components/Select';
