@@ -1,5 +1,7 @@
 import { Button } from '../../../../../components/Button';
 import { Modal } from '../../../../../components/Modal';
+import { IconsCategory } from '../../IconsDropdown/IconsCategory';
+import { iconsMap } from '../../IconsDropdown/IconsCategory/iconsMap';
 
 import { Container } from './style';
 import { useFilterTaskModal } from './useFilterTaskModal';
@@ -21,6 +23,7 @@ export function FilterTaskModal({
     <Modal open={open} onClose={handleCloseModal} title="Filtrar">
       <Container>
         <span>Categorias</span>
+
         {categories.map((category) => (
           <button
             onClick={() => handleCategory(category.id)}
@@ -29,6 +32,12 @@ export function FilterTaskModal({
             key={category.id}
             id="filter"
           >
+            {category.icon && (
+              <IconsCategory
+                iconName={category.icon as keyof typeof iconsMap}
+              />
+            )}
+
             {category.name}
           </button>
         ))}

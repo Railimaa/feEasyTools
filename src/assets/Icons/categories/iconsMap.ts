@@ -12,6 +12,14 @@ import { Income } from './income/Income';
 export const iconsMap = {
   income: {
     default: Income,
+    food: Food,
+    fun: Fun,
+    grocery: Grocery,
+    home: Home,
+    education: Education,
+    clothes: Clothes,
+    transport: Transport,
+    travel: Travel,
   },
   expense: {
     default: Expense,

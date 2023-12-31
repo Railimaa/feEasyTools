@@ -6,6 +6,9 @@ export const Container = styled.div`
   gap: 12px;
 
   #filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px;
     text-align: left;
     outline: none;

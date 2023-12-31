@@ -1,5 +1,7 @@
 import { Button } from '../../../../../components/Button';
 import { Modal } from '../../../../../components/Modal';
+import { CategoryContactIcon } from '../../Categories/DropdownIcons/CategoryContactIcon';
+import { iconsMap } from '../../Categories/DropdownIcons/CategoryContactIcon/iconsMap';
 
 import { Container, Content } from './style';
 import { useFilterContactModal } from './useFilterContactModal';
@@ -32,6 +34,11 @@ export function FilterContactModal({
               type="button"
             >
               {category.name}
+              {category.icon && (
+                <CategoryContactIcon
+                  name={category.icon as keyof typeof iconsMap}
+                />
+              )}
             </button>
           ))}
         </Content>

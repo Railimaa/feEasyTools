@@ -4,6 +4,8 @@ import { memo } from 'react';
 import { Trash } from '../../../../../assets/Icons/Trash';
 import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
 import { IContact } from '../../../../../types/Contact';
+import { CategoryContactIcon } from '../../Categories/DropdownIcons/CategoryContactIcon';
+import { iconsMap } from '../../Categories/DropdownIcons/CategoryContactIcon/iconsMap';
 
 import { Container } from './style';
 import { useCard } from './useCard';
@@ -40,7 +42,14 @@ function Card({ filteredContact, handleOpenEditedContactModal }: ICardProps) {
         <div className="nameAndCategory">
           <strong>{contact.name}</strong>
           {contact.categoryContact?.name && (
-            <small>{contact.categoryContact.name}</small>
+            <small>
+              {contact.categoryContact.name}
+              {contact.categoryContact.icon && (
+                <CategoryContactIcon
+                  name={contact.categoryContact.icon as keyof typeof iconsMap}
+                />
+              )}
+            </small>
           )}
         </div>
 

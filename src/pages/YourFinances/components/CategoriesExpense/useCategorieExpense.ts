@@ -34,6 +34,7 @@ export function useCategorieExpense() {
 
       await categoriesTransactionService.deleted(categoryId!.id);
       useQuery.invalidateQueries(['categoriesTransaction']);
+      useQuery.invalidateQueries(['transactions']);
       handleCloseDeleteModal();
       toast.success(
         categoryId?.type === 'INCOME'

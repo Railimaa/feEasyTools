@@ -1,10 +1,13 @@
 /* eslint-disable react/require-default-props */
+import { Controller } from 'react-hook-form';
+
 import { Trash } from '../../../../../assets/Icons/Trash';
 import { Button } from '../../../../../components/Button';
 import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
 import { Input } from '../../../../../components/Input';
 import { Modal } from '../../../../../components/Modal';
 import { ICategoryTask } from '../../../../../types/CategoryTask';
+import { IconsDropdown } from '../../IconsDropdown';
 
 import { Form } from './style';
 import { useEditedCategoryModal } from './useEditedCategoryModal';
@@ -29,6 +32,7 @@ export function EditedCategoryModal({
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteCategory,
+    control,
   } = useEditedCategoryModal({
     category,
     handleCloseModal,
@@ -61,6 +65,14 @@ export function EditedCategoryModal({
           label="Nome"
           error={errors.name?.message}
           {...register('name')}
+        />
+
+        <Controller
+          control={control}
+          name="icon"
+          render={({ field: { onChange, value } }) => (
+            <IconsDropdown onChange={onChange} value={value} />
+          )}
         />
 
         <Button isLoading={isLoading}>Salvar</Button>

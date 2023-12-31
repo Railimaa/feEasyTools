@@ -4,24 +4,19 @@ import { useState } from 'react';
 
 import { DropdownMenu } from '../DropdownMenu';
 import { FieldError } from '../FieldError';
-import { IconTransaction } from '../IconTransaction';
 
+import { IconTransaction } from './IconTransaction';
+import { iconsMap } from './IconTransaction/iconsMap';
 import { Container } from './style';
-
-interface IIconDropdownProps {
-  value: string;
-  onChange?: (value: string) => void;
-  error?: string;
-}
 
 type Icon = {
   name: string;
   id: number;
 };
 
-const iconsMap: Icon[] = [
-  { name: 'receita', id: 1 },
-  { name: 'despesa', id: 2 },
+const Icons: Icon[] = [
+  { name: 'income', id: 1 },
+  { name: 'expense', id: 2 },
   { name: 'food', id: 3 },
   { name: 'fun', id: 4 },
   { name: 'grocery', id: 5 },
@@ -31,6 +26,12 @@ const iconsMap: Icon[] = [
   { name: 'transport', id: 9 },
   { name: 'travel', id: 10 },
 ];
+
+interface IIconDropdownProps {
+  value: string;
+  onChange?: (value: string) => void;
+  error?: string;
+}
 
 export function IconDropDownInput({
   value,
@@ -42,7 +43,7 @@ export function IconDropDownInput({
       return null;
     }
 
-    const icons = iconsMap.find((i) => i.name === value) ?? null;
+    const icons = Icons.find((i) => i.name === value) ?? null;
 
     return icons;
   });
@@ -59,7 +60,9 @@ export function IconDropDownInput({
           Ícone
           {selectIcon && (
             <div className="icon">
-              <IconTransaction iconName={selectIcon.name} />
+              <IconTransaction
+                iconName={selectIcon.name as keyof typeof iconsMap}
+              />
             </div>
           )}
           {!selectIcon && (
@@ -73,12 +76,12 @@ export function IconDropDownInput({
           side="top"
           style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}
         >
-          {iconsMap.map((icon) => (
+          {Icons.map((icon) => (
             <DropdownMenu.Item
               key={icon.id}
               onSelect={() => handleChangeIcon(icon)}
             >
-              <IconTransaction iconName={icon.name} />
+              <IconTransaction iconName={icon.name as keyof typeof iconsMap} />
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>

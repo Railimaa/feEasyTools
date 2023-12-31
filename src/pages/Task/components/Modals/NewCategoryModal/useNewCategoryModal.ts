@@ -14,6 +14,7 @@ export function useNewCategoryModal() {
 
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome.'),
+    icon: z.string().optional(),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -23,6 +24,7 @@ export function useNewCategoryModal() {
     register,
     formState: { errors },
     reset,
+    control,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -32,7 +34,10 @@ export function useNewCategoryModal() {
     try {
       setIsLoading(true);
 
-      await categoryTaskService.create(data);
+      await categoryTaskService.create({
+        ...data,
+        icon: data.icon ? data.icon : null,
+      });
       useQuery.invalidateQueries(['categoryTask']);
       reset();
       handleCloseCategoryModal();
@@ -51,5 +56,6 @@ export function useNewCategoryModal() {
     register,
     errors,
     isLoading,
+    control,
   };
 }

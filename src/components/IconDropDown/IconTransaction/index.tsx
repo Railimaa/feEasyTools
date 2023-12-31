@@ -1,7 +1,7 @@
 import { iconsMap } from './iconsMap';
 
 interface IIconTransaction {
-  iconName: string;
+  iconName: keyof typeof iconsMap;
 }
 
 export function IconTransaction({ iconName }: IIconTransaction) {

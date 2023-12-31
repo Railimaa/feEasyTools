@@ -10,12 +10,16 @@ export const Container = styled.div`
   margin-top: 8px;
 
   small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     padding: 4px;
-    background: #e0e3ff;
-    color: #5061fc;
+    background: #000;
+    color: #fff;
     border-radius: 4px;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .actions {

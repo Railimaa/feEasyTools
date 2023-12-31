@@ -28,6 +28,7 @@ export function useEditedCategoryModal({
 
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome!'),
+    icon: z.string().optional(),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -36,11 +37,13 @@ export function useEditedCategoryModal({
     handleSubmit: hookFormHandleSubmit,
     register,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       name: category.name,
+      icon: category.icon,
     },
   });
 
@@ -51,6 +54,7 @@ export function useEditedCategoryModal({
 
       await categoryTaskService.update({
         ...data,
+        icon: data.icon ? data.icon : null,
         id: category.id,
       });
       useQuery.invalidateQueries(['categoryTask']);
@@ -90,5 +94,6 @@ export function useEditedCategoryModal({
     handleCloseDeleteModal,
     openDeleteModal,
     handleDeleteCategory,
+    control,
   };
 }

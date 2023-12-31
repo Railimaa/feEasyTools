@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 16px;
   border-radius: 32px;
   border-bottom: 1px solid #6741d9;
+  background: #1d1d1d;
 
   span {
     color: #fff;
@@ -21,5 +22,12 @@ export const Container = styled.div`
     border: none;
     outline: none;
     background: none;
+  }
+
+  .iconAndName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 `;

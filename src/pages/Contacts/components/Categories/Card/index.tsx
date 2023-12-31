@@ -2,6 +2,8 @@ import { Pencil1Icon } from '@radix-ui/react-icons';
 
 import { Trash } from '../../../../../assets/Icons/Trash';
 import { ICategoryContact } from '../../../../../types/CategoryContact';
+import { CategoryContactIcon } from '../DropdownIcons/CategoryContactIcon';
+import { iconsMap } from '../DropdownIcons/CategoryContactIcon/iconsMap';
 
 import { Container } from './style';
 
@@ -18,7 +20,12 @@ export function Card({
 }: ICardProps) {
   return categoriesFiltered.map((category) => (
     <Container key={category.id}>
-      <small>{category.name}</small>
+      <small>
+        {category.name}
+        {category.icon && (
+          <CategoryContactIcon name={category.icon as keyof typeof iconsMap} />
+        )}
+      </small>
 
       <div className="actions">
         <button

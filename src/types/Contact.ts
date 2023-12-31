@@ -7,5 +7,6 @@ export interface IContact {
   categoryContact: {
     name: string;
     id: string;
+    icon: string;
   };
 }

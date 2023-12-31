@@ -3,6 +3,8 @@ import { memo } from 'react';
 
 import { ITask } from '../../../../../types/Task';
 import { FormatDate } from '../../../../../utils/formatDate';
+import { IconsCategory } from '../../IconsDropdown/IconsCategory';
+import { iconsMap } from '../../IconsDropdown/IconsCategory/iconsMap';
 
 import { Container } from './style';
 
@@ -27,8 +29,19 @@ function Card({ taskFiltered, handleOpenEditTaskModal }: ICardProps) {
         </div>
 
         <div className="dateAndCategory">
+          {task.categoryId && (
+            <small>
+              {task.categoryTask.icon && (
+                <IconsCategory
+                  iconName={task.categoryTask.icon as keyof typeof iconsMap}
+                />
+              )}
+
+              {task.categoryTask.name}
+            </small>
+          )}
+
           <span>{FormatDate(new Date(task.dueDate))}</span>
-          {task.categoryId && <small>{task.categoryTask.name}</small>}
         </div>
       </div>
 
