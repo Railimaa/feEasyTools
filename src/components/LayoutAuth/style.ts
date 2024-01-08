@@ -1,23 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* background-image: linear-gradient(
-    210deg,
-    hsl(261deg 96% 19%) 1%,
-    hsl(263deg 90% 29%) 38%,
-    hsl(264deg 85% 39%) 46%,
-    hsl(265deg 81% 50%) 50%,
-    hsl(266deg 84% 51%) 51%,
-    hsl(267deg 85% 48%) 51%,
-    hsl(268deg 88% 45%) 50%,
-    hsl(268deg 81% 47%) 50%,
-    hsl(267deg 76% 53%) 49%,
-    hsl(266deg 81% 60%) 49%,
-    hsl(265deg 77% 62%) 50%,
-    hsl(265deg 61% 46%) 54%,
-    hsl(265deg 76% 33%) 62%,
-    hsl(265deg 94% 21%) 99%
-  ); */
+  /* background-color:#ffb399;
+background-image:
+radial-gradient(at 63% 3%, hsla(289,67%,75%,1) 0px, transparent 50%),
+radial-gradient(at 89% 34%, hsla(286,69%,79%,1) 0px, transparent 50%),
+radial-gradient(at 53% 27%, hsla(247,85%,76%,1) 0px, transparent 50%),
+radial-gradient(at 81% 42%, hsla(182,68%,62%,1) 0px, transparent 50%),
+radial-gradient(at 15% 90%, hsla(227,62%,69%,1) 0px, transparent 50%),
+radial-gradient(at 82% 79%, hsla(234,78%,62%,1) 0px, transparent 50%),
+radial-gradient(at 2% 44%, hsla(194,95%,61%,1) 0px, transparent 50%),
+radial-gradient(at 10% 41%, hsla(159,96%,67%,1) 0px, transparent 50%),
+radial-gradient(at 46% 74%, hsla(43,76%,66%,1) 0px, transparent 50%),
+radial-gradient(at 16% 61%, hsla(276,60%,65%,1) 0px, transparent 50%),
+radial-gradient(at 87% 26%, hsla(284,83%,65%,1) 0px, transparent 50%),
+radial-gradient(at 86% 82%, hsla(288,67%,78%,1) 0px, transparent 50%); */
 
   display: flex;
   align-items: center;

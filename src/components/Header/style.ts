@@ -81,4 +81,8 @@ export const HeaderC = styled.header`
       padding-bottom: 2px;
     }
   }
+
+  button {
+    outline: none;
+  }
 `;

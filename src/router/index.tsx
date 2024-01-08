@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { LayouthAuth } from '../components/LayoutAuth';
 import { Contacts } from '../pages/Contacts';
+import { Profile } from '../pages/Profile';
 import { Signin } from '../pages/Signin';
 import { Signup } from '../pages/Signup';
 import { Task } from '../pages/Task';
@@ -25,6 +26,7 @@ export function Router() {
             <Route path="/" element={<YourFinances />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/task" element={<Task />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<h1>Pagina nao encontrada</h1>} />
           </Route>
         </Route>

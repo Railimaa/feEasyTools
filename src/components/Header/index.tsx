@@ -14,6 +14,10 @@ export function Header() {
     setSideBarOpen((prevState) => !prevState);
   }
 
+  function handleCloseSideBar() {
+    setSideBarOpen(false);
+  }
+
   return (
     <HeaderC>
       <div className="logo">
@@ -47,7 +51,7 @@ export function Header() {
         </button>
       </div>
 
-      <SideBar open={sideBarOpen} handleCloseSideBar={handleToogleSideBar} />
+      <SideBar open={sideBarOpen} handleCloseSideBar={handleCloseSideBar} />
     </HeaderC>
   );
 }

@@ -2,10 +2,10 @@ import styled, { keyframes } from 'styled-components';
 
 const aanimationTitle = keyframes`
   from {
-    scale: 0;
+    transform: scale(0);
     opacity: 0;
   } to {
-    scale: 1;
+    transform: scale(1);
     opacity: 1;
   }
 `;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 80px;
-  animation: ${aanimationTitle} 1.5s alternate-reverse infinite;
+  animation: ${aanimationTitle} 2s infinite;
 
   h1 {
     color: #fff;

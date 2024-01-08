@@ -40,4 +40,15 @@ export const ContainerItem = styled.div<{ color?: string }>`
     border-radius: 16px;
     transition: all ease-in-out 0.1s;
   }
+
+  a {
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+
+    &.active {
+      border-bottom: 1px solid #5f3dc4;
+      padding-bottom: 4px;
+    }
+  }
 `;

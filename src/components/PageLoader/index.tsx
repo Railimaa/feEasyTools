@@ -21,9 +21,7 @@ export function PageLoader({ isFetching }: IPageLoaderProps) {
           <GearIcon width={20} height={20} color="#fff" />
         </div>
 
-        <div className="loader">
-          <Spinner color="#fff" />
-        </div>
+        <Spinner color="#fff" />
       </div>
     </Container>
   );

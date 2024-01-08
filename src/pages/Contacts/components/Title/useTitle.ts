@@ -8,9 +8,11 @@ export function useTitle() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setCurrentWordIndex((prevState) => (prevState + 1) % words.length);
-    }, 3000);
+    }, 2000);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [words, currentWordIndex]);
 
   return {
