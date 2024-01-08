@@ -29,7 +29,7 @@ interface IDropdownMenuContent {
 function DropdownMenuContent({ children, style, side }: IDropdownMenuContent) {
   return (
     <RdxDropdownMenu.Portal>
-      <RdxDropdownMenu.Content side={side} style={{ zIndex: 900 }}>
+      <RdxDropdownMenu.Content side={side} style={{ zIndex: 1000 }}>
         <ContainerContent style={style}>{children}</ContainerContent>
       </RdxDropdownMenu.Content>
     </RdxDropdownMenu.Portal>

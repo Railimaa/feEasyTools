@@ -15,6 +15,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 20px;
 
     .logo {
       display: flex;
@@ -25,11 +26,6 @@ export const Container = styled.div`
         color: #fff;
         font-size: 20px;
       }
-    }
-
-    .loader {
-      display: flex;
-      margin-top: 10px;
     }
   }
 `;

@@ -10,6 +10,7 @@ export const Container = styled.div`
   padding-bottom: 32px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a0a0a;
 
   @media (min-width: 768px) {
     padding: 40px;

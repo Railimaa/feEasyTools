@@ -21,15 +21,22 @@ const fadeOut = keyframes`
   }
 `;
 
-export const Container = styled.div<{ open: boolean; $isLeaving: boolean }>`
-  background: #272727;
-  box-shadow: ${({ open }) => (open ? '0px 22px 70px 4px #5f3dc4' : '')};
+const fadeInOverlay = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const fadeOutOverlay = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
+
+export const Container = styled.div<{ $isLeaving: boolean }>`
   position: fixed;
-  top: 0;
   width: 300px;
-  height: 100%;
-  left: 0;
-  z-index: 200;
+  height: 100vh;
+  background: #272727;
+  z-index: 999;
   animation: ${fadeIn} 0.3s forwards;
 
   ${({ $isLeaving }) =>
@@ -39,23 +46,31 @@ export const Container = styled.div<{ open: boolean; $isLeaving: boolean }>`
     `}
 
   .closeIcon {
-    display: flex;
     position: fixed;
-    top: 0;
-    margin-left: 260px;
-    margin-top: 20px;
-
-    @media (min-width: 339px) {
-      display: none;
-    }
+    top: 20px;
+    left: 20px;
 
     button {
       border: none;
       background: transparent;
     }
   }
+`;
 
-  button {
-    background: transparent;
-  }
+export const Overlay = styled.div<{ $isLeaving: boolean }>`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(1px);
+  animation: ${fadeInOverlay} 0.3s forwards;
+  z-index: 998;
+
+  ${({ $isLeaving }) =>
+    $isLeaving &&
+    css`
+      animation: ${fadeOutOverlay} 0.3s forwards;
+    `}
 `;

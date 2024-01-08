@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
   gap: 40px;
-  margin-left: 20px;
+  width: 100%;
+  height: 100vh;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
   margin-top: 80px;
 
   a {
