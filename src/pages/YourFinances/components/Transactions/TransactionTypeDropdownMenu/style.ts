@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   button {
     display: flex;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
     width: 136px;
     height: 48px;
+    cursor: pointer;
     outline: none;
   }
 
@@ -16,6 +16,6 @@ export const Container = styled.div`
     font-weight: 500;
     line-height: 19.6px;
     letter-spacing: -0.5px;
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
   }
 `;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ color: string }>`
+export const Container = styled.div<{ color: string; theme: 'dark' | 'light' }>`
   display: flex;
   justify-content: space-between;
   flex-direction: column;

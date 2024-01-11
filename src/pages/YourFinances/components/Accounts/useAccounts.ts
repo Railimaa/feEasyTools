@@ -1,14 +1,12 @@
 import { useMemo, useState } from 'react';
 
+import { useTheme } from '../../../../contexts/useTheme';
 import { useBankAccounts } from '../../../../hooks/useBankAccounts';
 import { UseWindowWidth } from '../../../../hooks/UseWindowWidht';
 import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesContext';
 
 export function useAccounts() {
-  const [sliderState, setSliderState] = useState({
-    isBeginning: true,
-    isEnd: false,
-  });
+  const { theme } = useTheme();
 
   const { arValuesVisible, handleVisibleArValues, handleOpenNewAccountModal } =
     useYourFinancesContext();
@@ -16,6 +14,11 @@ export function useAccounts() {
   const windowWidth = UseWindowWidth();
 
   const { accounts, isFetching } = useBankAccounts();
+
+  const [sliderState, setSliderState] = useState({
+    isBeginning: true,
+    isEnd: false,
+  });
 
   const currentBalance = useMemo(() => {
     if (!accounts) {
@@ -38,5 +41,6 @@ export function useAccounts() {
     handleVisibleArValues,
     handleOpenNewAccountModal,
     currentBalance,
+    theme,
   };
 }

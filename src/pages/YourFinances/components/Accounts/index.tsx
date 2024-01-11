@@ -23,12 +23,13 @@ export function Accounts() {
     handleVisibleArValues,
     handleOpenNewAccountModal,
     currentBalance,
+    theme,
   } = useAccounts();
 
   const hasAccounts = accounts.length > 0;
 
   return (
-    <Container>
+    <Container theme={theme} $arValuesVisible={arValuesVisible}>
       {isLoading && (
         <div className="loading">
           <Spinner color="#5f3dc4" width="36" height="36" />
@@ -40,9 +41,8 @@ export function Accounts() {
           <span id="title">Saldo total</span>
 
           <div className="saldoTotal">
-            <strong style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}>
-              {FormatCurrency(currentBalance)}
-            </strong>
+            <strong>{FormatCurrency(currentBalance)}</strong>
+
             <button type="button" onClick={handleVisibleArValues}>
               <EyIcon open={arValuesVisible} />
             </button>

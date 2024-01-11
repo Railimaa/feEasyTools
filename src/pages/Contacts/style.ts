@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 
-import backDark from '../../assets/images/backDark.svg';
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding: 16px;
   padding-top: 100px;
-  background-image: url(${backDark});
-  background-size: cover;
+  background: #111113;
 
   @media (min-width: 768px) {
     padding-left: 32px;

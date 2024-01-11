@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { Trash } from '../../../assets/Icons/Trash';
 import { DropdownMenu } from '../../../components/DropdownMenu';
 import { UseAuth } from '../../../contexts/useAuth';
 
 import { Container } from './style';
 
-export function DropdownImage() {
+interface IDropdownImageProps {
+  handleOpenDeleteModal: () => void;
+}
+
+export function DropdownImage({ handleOpenDeleteModal }: IDropdownImageProps) {
   const { user } = UseAuth();
 
   return (
@@ -28,9 +33,17 @@ export function DropdownImage() {
           )}
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content>
-          <DropdownMenu.Item>Escolher foto</DropdownMenu.Item>
-        </DropdownMenu.Content>
+        {user?.imagePath && (
+          <DropdownMenu.Content>
+            <DropdownMenu.Item
+              style={{ gap: '8px' }}
+              onSelect={handleOpenDeleteModal}
+            >
+              Remover foto
+              <Trash />
+            </DropdownMenu.Item>
+          </DropdownMenu.Content>
+        )}
       </Container>
     </DropdownMenu.Root>
   );

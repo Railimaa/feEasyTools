@@ -35,22 +35,33 @@ export function YourFinancesProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const storageArValuesVisible = localStorage.getItem('valueVisible');
+  const [arValuesVisible, setArValuesVisible] = useState<boolean>(
+    storageArValuesVisible ? JSON.parse(storageArValuesVisible) : false,
+  );
+
   const [openNewAccountModal, setOpenNewAccountModal] =
     useState<boolean>(false);
-  const [arValuesVisible, setArValuesVisible] = useState<boolean>(false);
+
   const [openEditAccountModal, setOpenEditAccountModal] =
     useState<boolean>(false);
+
   const [accountIsBeingEdited, setAccountIsBeingEdited] =
     useState<null | IBankAccount>(null);
+
   const [openNewTransactionModal, setOpenNewTransactionModal] =
     useState<boolean>(false);
+
   const [newTransactionType, setNewTransactionType] = useState<
     null | 'INCOME' | 'EXPENSE'
   >(null);
+
   const [openNewCategoryModal, setOpenNewCategoryModal] =
     useState<boolean>(false);
+
   const [openEditCategoryModal, setOpenEditCategoryModal] =
     useState<boolean>(false);
+
   const [categoryIsBeingEdited, setCategoryIsBeingEdited] =
     useState<null | ICategoryTransaction>(null);
 
@@ -63,7 +74,13 @@ export function YourFinancesProvider({
   }, []);
 
   const handleVisibleArValues = useCallback(() => {
-    setArValuesVisible((prevState) => !prevState);
+    setArValuesVisible((prevState) => {
+      const newValue = !prevState;
+
+      localStorage.setItem('valueVisible', JSON.stringify(newValue));
+
+      return newValue;
+    });
   }, []);
 
   const handleOpenEditAccountModal = useCallback((account: IBankAccount) => {

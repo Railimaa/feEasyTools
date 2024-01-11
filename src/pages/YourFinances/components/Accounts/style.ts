@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{
+  theme: 'dark' | 'light';
+  $arValuesVisible: boolean;
+}>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10,15 +13,14 @@ export const Container = styled.div`
   padding-right: 16px;
   padding-top: 32px;
   padding-bottom: 32px;
-  background: #0a0a0a;
-  color: #fff;
+  background: ${({ theme }) => (theme === 'dark' ? '#0a0a0a' : '#f2f2f2')};
+  color: ${({ theme }) => (theme === 'dark' ? '#FFFFFF' : '#000')};
 
   @media (min-width: 768px) {
     padding: 40px;
   }
 
   #title {
-    color: #fff;
     letter-spacing: 0.5px;
     font-weight: 400;
   }
@@ -33,6 +35,11 @@ export const Container = styled.div`
       font-weight: 700;
       letter-spacing: -1px;
       line-height: 32px;
+      ${({ $arValuesVisible }) =>
+        $arValuesVisible &&
+        css`
+          filter: blur(12px);
+        `}
     }
 
     button {
@@ -49,8 +56,8 @@ export const Container = styled.div`
 
   .myAcc {
     display: flex;
-    justify-content: end;
     flex-direction: column;
+    justify-content: end;
     flex: 1;
     margin-top: 40px;
 

@@ -31,11 +31,14 @@ const fadeOutOverlay = keyframes`
   to { opacity: 0; }
 `;
 
-export const Container = styled.div<{ $isLeaving: boolean }>`
+export const Container = styled.div<{
+  $isLeaving: boolean;
+  theme: 'dark' | 'light';
+}>`
   position: fixed;
   width: 300px;
   height: 100vh;
-  background: #272727;
+  background: ${({ theme }) => (theme === 'dark' ? '#111113' : '#FFFFFF')};
   z-index: 999;
   animation: ${fadeIn} 0.3s forwards;
 

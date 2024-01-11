@@ -24,7 +24,7 @@ export default createGlobalStyle`
 
   /* Estilos para o polegar da barra de rolagem (a parte que o usuário arrasta) */
   ::-webkit-scrollbar-thumb {
-    background: #868E96; /* Cor do polegar da barra de rolagem */
+    background: #5F3DC4; /* Cor do polegar da barra de rolagem */
   }
 
   /* Estilos para a trilha da barra de rolagem (a parte em que o polegar se move) */

@@ -4,6 +4,7 @@ import { ExpenseIcon } from '../../../../../assets/Icons/ExpenseIcon';
 import { IncomeIcon } from '../../../../../assets/Icons/IncomeIcon';
 import { TransactionsIcon } from '../../../../../assets/Icons/TransactionsIcon';
 import { DropdownMenu } from '../../../../../components/DropdownMenu';
+import { useTheme } from '../../../../../contexts/useTheme';
 
 import { Container } from './style';
 
@@ -16,13 +17,17 @@ export function TransactionTypeDropdownMenu({
   onSelect,
   selectType,
 }: ITransactionTypeDropdownMenuProps) {
+  const { theme } = useTheme();
+
   return (
     <DropdownMenu.Root>
-      <Container>
+      <Container theme={theme}>
         <DropdownMenu.Trigger>
           {selectType === 'INCOME' && <IncomeIcon />}
           {selectType === 'EXPENSE' && <ExpenseIcon />}
-          {selectType === undefined && <TransactionsIcon />}
+          {selectType === undefined && (
+            <TransactionsIcon color={theme === 'dark' ? '#fff' : '#000'} />
+          )}
 
           <span>
             {selectType === 'INCOME' && 'Receitas'}
@@ -30,7 +35,11 @@ export function TransactionTypeDropdownMenu({
             {selectType === undefined && 'Transações'}
           </span>
 
-          <ChevronDownIcon width={24} height={24} color="#fff" />
+          <ChevronDownIcon
+            width={24}
+            height={24}
+            color={theme === 'dark' ? '#fff' : '#000'}
+          />
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Content style={{ width: '279px' }}>
