@@ -1,16 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import styled from 'styled-components';
 
-import backDark from '../../assets/images/backDark.svg';
-
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   flex-direction: column;
   padding: 16px;
   gap: 16px;
   width: 100%;
   height: 100%;
-  background-image: url(${backDark});
-  background-size: cover;
+  background: ${({ theme }) => (theme === 'dark' ? '#111113' : '#FFFFFF')};
 
   @media (min-width: 768px) {
     padding-left: 32px;

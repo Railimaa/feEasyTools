@@ -5,7 +5,7 @@ interface IUpdateUserBody {
   name: string;
   secondName: string;
   email: string;
-  imagePath?: File | undefined;
+  imagePath?: File | null;
 }
 export async function update({ id, ...body }: IUpdateUserBody) {
   const formData = new FormData();

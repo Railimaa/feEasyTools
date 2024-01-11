@@ -32,12 +32,13 @@ export function Transactions() {
     handleCloseFilterModal,
     handleOpenFilterModal,
     handleApplyFilters,
+    theme,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
 
   return (
-    <Container>
+    <Container theme={theme}>
       {isInitialLoading && (
         <div className="initialLoading">
           <Spinner width="36" height="36" color="#5f3dc4" />
@@ -59,7 +60,7 @@ export function Transactions() {
             />
 
             <button type="button" onClick={handleOpenFilterModal}>
-              <FilterIcon />
+              <FilterIcon color={theme === 'dark' ? '#fff' : '#000'} />
             </button>
           </Header>
 

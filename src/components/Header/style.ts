@@ -1,88 +1,62 @@
 import styled from 'styled-components';
 
-export const HeaderC = styled.header`
+export const HeaderC = styled.header<{ theme: 'dark' | 'light' }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
   width: 100%;
-  padding-left: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-  @media (min-width: 676px) {
-    padding-left: 40px;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    h2 {
-      font-size: 20px;
-      color: #5f3dc4;
-    }
-  }
-
-  .toogle {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    padding-right: 20px;
-
-    button {
-      border: none;
-      background: transparent;
-    }
-
-    @media (min-width: 1000px) {
-      padding-right: 40px;
-    }
-
-    .userMenu {
-      display: none;
-
-      @media (min-width: 1000px) {
-        display: flex;
-      }
-    }
-  }
+  z-index: 9000;
+  background: ${({ theme }) => (theme === 'dark' ? '#111113' : '#FFFFFF')};
+  border-bottom: 1px solid
+    ${({ theme }) =>
+      theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : '#f2f2f2'};
 
   .content {
-    display: none;
+    display: flex;
     align-items: center;
-    gap: 80px;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
 
-    @media (min-width: 723px) {
+    @media (min-width: 768px) {
+      max-width: 70%;
+    }
+
+    .logo {
       display: flex;
-    }
-  }
+      align-items: center;
+      padding-left: 10px;
+      gap: 8px;
 
-  .navLink {
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-    border-radius: 8px;
-    padding: 4px;
-
-    &:hover {
-      color: #fff;
-      transition: all 0.2s ease-in-out;
-      transform: scale(1.1);
-      background: transparent;
-      border-radius: 8px;
-      padding: 2px;
-      box-shadow: 0px 22px 70px 4px #6741d9;
+      h2 {
+        letter-spacing: -0.5px;
+        font-size: 20px;
+        color: #5f3dc4;
+      }
     }
 
-    &.active {
-      border-bottom: 2px solid #5f3dc4;
-      padding-bottom: 2px;
-    }
-  }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-right: 10px;
 
-  button {
-    outline: none;
+      @media (min-width: 768px) {
+        padding-right: none;
+      }
+
+      #theme {
+        font-size: 28px;
+        width: 48px;
+        height: 48px;
+      }
+
+      button {
+        border: none;
+        background: none;
+        outline: none;
+      }
+    }
   }
 `;

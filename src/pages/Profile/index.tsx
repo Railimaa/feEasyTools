@@ -5,25 +5,48 @@
 import { Controller } from 'react-hook-form';
 
 import { Button } from '../../components/Button';
+import { ConfirmDeleteModal } from '../../components/ConfirmDeleteModal';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 
 import { DropdownImage } from './DropdownImage';
 import { InputFile } from './InputFile';
-import { Container, Form } from './style';
+import { Container, FieldSet, Form } from './style';
 import { useProfile } from './useProfile';
 
 export function Profile() {
-  const { register, handleSubmit, isLoading, control, user, errors } =
-    useProfile();
+  const {
+    register,
+    handleSubmit,
+    isLoading,
+    control,
+    user,
+    errors,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteModal,
+    theme,
+  } = useProfile();
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        title="Foto"
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleDeleteModal}
+        isLoading={isLoading}
+      />
+    );
+  }
 
   return (
     <>
       <Header />
 
-      <Container>
+      <Container theme={theme}>
         <Form onSubmit={handleSubmit}>
-          <DropdownImage />
+          <DropdownImage handleOpenDeleteModal={handleOpenDeleteModal} />
 
           <Controller
             control={control}
@@ -41,17 +64,8 @@ export function Profile() {
             )}
           />
 
-          <fieldset
-            style={{
-              padding: '16px',
-              border: '1px solid #9775fa',
-              marginTop: '20px',
-              borderRadius: '16px',
-            }}
-          >
-            <legend style={{ color: '#fff', fontSize: '16px', padding: '8px' }}>
-              Dados pessoais
-            </legend>
+          <FieldSet theme={theme}>
+            <legend>Dados pessoais</legend>
 
             <Input
               label="Nome"
@@ -70,7 +84,7 @@ export function Profile() {
               error={errors.email?.message}
               {...register('email')}
             />
-          </fieldset>
+          </FieldSet>
 
           <Button isLoading={isLoading}>Salvar alterações</Button>
         </Form>

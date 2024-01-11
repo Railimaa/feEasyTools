@@ -1,4 +1,5 @@
 import { Header } from '../../components/Header';
+import { useTheme } from '../../contexts/useTheme';
 
 import { Accounts } from './components/Accounts';
 import { CategoriesExpense } from './components/CategoriesExpense';
@@ -17,6 +18,8 @@ import {
 import { Container } from './style';
 
 export function YourFinances() {
+  const { theme } = useTheme();
+
   return (
     <YourFinancesProvider>
       <YourFinancesContext.Consumer>
@@ -24,7 +27,7 @@ export function YourFinances() {
           <>
             <Header />
 
-            <Container>
+            <Container theme={theme}>
               <div className="main">
                 <div className="left">
                   <Accounts />

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   button {
     border: none;
     outline: none;
@@ -13,8 +13,8 @@ export const Container = styled.div`
     transition: transparent ease-in-out 0.3s;
 
     &:hover {
-      background: #212529;
-      opacity: 0.3;
+      background: ${({ theme }) => (theme === 'dark' ? '#212529' : '#ccc')};
+      opacity: 0.9;
     }
 
     &:disabled {

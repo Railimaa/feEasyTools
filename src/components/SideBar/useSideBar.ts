@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { useTheme } from '../../contexts/useTheme';
+
 export function useSideBar(open: boolean, handleCloseSideBar: () => void) {
   const [shoulderRender, setShoulderRender] = useState<boolean>(open);
+  const { theme } = useTheme();
 
   function handleScrollY(type: 'hidden' | 'auto') {
     document.body.style.overflowY = `${type}`;
@@ -42,5 +45,6 @@ export function useSideBar(open: boolean, handleCloseSideBar: () => void) {
 
   return {
     shoulderRender,
+    theme,
   };
 }

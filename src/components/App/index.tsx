@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import Global from '../../assets/styles/global';
 import { AuthProvider } from '../../contexts/AuthContext';
+import { ThemeProvider } from '../../contexts/ThemeContext';
 import { Router } from '../../router';
 
 const queryCliente = new QueryClient({
@@ -18,15 +19,17 @@ const queryCliente = new QueryClient({
 export function App() {
   return (
     <QueryClientProvider client={queryCliente}>
-      <AuthProvider>
-        <Global />
+      <ThemeProvider>
+        <AuthProvider>
+          <Global />
 
-        <DayPickerProvider initialProps={{}}>
-          <Router />
-        </DayPickerProvider>
+          <DayPickerProvider initialProps={{}}>
+            <Router />
+          </DayPickerProvider>
 
-        <Toaster />
-      </AuthProvider>
+          <Toaster />
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

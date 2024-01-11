@@ -1,13 +1,20 @@
-import { Cross2Icon, GearIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import {
+  GearIcon,
+  HamburgerMenuIcon,
+  MoonIcon,
+  SunIcon,
+} from '@radix-ui/react-icons';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
+import { useTheme } from '../../contexts/useTheme';
 import { SideBar } from '../SideBar';
 import { UserMenu } from '../UserMenu';
 
 import { HeaderC } from './style';
 
 export function Header() {
+  const { theme, handleToggleTheme } = useTheme();
+
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
   function handleToogleSideBar() {
@@ -19,36 +26,30 @@ export function Header() {
   }
 
   return (
-    <HeaderC>
-      <div className="logo">
-        <h2>easytools</h2>
-        <GearIcon width={20} height={20} color="#5F3DC4" />
-      </div>
-
+    <HeaderC theme={theme}>
       <div className="content">
-        <NavLink className="navLink" to="/">
-          YourFinances
-        </NavLink>
-        <NavLink className="navLink" to="/contacts">
-          Contacts
-        </NavLink>
-        <NavLink className="navLink" to="/task">
-          Tarefas
-        </NavLink>
-      </div>
-
-      <div className="toogle">
-        <div className="userMenu">
-          <UserMenu />
+        <div className="logo">
+          <h2>easytools</h2>
+          <GearIcon width={20} height={20} color="#5F3DC4" />
         </div>
 
-        <button type="button" onClick={handleToogleSideBar}>
-          {!sideBarOpen && (
-            <HamburgerMenuIcon width={28} height={28} color="#5F3DC4" />
-          )}
+        <div className="actions">
+          <UserMenu />
 
-          {sideBarOpen && <Cross2Icon width={28} height={28} color="#5F3DC4" />}
-        </button>
+          <button type="button" onClick={handleToggleTheme} id="theme">
+            {theme === 'dark' && (
+              <SunIcon color="#8c8c8c" width={20} height={20} />
+            )}
+
+            {theme === 'light' && (
+              <MoonIcon color="#8c8c8c" width={20} height={20} />
+            )}
+          </button>
+
+          <button type="button" onClick={handleToogleSideBar}>
+            <HamburgerMenuIcon width={28} height={28} color="#5F3DC4" />
+          </button>
+        </div>
       </div>
 
       <SideBar open={sideBarOpen} handleCloseSideBar={handleCloseSideBar} />

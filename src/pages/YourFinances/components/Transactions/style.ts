@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding-right: 16px;
   padding-bottom: 32px;
   padding-top: 32px;
-  background: #0a0a0a;
+  background: ${({ theme }) => (theme === 'dark' ? '#0a0a0a' : '#f2f2f2')};
   border-radius: 16px;
 
   @media (min-width: 768px) {
@@ -29,8 +29,9 @@ export const Container = styled.div`
   .content {
     margin-top: 16px;
     flex: 1;
-    overflow-y: auto;
+    height: 100%;
     max-height: 50vh;
+    overflow-y: auto;
 
     .isLoading {
       display: flex;
@@ -53,7 +54,7 @@ export const Container = styled.div`
         font-weight: 400;
         line-height: 22.4px;
         text-align: center;
-        color: #fff;
+        color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
       }
     }
   }

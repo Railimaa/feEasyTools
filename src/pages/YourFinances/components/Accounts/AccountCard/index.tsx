@@ -1,4 +1,5 @@
 import { BankAccountTypeIcon } from '../../../../../assets/Icons/BankAccountTypeIcon';
+import { useTheme } from '../../../../../contexts/useTheme';
 import { IBankAccount } from '../../../../../types/BankAccount';
 import { FormatCurrency } from '../../../../../utils/formatCurrency';
 import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
@@ -13,9 +14,12 @@ interface IAccountCardProps {
 export function AccountCard({ account, valuesVisible }: IAccountCardProps) {
   const { color, name, type, currentBalance } = account;
   const { handleOpenEditAccountModal } = useYourFinancesContext();
+  const { theme } = useTheme();
+
   return (
     <Container
       color={color}
+      theme={theme}
       role="button"
       onClick={() => handleOpenEditAccountModal(account)}
     >

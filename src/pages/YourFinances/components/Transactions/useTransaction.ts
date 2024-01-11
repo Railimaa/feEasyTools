@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { useTheme } from '../../../../contexts/useTheme';
 import { useTransactions } from '../../../../hooks/useTransactions';
 import { TransactionFilter } from '../../../../services/transactionsService/getAll';
 import { ITransactions } from '../../../../types/Transaction';
@@ -7,16 +8,21 @@ import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesCo
 
 export function useTransaction() {
   const { arValuesVisible } = useYourFinancesContext();
+  const { theme } = useTheme();
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
   const [openEditTransactionModal, setOpenEditTransactionModal] =
     useState<boolean>(false);
+
   const [transactionIsBeingEdited, setTransactionIsBeingEdited] =
     useState<null | ITransactions>(null);
+
   const [filters, setFilters] = useState<TransactionFilter>({
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
+
   const [openFilterModal, setOpenFilterModal] = useState<boolean>(false);
 
   const { transactions, isInitialLoading, isLoading, refetchTransactions } =
@@ -86,5 +92,6 @@ export function useTransaction() {
     handleOpenFilterModal,
     handleCloseFilterModal,
     handleApplyFilters,
+    theme,
   };
 }
