@@ -19,6 +19,7 @@ export function CategoriesIncome() {
     handleCloseDeleteModal,
     isLoadingDelete,
     handleDeleteCategory,
+    theme,
   } = useCategoriesIncome();
 
   if (openDeleteModal) {
@@ -35,7 +36,7 @@ export function CategoriesIncome() {
   const hasCategories = categories.length > 0;
 
   return (
-    <Container>
+    <Container theme={theme}>
       <header>
         <p>Categorias de receitas</p>
         <ArrowTopRightIcon width={20} height={20} color="#087F5B" />
@@ -53,7 +54,11 @@ export function CategoriesIncome() {
             <>
               <div className="notCategories">
                 <span>Nenhuma categoria cadastrada!</span>
-                <MagnifyingGlassIcon width={20} height={20} color="#fff" />
+                <MagnifyingGlassIcon
+                  width={20}
+                  height={20}
+                  color={theme === 'dark' ? '#fff' : '#000'}
+                />
               </div>
 
               <div className="btn">

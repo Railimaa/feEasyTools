@@ -2,6 +2,7 @@ import { Pencil1Icon } from '@radix-ui/react-icons';
 
 import { CategoryIcon } from '../../../../../assets/Icons/categories/CategoryIcon';
 import { Trash } from '../../../../../assets/Icons/Trash';
+import { useTheme } from '../../../../../contexts/useTheme';
 import { ICategoryTransaction } from '../../../../../types/CategoryTransaction';
 
 import { Container } from './style';
@@ -17,8 +18,10 @@ export function CardCategory({
   handleOpenEditCategoryModal,
   handleOpenDeleteModal,
 }: ICardCategoryProps) {
+  const { theme } = useTheme();
+
   return (
-    <Container>
+    <Container theme={theme}>
       <div className="iconAndName">
         <CategoryIcon
           type={category.type === 'EXPENSE' ? 'expense' : 'income'}

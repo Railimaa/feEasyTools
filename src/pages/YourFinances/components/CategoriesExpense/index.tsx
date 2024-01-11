@@ -22,6 +22,7 @@ export function CategoriesExpense() {
     handleCloseDeleteModal,
     handleDeleteCategory,
     isLoadingDelete,
+    theme,
   } = useCategorieExpense();
 
   if (openDeleteModal) {
@@ -38,7 +39,7 @@ export function CategoriesExpense() {
   const hasCategories = categories.length > 0;
 
   return (
-    <Container>
+    <Container theme={theme}>
       <header>
         <p>Categorias de despesas</p>
         <ArrowBottomRightIcon width={20} height={20} color="#e03131" />
@@ -56,7 +57,11 @@ export function CategoriesExpense() {
             <>
               <div className="notCategories">
                 <span>Nenhuma categoria cadastrada!</span>
-                <MagnifyingGlassIcon width={20} height={20} color="#fff" />
+                <MagnifyingGlassIcon
+                  width={20}
+                  height={20}
+                  color={theme === 'dark' ? '#fff' : '#000'}
+                />
               </div>
 
               <div className="btn">
