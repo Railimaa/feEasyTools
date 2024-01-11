@@ -26,7 +26,7 @@ export function Select({
   return (
     <Container>
       <SelectC
-        value={value}
+        value={value || ''}
         onChange={(event) => onChange?.(event.target.value)}
         placeholder="Tipo"
         color={error}

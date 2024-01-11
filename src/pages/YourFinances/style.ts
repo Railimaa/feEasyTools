@@ -51,9 +51,7 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
     margin-top: 60px;
 
     h2 {
-      color: #fff;
-      box-shadow: 0px 2px 70px 4px #6741d9;
-      border-radius: 8px;
+      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     }
   }
 
