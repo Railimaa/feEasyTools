@@ -22,7 +22,7 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   }
 
   .activeSlide {
-    background: #868e96;
+    background: ${({ theme }) => (theme === 'dark' ? '#868e96' : '#ccc')};
     border-radius: 36px;
   }
 
