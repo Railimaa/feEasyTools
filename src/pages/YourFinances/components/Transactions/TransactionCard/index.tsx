@@ -1,4 +1,5 @@
 import { CategoryIcon } from '../../../../../assets/Icons/categories/CategoryIcon';
+import { useTheme } from '../../../../../contexts/useTheme';
 import { ITransactions } from '../../../../../types/Transaction';
 import { FormatCurrency } from '../../../../../utils/formatCurrency';
 import { FormatDate } from '../../../../../utils/formatDate';
@@ -16,8 +17,15 @@ export function TransactionCard({
   valuesVisible,
   handleOpenEditModal,
 }: ITransactionCardProps) {
+  const { theme } = useTheme();
+
   return (
-    <Container onClick={() => handleOpenEditModal(transaction)} role="button">
+    <Container
+      onClick={() => handleOpenEditModal(transaction)}
+      theme={theme}
+      $valuesVisible={valuesVisible}
+      role="button"
+    >
       <div className="nameAndDate">
         <CategoryIcon
           type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
@@ -31,21 +39,11 @@ export function TransactionCard({
       </div>
 
       {transaction.type === 'EXPENSE' && (
-        <span
-          id="EXPENSE"
-          style={{ filter: valuesVisible ? 'blur(8px)' : 'none' }}
-        >
-          - {FormatCurrency(transaction.value)}
-        </span>
+        <span id="EXPENSE">- {FormatCurrency(transaction.value)}</span>
       )}
 
       {transaction.type === 'INCOME' && (
-        <span
-          id="INCOME"
-          style={{ filter: valuesVisible ? 'blur(8px)' : 'none' }}
-        >
-          + {FormatCurrency(transaction.value)}
-        </span>
+        <span id="INCOME">+ {FormatCurrency(transaction.value)}</span>
       )}
     </Container>
   );

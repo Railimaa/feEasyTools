@@ -47,7 +47,6 @@ export const HeaderC = styled.header<{ theme: 'dark' | 'light' }>`
       }
 
       #theme {
-        font-size: 28px;
         width: 48px;
         height: 48px;
       }
