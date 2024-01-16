@@ -1,9 +1,4 @@
-import {
-  GearIcon,
-  HamburgerMenuIcon,
-  MoonIcon,
-  SunIcon,
-} from '@radix-ui/react-icons';
+import { GearIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 
 import { useTheme } from '../../contexts/useTheme';
@@ -13,7 +8,7 @@ import { UserMenu } from '../UserMenu';
 import { HeaderC } from './style';
 
 export function Header() {
-  const { theme, handleToggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   const [sideBarOpen, setSideBarOpen] = useState(false);
 
@@ -35,16 +30,6 @@ export function Header() {
 
         <div className="actions">
           <UserMenu />
-
-          <button type="button" onClick={handleToggleTheme} id="theme">
-            {theme === 'dark' && (
-              <SunIcon color="#8c8c8c" width={20} height={20} />
-            )}
-
-            {theme === 'light' && (
-              <MoonIcon color="#8c8c8c" width={20} height={20} />
-            )}
-          </button>
 
           <button type="button" onClick={handleToogleSideBar}>
             <HamburgerMenuIcon width={28} height={28} color="#5F3DC4" />

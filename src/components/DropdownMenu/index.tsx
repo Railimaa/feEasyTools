@@ -1,7 +1,8 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable import/no-extraneous-dependencies */
 import * as RdxDropdownMenu from '@radix-ui/react-dropdown-menu';
 import React, { CSSProperties } from 'react';
+
+import { useTheme } from '../../contexts/useTheme';
 
 import { ContainerContent, ContainerItem } from './style';
 
@@ -27,10 +28,14 @@ interface IDropdownMenuContent {
 }
 
 function DropdownMenuContent({ children, style, side }: IDropdownMenuContent) {
+  const { theme } = useTheme();
+
   return (
     <RdxDropdownMenu.Portal>
       <RdxDropdownMenu.Content side={side} style={{ zIndex: 1000 }}>
-        <ContainerContent style={style}>{children}</ContainerContent>
+        <ContainerContent style={style} theme={theme}>
+          {children}
+        </ContainerContent>
       </RdxDropdownMenu.Content>
     </RdxDropdownMenu.Portal>
   );
@@ -49,12 +54,14 @@ function DropdownMenuItem({
   colorHover,
   onSelect,
 }: IDropdownMenuItem) {
+  const { theme } = useTheme();
+
   return (
     <RdxDropdownMenu.Item
       style={{ border: 'none', outline: 'none' }}
       onSelect={onSelect}
     >
-      <ContainerItem style={style} color={colorHover}>
+      <ContainerItem style={style} color={colorHover} theme={theme}>
         {children}
       </ContainerItem>
     </RdxDropdownMenu.Item>

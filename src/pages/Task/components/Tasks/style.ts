@@ -23,14 +23,6 @@ export const Container = styled.div`
     height: 100%;
   }
 
-  .isLoading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
   .notTasks {
     display: flex;
     align-items: center;
@@ -49,7 +41,15 @@ export const Container = styled.div`
     flex: 1;
     height: 100%;
     max-height: 50vh;
-    overflow-x: auto;
+    overflow-y: auto;
+
+    .isLoading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow: hidden;
+    }
   }
 `;
 

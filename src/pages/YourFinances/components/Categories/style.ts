@@ -5,8 +5,6 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  max-height: 50vh;
-  overflow-y: auto;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 32px;
@@ -22,42 +20,41 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
 
-    p {
-      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
-      font-size: 16px;
-      letter-spacing: -0.5px;
-      font-weight: bold;
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      width: 100%;
+      max-width: 400px;
     }
   }
 
-  .isLoading {
+  .isInitialLoading {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    margin-top: 100px;
     width: 100%;
+    height: 100%;
   }
 
-  .notCategories {
+  .content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 40px;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-top: 20px;
 
-    span {
-      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
-      letter-spacing: -0.5px;
-      font-weight: bold;
+    .isLoading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 60px;
     }
-  }
-
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
   }
 `;

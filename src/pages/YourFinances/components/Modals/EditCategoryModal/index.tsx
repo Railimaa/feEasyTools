@@ -1,6 +1,8 @@
 import { Controller } from 'react-hook-form';
 
+import { Trash } from '../../../../../assets/Icons/Trash';
 import { Button } from '../../../../../components/Button';
+import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
 import { IconDropDownInput } from '../../../../../components/IconDropDown';
 import { Input } from '../../../../../components/Input';
 import { Modal } from '../../../../../components/Modal';
@@ -29,13 +31,33 @@ export function EditCategoryModal() {
     control,
     errors,
     isLoading,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteCategory,
   } = useEditCategoryModal();
+
+  if (openDeleteModal) {
+    return (
+      <ConfirmDeleteModal
+        isLoading={isLoading}
+        onClose={handleCloseDeleteModal}
+        title="categoria"
+        onConfirm={handleDeleteCategory}
+      />
+    );
+  }
 
   return (
     <Modal
       open={openEditCategoryModal}
       onClose={handleCloseEditCategoryModal}
       title="Editar categoria"
+      rightAction={
+        <button type="button" onClick={handleOpenDeleteModal}>
+          <Trash />
+        </button>
+      }
     >
       <Form onSubmit={handleSubmit}>
         <Input
