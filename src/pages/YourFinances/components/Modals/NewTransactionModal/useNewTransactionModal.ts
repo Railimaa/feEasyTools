@@ -72,7 +72,7 @@ export function useNewTransactionModal() {
   });
 
   const { categoriesTransaction, isFetching: isLoadingBankAccounts } =
-    useCategoriesTransaction();
+    useCategoriesTransaction({});
   const { accounts, isFetching: isLoadingCategories } = useBankAccounts();
 
   const categories = useMemo(
