@@ -63,13 +63,6 @@ export function Tasks() {
             typeTask={filters.type}
           />
 
-          {!isLoading && !hasTasks && (
-            <div className="notTasks">
-              <EmptyTasks width="85" height="85" />
-              <span>Nenhuma tarefa foi encontrada!</span>
-            </div>
-          )}
-
           {isEmptyList && <SearchNotFound searchValue={searchInput} />}
 
           <div className="content">
@@ -79,7 +72,14 @@ export function Tasks() {
               </div>
             )}
 
-            {!isLoading && (
+            {!isLoading && !hasTasks && (
+              <div className="notTasks">
+                <EmptyTasks width="85" height="85" />
+                <span>Nenhuma tarefa foi encontrada!</span>
+              </div>
+            )}
+
+            {!isLoading && hasTasks && (
               <Card
                 taskFiltered={tasksFiltered}
                 handleOpenEditTaskModal={handleOpenEditTaskModal}

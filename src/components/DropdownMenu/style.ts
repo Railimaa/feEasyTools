@@ -12,15 +12,18 @@ const slideUpAndFade = keyframes`
     }
 `;
 
-export const ContainerContent = styled.div`
+export const ContainerContent = styled.div<{ theme: 'dark' | 'light' }>`
   animation: ${slideUpAndFade} 0.3s;
   padding: 8px;
-  background: #272727;
+  background: ${({ theme }) => (theme === 'dark' ? '#272727' : '#f2f2f2')};
   border-radius: 16px;
   margin-top: 8px;
 `;
 
-export const ContainerItem = styled.div<{ color?: string }>`
+export const ContainerItem = styled.div<{
+  color?: string;
+  theme: 'dark' | 'light';
+}>`
   display: flex;
   align-items: center;
   padding-left: 16px;
@@ -29,21 +32,21 @@ export const ContainerItem = styled.div<{ color?: string }>`
   padding-bottom: 8px;
   min-height: 40px;
   cursor: pointer;
-  color: #fff;
+  color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
   font-size: 14px;
   font-weight: bold;
 
   &:hover {
-    color: '#fff';
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     font-weight: bold;
-    background: ${({ color }) => color || '#1d1d1d'};
+    background: ${({ theme }) => (theme === 'dark' ? '#1d1d1d' : '#fff')};
     border-radius: 16px;
     transition: all ease-in-out 0.1s;
   }
 
   a {
     outline: none;
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     text-decoration: none;
 
     &.active {

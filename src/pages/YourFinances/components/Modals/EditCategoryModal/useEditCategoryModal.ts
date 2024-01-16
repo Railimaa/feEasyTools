@@ -16,6 +16,16 @@ export function useEditCategoryModal() {
     categoryIsBeingEdited,
   } = useYourFinancesContext();
 
+  const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
+
+  function handleOpenDeleteModal() {
+    setOpenDeleteModal(true);
+  }
+
+  function handleCloseDeleteModal() {
+    setOpenDeleteModal(false);
+  }
+
   const schema = z.object({
     name: z.string().min(1, 'Informe o nome'),
     type: z.enum(['INCOME', 'EXPENSE']),
@@ -68,6 +78,26 @@ export function useEditCategoryModal() {
     }
   });
 
+  async function handleDeleteCategory() {
+    try {
+      setIsLoading(true);
+
+      await categoriesTransactionService.deleted(categoryIsBeingEdited!.id);
+      useQuery.invalidateQueries(['categoriesTransaction']);
+      useQuery.invalidateQueries(['transactions']);
+      handleCloseEditCategoryModal();
+      toast.success(
+        categoryIsBeingEdited?.type === 'INCOME'
+          ? 'Categoria de receita deletada com sucesso!'
+          : 'Categoria de despesa deletada com sucesso!',
+      );
+    } catch {
+      toast.error('Erro ao deletar categoria!');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return {
     handleSubmit,
     isLoading,
@@ -77,5 +107,9 @@ export function useEditCategoryModal() {
     openEditCategoryModal,
     handleCloseEditCategoryModal,
     categoryIsBeingEdited,
+    openDeleteModal,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteCategory,
   };
 }

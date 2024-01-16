@@ -23,8 +23,12 @@ export function TransactionTypeDropdownMenu({
     <DropdownMenu.Root>
       <Container theme={theme}>
         <DropdownMenu.Trigger>
-          {selectType === 'INCOME' && <IncomeIcon />}
-          {selectType === 'EXPENSE' && <ExpenseIcon />}
+          {selectType === 'INCOME' && (
+            <IncomeIcon color={theme === 'dark' ? '#fff' : '#000'} />
+          )}
+          {selectType === 'EXPENSE' && (
+            <ExpenseIcon color={theme === 'dark' ? '#fff' : '#000'} />
+          )}
           {selectType === undefined && (
             <TransactionsIcon color={theme === 'dark' ? '#fff' : '#000'} />
           )}
@@ -47,7 +51,7 @@ export function TransactionTypeDropdownMenu({
             style={{ gap: '8px' }}
             onSelect={() => onSelect('INCOME')}
           >
-            <IncomeIcon />
+            <IncomeIcon color={theme === 'dark' ? '#fff' : '#000'} />
             Receitas
           </DropdownMenu.Item>
 
@@ -55,7 +59,7 @@ export function TransactionTypeDropdownMenu({
             style={{ gap: '8px' }}
             onSelect={() => onSelect('EXPENSE')}
           >
-            <ExpenseIcon />
+            <ExpenseIcon color={theme === 'dark' ? '#fff' : '#000'} />
             Despesas
           </DropdownMenu.Item>
 
@@ -63,7 +67,7 @@ export function TransactionTypeDropdownMenu({
             style={{ gap: '8px' }}
             onSelect={() => onSelect(undefined)}
           >
-            <TransactionsIcon color="#fff" />
+            <TransactionsIcon color={theme === 'dark' ? '#fff' : '#000'} />
             Transações
           </DropdownMenu.Item>
         </DropdownMenu.Content>

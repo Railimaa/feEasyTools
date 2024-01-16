@@ -15,9 +15,9 @@ export function useEditTransactionModal(
   transaction: ITransactions,
   handleCloseModal: () => void,
 ) {
-  const { accounts, isFetching: isLoadingAccounts } = useBankAccounts();
-  const { categoriesTransaction, isFetching: isLoadingCategories } =
-    useCategoriesTransaction();
+  const { accounts } = useBankAccounts();
+  const { categoriesTransaction } = useCategoriesTransaction({});
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
 
@@ -121,9 +121,7 @@ export function useEditTransactionModal(
   );
   return {
     accounts,
-    isLoadingAccounts,
     categories,
-    isLoadingCategories,
     handleSubmit,
     register,
     errors,

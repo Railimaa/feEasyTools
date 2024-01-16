@@ -6,7 +6,7 @@ import { Container, InputC } from './style';
 interface IInputSearchProps extends ComponentProps<'input'> {}
 
 export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
-  ({ ...props }, ref) => {
+  ({ value, ...props }, ref) => {
     const [openInput, setOpenInput] = useState<boolean>(false);
 
     function handleOpenInput() {
@@ -14,7 +14,9 @@ export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
     }
 
     function handleBlur() {
-      setOpenInput(false);
+      if (!value) {
+        setOpenInput(false);
+      }
     }
 
     return (

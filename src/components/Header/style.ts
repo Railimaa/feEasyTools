@@ -4,13 +4,11 @@ export const HeaderC = styled.header<{ theme: 'dark' | 'light' }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
   height: 80px;
   width: 100%;
-  z-index: 9000;
+  z-index: 400;
   background: ${({ theme }) => (theme === 'dark' ? '#111113' : '#FFFFFF')};
-  border-bottom: 1px solid
-    ${({ theme }) =>
-      theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : '#f2f2f2'};
 
   .content {
     display: flex;

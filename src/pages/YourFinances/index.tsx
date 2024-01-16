@@ -2,8 +2,7 @@ import { Header } from '../../components/Header';
 import { useTheme } from '../../contexts/useTheme';
 
 import { Accounts } from './components/Accounts';
-import { CategoriesExpense } from './components/CategoriesExpense';
-import { CategoriesIncome } from './components/CategoriesIncome';
+import { Categories } from './components/Categories';
 import { Fab } from './components/Fab';
 import { EditAccountModal } from './components/Modals/EditAccountModal';
 import { EditCategoryModal } from './components/Modals/EditCategoryModal';
@@ -43,13 +42,7 @@ export function YourFinances() {
               </div>
 
               <div className="categories">
-                <div className="income">
-                  <CategoriesIncome />
-                </div>
-
-                <div className="expense">
-                  <CategoriesExpense />
-                </div>
+                <Categories />
               </div>
 
               <Fab />

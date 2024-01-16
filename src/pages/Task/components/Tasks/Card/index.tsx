@@ -45,7 +45,7 @@ function Card({ taskFiltered, handleOpenEditTaskModal }: ICardProps) {
         </div>
       </div>
 
-      <button type="button" onClick={() => alert('Alterou status')}>
+      <button type="button">
         {task.done === false && (
           <CrossCircledIcon width={20} height={20} color="#C92A2A" />
         )}

@@ -3,9 +3,16 @@ import { httpClient } from '../httpClient';
 
 type CategoryTransactionResponse = Array<ICategoryTransaction>;
 
-export async function getAll() {
+export type CategoryTransactionFilter = {
+  type?: 'INCOME' | 'EXPENSE';
+};
+
+export async function getAll(filter: CategoryTransactionFilter) {
   const { data } = await httpClient.get<CategoryTransactionResponse>(
     '/categoriesTransactions',
+    {
+      params: filter,
+    },
   );
 
   return data;
