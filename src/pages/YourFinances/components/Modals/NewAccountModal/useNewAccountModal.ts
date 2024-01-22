@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { useTheme } from '../../../../../contexts/useTheme';
 import { bankAccountService } from '../../../../../services/bankAccountService';
 import { currencyStringToNumber } from '../../../../../utils/currencyStringToNumber';
 import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
@@ -17,6 +18,8 @@ export function useNewAccountModal() {
     handleOpenNewAccountModal,
     handleCloseNewAccountModal,
   } = useYourFinancesContext();
+
+  const { theme } = useTheme();
 
   const schema = z.object({
     initialBalance: z.string().min(1, 'Saldo inicial é obrigatório.'),
@@ -67,5 +70,6 @@ export function useNewAccountModal() {
     errors,
     isLoading,
     control,
+    theme,
   };
 }

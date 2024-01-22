@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Container } from './style';
 
-export function LayouthAuth() {
+export default function LayouthAuth() {
   return (
     <Container>
       <div className="content">

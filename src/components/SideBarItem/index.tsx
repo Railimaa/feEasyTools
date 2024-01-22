@@ -1,39 +1,24 @@
 import {
   ArrowTopRightIcon,
   HeartFilledIcon,
-  MoonIcon,
   PersonIcon,
   ReaderIcon,
   SunIcon,
 } from '@radix-ui/react-icons';
 import { NavLink } from 'react-router-dom';
 
-import { ToggleThemeIcon } from '../../assets/Icons/ToggleThemeIcon';
 import { useTheme } from '../../contexts/useTheme';
 import { UserMenu } from '../UserMenu';
 
 import { Container } from './style';
 
 export function SideBarItem() {
-  const { theme, handleToggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <Container theme={theme}>
       <div className="userOptions">
         <UserMenu />
-
-        <button
-          type="button"
-          onClick={handleToggleTheme}
-          className="toggleButton"
-        >
-          <div className="word">
-            <MoonIcon width={20} height={20} />
-            Tema Escuro
-          </div>
-
-          <ToggleThemeIcon dark={theme === 'dark'} />
-        </button>
       </div>
 
       <NavLink to="/">

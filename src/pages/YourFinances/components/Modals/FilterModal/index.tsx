@@ -1,9 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 
+import { BankAccountTypeIcon } from '../../../../../assets/Icons/BankAccountTypeIcon';
 import { Button } from '../../../../../components/Button';
 import { Modal } from '../../../../../components/Modal';
 
-import { ContainerAccounts, ContainerYears } from './style';
+import { Container } from './style';
 import { useFilterModal } from './useFilterModal';
 
 interface IFilterModalProps {
@@ -30,10 +31,10 @@ export function FilterModal({
 
   return (
     <Modal open={open} onClose={handleCloseFilterModal} title="Filtros">
-      <ContainerAccounts>
+      <Container>
         <span>Conta</span>
 
-        <div className="actions">
+        <div className="accounts">
           {accounts.map((account) => (
             <button
               key={account.id}
@@ -42,24 +43,25 @@ export function FilterModal({
               className={selectBankAccount === account.id ? 'btn-active' : ''}
             >
               {account.name}
+              <BankAccountTypeIcon type={account.type} />
             </button>
           ))}
         </div>
-      </ContainerAccounts>
 
-      <ContainerYears>
-        <span>Ano</span>
+        <div className="year">
+          <span>Ano</span>
 
-        <div className="actions">
-          <button type="button" onClick={() => handleChangeYear(-1)}>
-            <ChevronLeftIcon width={48} height={18} color="#fff" />
-          </button>
+          <div className="action">
+            <button type="button" onClick={() => handleChangeYear(-1)}>
+              <ChevronLeftIcon width={48} height={18} color="#fff" />
+            </button>
 
-          <small>{selectYear}</small>
+            <small>{selectYear}</small>
 
-          <button type="button" onClick={() => handleChangeYear(+1)}>
-            <ChevronRightIcon width={48} height={18} color="#fff" />
-          </button>
+            <button type="button" onClick={() => handleChangeYear(+1)}>
+              <ChevronRightIcon width={48} height={18} color="#fff" />
+            </button>
+          </div>
         </div>
 
         <Button
@@ -72,7 +74,7 @@ export function FilterModal({
         >
           Aplicar filtros
         </Button>
-      </ContainerYears>
+      </Container>
     </Modal>
   );
 }

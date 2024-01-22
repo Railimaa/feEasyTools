@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { createContext, useCallback, useState } from 'react';
 
 import { ICategoryContact } from '../../../../types/CategoryContact';
 import { IContact } from '../../../../types/Contact';
@@ -75,43 +76,25 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
     setCategoryBeingEdited(null);
   }, []);
 
-  const contextValues = useMemo(
-    () => ({
-      openNewContactModal,
-      handleOpenNewContactModal,
-      handleCloseNewContactModal,
-      openEditContactModal,
-      contactIsBeingEdited,
-      handleOpenEditedContactModal,
-      handleCloseEditedContactModal,
-      openNewCategoryContact,
-      handleOpenNewCategoryContactModal,
-      handleCloseNewCategoryContactModal,
-      openEditCategoryContact,
-      categoryBeingEdited,
-      handleOpenEditedCategoryModal,
-      handleCloseEditedCategoryModal,
-    }),
-    [
-      openNewContactModal,
-      handleOpenNewContactModal,
-      handleCloseNewContactModal,
-      openEditContactModal,
-      contactIsBeingEdited,
-      handleOpenEditedContactModal,
-      handleCloseEditedContactModal,
-      openNewCategoryContact,
-      handleOpenNewCategoryContactModal,
-      handleCloseNewCategoryContactModal,
-      openEditCategoryContact,
-      categoryBeingEdited,
-      handleOpenEditedCategoryModal,
-      handleCloseEditedCategoryModal,
-    ],
-  );
-
   return (
-    <ContactContext.Provider value={contextValues}>
+    <ContactContext.Provider
+      value={{
+        openNewContactModal,
+        handleOpenNewContactModal,
+        handleCloseNewContactModal,
+        openEditContactModal,
+        contactIsBeingEdited,
+        handleOpenEditedContactModal,
+        handleCloseEditedContactModal,
+        openNewCategoryContact,
+        handleOpenNewCategoryContactModal,
+        handleCloseNewCategoryContactModal,
+        openEditCategoryContact,
+        categoryBeingEdited,
+        handleOpenEditedCategoryModal,
+        handleCloseEditedCategoryModal,
+      }}
+    >
       {children}
     </ContactContext.Provider>
   );

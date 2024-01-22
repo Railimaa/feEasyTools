@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { createContext, useCallback, useState } from 'react';
 
 import { ITask } from '../../../../types/Task';
 
@@ -55,35 +56,21 @@ export function TaskContextProvider({
     setOpenNewCategoryModal(false);
   }, []);
 
-  const contextValues = useMemo(
-    () => ({
-      openNewTaskModal,
-      handleOpenNewTaskModal,
-      handleCloseNewTaskModal,
-      openEditedTaskModal,
-      taskBeingEdited,
-      handleOpenEditTaskModal,
-      handleCloseEditTaskModal,
-      openNewCategoryModal,
-      handleOpenCategoryModal,
-      handleCloseCategoryModal,
-    }),
-    [
-      openNewTaskModal,
-      handleOpenNewTaskModal,
-      handleCloseNewTaskModal,
-      openEditedTaskModal,
-      taskBeingEdited,
-      handleOpenEditTaskModal,
-      handleCloseEditTaskModal,
-      openNewCategoryModal,
-      handleOpenCategoryModal,
-      handleCloseCategoryModal,
-    ],
-  );
-
   return (
-    <TaskContext.Provider value={contextValues}>
+    <TaskContext.Provider
+      value={{
+        openNewTaskModal,
+        handleOpenNewTaskModal,
+        handleCloseNewTaskModal,
+        openEditedTaskModal,
+        taskBeingEdited,
+        handleOpenEditTaskModal,
+        handleCloseEditTaskModal,
+        openNewCategoryModal,
+        handleOpenCategoryModal,
+        handleCloseCategoryModal,
+      }}
+    >
       {children}
     </TaskContext.Provider>
   );

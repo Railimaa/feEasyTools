@@ -17,25 +17,6 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
     gap: 20px;
     margin-bottom: 10px;
     padding: 12px;
-
-    .toggleButton {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
-      font-size: 18px;
-      letter-spacing: -0.5px;
-      background: transparent;
-      border: none;
-      outline: none;
-
-      .word {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-    }
   }
 
   a {

@@ -1,10 +1,10 @@
 import { EmptyTasks } from '../../../../assets/Icons/EmptyTasks';
 import { FilterIcon } from '../../../../assets/Icons/FIlterIcon';
+import { InputSearch } from '../../../../components/InputSearch';
 import { Spinner } from '../../../../components/Spinner';
 import { FilterTaskModal } from '../Modals/FilterTaskModal';
 
 import Card from './Card';
-import { InputSearch } from './SearchInput';
 import { SearchNotFound } from './SearchNotFound';
 import { Container, Header } from './style';
 import { TypeTaskDropdown } from './TypeTaskDropdown';
@@ -58,10 +58,12 @@ export function Tasks() {
             </button>
           </Header>
 
-          <TypeTaskDropdown
-            handleApplyFilterTypeTask={handleApplyFilterTypeTask}
-            typeTask={filters.type}
-          />
+          {!searchInput && (
+            <TypeTaskDropdown
+              handleApplyFilterTypeTask={handleApplyFilterTypeTask}
+              typeTask={filters.type}
+            />
+          )}
 
           {isEmptyList && <SearchNotFound searchValue={searchInput} />}
 

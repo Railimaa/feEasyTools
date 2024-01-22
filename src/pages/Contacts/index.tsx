@@ -11,7 +11,7 @@ import { NewContactModal } from './components/Modals/NewContactModal';
 import { Title } from './components/Title';
 import { Container } from './style';
 
-export function Contacts() {
+export default function Contacts() {
   return (
     <ContactProvider>
       <ContactContext.Consumer>

@@ -5,13 +5,18 @@ import { Button } from '../../../../../components/Button';
 import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
 import { DatePickerInput } from '../../../../../components/DatePickerInput';
 import { Input } from '../../../../../components/Input';
-import { InputRadio } from '../../../../../components/InputRadio';
 import { Modal } from '../../../../../components/Modal';
+import { RadioGroup } from '../../../../../components/RadioGroup';
 import { Select } from '../../../../../components/Select';
 import { TextArea } from '../../../../../components/TextArea';
 
 import { Form } from './style';
 import { useEditedTaskModal } from './useEditedTaskModal';
+
+const optionsStatusTask = [
+  { value: 'true', label: 'Conclúida' },
+  { value: 'false', label: 'Não conclúida' },
+];
 
 export function EditedTaskModal() {
   const {
@@ -100,24 +105,17 @@ export function EditedTaskModal() {
           control={control}
           name="done"
           render={({ field: { onChange, value } }) => (
-            <>
-              <InputRadio
-                labelName="Concluída"
-                labelId="Concluída"
-                checked={value === true}
-                onChange={(event) => onChange(event.target.checked)}
-              />
-              <InputRadio
-                labelName="Não Concluída"
-                labelId="Não Concluída"
-                checked={value === false}
-                onChange={(event) => onChange(!event.target.checked)}
-              />
-            </>
+            <RadioGroup
+              options={optionsStatusTask}
+              value={value}
+              onChange={onChange}
+            />
           )}
         />
 
-        <Button isLoading={isLoading}>Salvar</Button>
+        <Button isLoading={isLoading} id="save">
+          Salvar
+        </Button>
       </Form>
     </Modal>
   );

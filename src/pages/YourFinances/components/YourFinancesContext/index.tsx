@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { createContext, useCallback, useState } from 'react';
 
 import { IBankAccount } from '../../../../types/BankAccount';
 import { ICategoryTransaction } from '../../../../types/CategoryTransaction';
@@ -127,55 +128,31 @@ export function YourFinancesProvider({
     setCategoryIsBeingEdited(null);
   }, []);
 
-  const contextValues = useMemo(
-    () => ({
-      openNewAccountModal,
-      handleOpenNewAccountModal,
-      handleCloseNewAccountModal,
-      arValuesVisible,
-      handleVisibleArValues,
-      accountIsBeingEdited,
-      openEditAccountModal,
-      handleOpenEditAccountModal,
-      handleCloseEditAccountModal,
-      openNewTransactionModal,
-      newTransactionType,
-      handleOpenNewTransactionModal,
-      handleCloseNewTransactionModal,
-      openNewCategoryModal,
-      handleOpenNewCategoryModal,
-      handleCloseNewCategoryModal,
-      openEditCategoryModal,
-      categoryIsBeingEdited,
-      handleOpenEditCategoryModal,
-      handleCloseEditCategoryModal,
-    }),
-    [
-      openNewAccountModal,
-      handleOpenNewAccountModal,
-      handleCloseNewAccountModal,
-      arValuesVisible,
-      handleVisibleArValues,
-      accountIsBeingEdited,
-      openEditAccountModal,
-      handleOpenEditAccountModal,
-      handleCloseEditAccountModal,
-      openNewTransactionModal,
-      newTransactionType,
-      handleOpenNewTransactionModal,
-      handleCloseNewTransactionModal,
-      openNewCategoryModal,
-      handleOpenNewCategoryModal,
-      handleCloseNewCategoryModal,
-      openEditCategoryModal,
-      categoryIsBeingEdited,
-      handleOpenEditCategoryModal,
-      handleCloseEditCategoryModal,
-    ],
-  );
-
   return (
-    <YourFinancesContext.Provider value={contextValues}>
+    <YourFinancesContext.Provider
+      value={{
+        openNewAccountModal,
+        handleOpenNewAccountModal,
+        handleCloseNewAccountModal,
+        arValuesVisible,
+        handleVisibleArValues,
+        accountIsBeingEdited,
+        openEditAccountModal,
+        handleOpenEditAccountModal,
+        handleCloseEditAccountModal,
+        openNewTransactionModal,
+        newTransactionType,
+        handleOpenNewTransactionModal,
+        handleCloseNewTransactionModal,
+        openNewCategoryModal,
+        handleOpenNewCategoryModal,
+        handleCloseNewCategoryModal,
+        openEditCategoryModal,
+        categoryIsBeingEdited,
+        handleOpenEditCategoryModal,
+        handleCloseEditCategoryModal,
+      }}
+    >
       {children}
     </YourFinancesContext.Provider>
   );

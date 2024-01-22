@@ -14,7 +14,7 @@ import { InputFile } from './InputFile';
 import { Container, FieldSet, Form } from './style';
 import { useProfile } from './useProfile';
 
-export function Profile() {
+export default function Profile() {
   const {
     register,
     handleSubmit,

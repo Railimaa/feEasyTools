@@ -3,7 +3,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as RdxDialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import { useTheme } from '../../contexts/useTheme';
 
 import { Container } from './style';
 
@@ -22,35 +24,22 @@ export function Modal({
   onClose,
   rightAction,
 }: IModalProps) {
-  const [shouldRender, setShouldRender] = useState<boolean>(open);
-
-  useEffect(() => {
-    if (open) {
-      setShouldRender(true);
-    }
-
-    let timeoutId: NodeJS.Timeout;
-    if (!open) {
-      timeoutId = setTimeout(() => {
-        setShouldRender(false);
-      }, 300);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [open]);
+  const { theme } = useTheme();
 
   return (
-    <RdxDialog.Root open={shouldRender} onOpenChange={onClose}>
+    <RdxDialog.Root open={open} onOpenChange={onClose}>
       <RdxDialog.Portal>
-        <Container $isLeaving={!open}>
+        <Container theme={theme}>
           <RdxDialog.Overlay className="overlay" />
 
           <RdxDialog.Content className="content">
             <header>
               <button type="button" onClick={onClose}>
-                <Cross2Icon width={24} height={24} color="#fff" />
+                <Cross2Icon
+                  width={24}
+                  height={24}
+                  color={theme === 'dark' ? '#fff' : '#000'}
+                />
               </button>
 
               <strong>{title}</strong>

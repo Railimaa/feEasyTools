@@ -10,7 +10,7 @@ import { Tasks } from './components/Tasks';
 import { Title } from './components/Title';
 import { Container } from './style';
 
-export function Task() {
+export default function Task() {
   return (
     <TaskContextProvider>
       <TaskContext.Consumer>

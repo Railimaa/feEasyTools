@@ -34,6 +34,7 @@ export function NewAccountModal() {
     errors,
     register,
     control,
+    theme,
   } = useNewAccountModal();
 
   return (
@@ -43,7 +44,7 @@ export function NewAccountModal() {
         open={openNewAccountModal}
         onClose={handleCloseNewAccountModal}
       >
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} theme={theme}>
           <span id="saldoInicial">Saldo inicial</span>
           <div className="valueAccount">
             <span id="RS">R$</span>

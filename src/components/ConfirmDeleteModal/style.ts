@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   .text {
     font-weight: bold;
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     width: 180px;
     text-align: center;
     letter-spacing: -0.5px;
@@ -28,7 +28,7 @@ export const Container = styled.div`
 
   .description {
     font-weight: 400;
-    color: #dee2e6;
+    color: ${({ theme }) => (theme === 'dark' ? '#dee2e6' : '#000')};
     letter-spacing: -0.5px;
     text-align: center;
   }
