@@ -10,6 +10,8 @@ export const ButtonC = styled.button<{ danger?: string; ghost?: string }>`
   margin-top: 12px;
   font-weight: bold;
   color: #fff;
+  border-radius: 16px;
+  transition: all ease-in-out 0.3s;
   background: ${({ color }) => {
     switch (color) {
       case 'danger':
@@ -20,7 +22,6 @@ export const ButtonC = styled.button<{ danger?: string; ghost?: string }>`
         return '#5f3dc4';
     }
   }};
-  border-radius: 16px;
 
   &:hover {
     background: ${({ color }) => {
@@ -33,7 +34,6 @@ export const ButtonC = styled.button<{ danger?: string; ghost?: string }>`
           return '#7048e8';
       }
     }};
-    transition: all ease-in-out 0.3s;
   }
 
   &:disabled {

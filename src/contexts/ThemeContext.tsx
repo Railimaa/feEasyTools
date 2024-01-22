@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { createContext, useCallback, useState } from 'react';
 
 interface IThemeContextValue {
   theme: 'dark' | 'light';
@@ -21,17 +22,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const contextValues = useMemo(
-    () => ({
-      theme,
-      handleToggleTheme,
-    }),
-
-    [theme, handleToggleTheme],
-  );
-
   return (
-    <ThemeContext.Provider value={contextValues}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        handleToggleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

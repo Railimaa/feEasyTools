@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { useTheme } from '../../../../../contexts/useTheme';
 import { bankAccountService } from '../../../../../services/bankAccountService';
 import { currencyStringToNumber } from '../../../../../utils/currencyStringToNumber';
 import { useYourFinancesContext } from '../../YourFinancesContext/useYourFinancesContext';
@@ -15,6 +16,8 @@ export function useEditAccountModal() {
     handleCloseEditAccountModal,
     accountIsBeingEdited,
   } = useYourFinancesContext();
+
+  const { theme } = useTheme();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
@@ -106,5 +109,6 @@ export function useEditAccountModal() {
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteAccount,
+    theme,
   };
 }

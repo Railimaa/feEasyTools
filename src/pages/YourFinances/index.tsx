@@ -16,7 +16,7 @@ import {
 } from './components/YourFinancesContext';
 import { Container } from './style';
 
-export function YourFinances() {
+export default function YourFinances() {
   const { theme } = useTheme();
 
   return (

@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
@@ -72,7 +72,7 @@ export function useEditedTaskModal() {
       reset();
       handleCloseEditTaskModal();
       toast.success('Tarefa editada com sucesso!');
-    } catch {
+    } catch (err) {
       toast.error('Erro ao editar tarefa!');
     } finally {
       setIsLoading(false);
@@ -94,8 +94,6 @@ export function useEditedTaskModal() {
     }
   }
 
-  const categories = useMemo(() => categoriesTask, [categoriesTask]);
-
   return {
     openEditedTaskModal,
     handleCloseEditTaskModal,
@@ -109,6 +107,6 @@ export function useEditedTaskModal() {
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteTask,
-    categories,
+    categories: categoriesTask,
   };
 }

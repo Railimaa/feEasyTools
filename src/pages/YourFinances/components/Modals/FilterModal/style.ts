@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerAccounts = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -13,10 +13,13 @@ export const ContainerAccounts = styled.div`
     letter-spacing: -1px;
   }
 
-  .actions {
+  .accounts {
     margin-bottom: 24px;
 
     button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
       text-align: left;
       padding: 12px;
@@ -25,55 +28,36 @@ export const ContainerAccounts = styled.div`
       background: none;
       outline: none;
       color: #fff;
+      transition: 0.1s ease;
 
       &:hover {
         background: #383838;
-        transition: all 0.1s ease-in-out;
       }
     }
-
-    .btn-active {
-      background: #525252 !important;
-      transition: all 0.1s ease-in-out;
-    }
-  }
-`;
-
-export const ContainerYears = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  span {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 23.4px;
-    letter-spacing: -1px;
   }
 
-  .actions {
+  .year {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 200px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 20px;
 
-    button {
-      width: 48px;
-      height: 48px;
-      border: none;
-      outline: none;
-      background: none;
-    }
+    .action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 200px;
 
-    small {
-      color: #fff;
-      font-weight: 500;
-      font-size: 14px;
-      letter-spacing: -0.5px;
+      button {
+        border: none;
+        background: none;
+        outline: none;
+      }
     }
+  }
+
+  .btn-active {
+    background: #525252 !important;
   }
 
   button {

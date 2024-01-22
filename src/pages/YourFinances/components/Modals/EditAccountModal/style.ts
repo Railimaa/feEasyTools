@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const Form = styled.form`
+export const Form = styled.form<{ theme: 'dark' | 'light' }>`
   #saldoInicial {
     font-size: 12px;
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     letter-spacing: -0.5px;
     font-weight: bold;
   }
@@ -17,7 +17,7 @@ export const Form = styled.form`
 
     #RS {
       font-size: 18px;
-      color: #fff;
+      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
       letter-spacing: -0.5px;
     }
   }

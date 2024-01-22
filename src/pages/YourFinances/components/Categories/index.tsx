@@ -1,10 +1,10 @@
+import { InputSearch } from '../../../../components/InputSearch';
 import { Spinner } from '../../../../components/Spinner';
 
 import { CardCategory } from './CardCategory';
 import { DropdownCategoryFilter } from './DropdownCategoryFilter';
 import { EmptyList } from './EmptyList';
 import { EmptySearch } from './EmptySearch';
-import { InputSearch } from './InputSearch';
 import { Container } from './style';
 import { useCategories } from './useCategories';
 

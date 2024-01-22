@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { Trash } from '../../assets/Icons/Trash';
+import { useTheme } from '../../contexts/useTheme';
 import { Button } from '../Button';
 import { Modal } from '../Modal';
 
@@ -22,9 +23,11 @@ export function ConfirmDeleteModal({
   isLoading,
   subtitle,
 }: IConfirmDeleteModalProps) {
+  const { theme } = useTheme();
+
   return (
     <Modal open title="Excluir" onClose={onClose}>
-      <Container>
+      <Container theme={theme}>
         <div className="icon">
           <Trash />
         </div>

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { useTheme } from '../../../../../contexts/useTheme';
 import { useBankAccounts } from '../../../../../hooks/useBankAccounts';
 import { useCategoriesTransaction } from '../../../../../hooks/useCategoriesTransactions';
 import { transactionsService } from '../../../../../services/transactionsService';
@@ -15,6 +16,8 @@ export function useEditTransactionModal(
   transaction: ITransactions,
   handleCloseModal: () => void,
 ) {
+  const { theme } = useTheme();
+
   const { accounts } = useBankAccounts();
   const { categoriesTransaction } = useCategoriesTransaction({});
 
@@ -71,12 +74,12 @@ export function useEditTransactionModal(
       useQuery.invalidateQueries(['transactions']);
       useQuery.invalidateQueries(['bankAccounts']);
       reset();
+      handleCloseModal();
       toast.success(
         transaction.type === 'EXPENSE'
           ? 'Despesa editada com sucesso!'
           : 'Receita editada com sucesso!',
       );
-      handleCloseModal();
     } catch {
       toast.error(
         transaction.type === 'EXPENSE'
@@ -131,5 +134,6 @@ export function useEditTransactionModal(
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteTransaction,
+    theme,
   };
 }

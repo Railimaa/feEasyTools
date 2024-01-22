@@ -1,9 +1,9 @@
 import { EmptyBox } from '../../../../assets/Icons/EmptyBox';
+import { InputSearch } from '../../../../components/InputSearch';
 import { Spinner } from '../../../../components/Spinner';
 import { EditedCategoryModal } from '../Modals/EditedCategoryModal';
 
 import { Card } from './Card';
-import { SearchInput } from './SearchInput';
 import { SearchNotFound } from './SearchNotFound';
 import { Container } from './style';
 import { useCategories } from './useCategories';
@@ -41,10 +41,11 @@ export function Categories() {
 
       {!isLoading && hasCategories && (
         <>
-          <SearchInput
+          <InputSearch
             value={searchInput}
             onChange={handleChangeSearchInput}
             placeholder="Pesquisar categoria..."
+            style={{ maxWidth: '800px' }}
           />
 
           {isEmptyList && <SearchNotFound searchValue={searchInput} />}

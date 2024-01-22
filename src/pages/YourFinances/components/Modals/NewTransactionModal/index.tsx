@@ -22,6 +22,7 @@ export function NewTransactionModal() {
     control,
     errors,
     isLoading,
+    theme,
   } = useNewTransactionModal();
 
   const isExpense = newTransactionType === 'EXPENSE';
@@ -33,7 +34,7 @@ export function NewTransactionModal() {
       onClose={handleCloseNewTransactionModal}
     >
       <Container>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} theme={theme}>
           <span id="saldoInicial">
             {isExpense ? 'Valor da despesa' : 'Valor da receita'}
           </span>

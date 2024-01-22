@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
 
+import { useTheme } from '../../../../../contexts/useTheme';
 import { useBankAccounts } from '../../../../../hooks/useBankAccounts';
 import { useCategoriesTransaction } from '../../../../../hooks/useCategoriesTransactions';
 import { transactionsService } from '../../../../../services/transactionsService';
@@ -19,6 +20,8 @@ export function useNewTransactionModal() {
     handleCloseNewTransactionModal,
     newTransactionType,
   } = useYourFinancesContext();
+
+  const { theme } = useTheme();
 
   const schema = z.object({
     value: z.string().min(1, 'Informe um valor'),
@@ -96,5 +99,6 @@ export function useNewTransactionModal() {
     errors,
     control,
     isLoading,
+    theme,
   };
 }

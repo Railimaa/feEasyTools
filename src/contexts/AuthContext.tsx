@@ -1,11 +1,6 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import { useQuery } from '@tanstack/react-query';
-import React, {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { PageLoader } from '../components/PageLoader';
@@ -54,18 +49,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isError, signOut]);
 
-  const authContextValue = useMemo(
-    () => ({
-      signedIn: isSuccess && signedIn,
-      signin,
-      signOut,
-      user: data,
-    }),
-    [isSuccess, signedIn, signin, signOut, data],
-  );
-
   return (
-    <AuthContext.Provider value={authContextValue}>
+    <AuthContext.Provider
+      value={{
+        signedIn: isSuccess && signedIn,
+        signin,
+        signOut,
+        user: data,
+      }}
+    >
       {isFetching && <PageLoader isFetching={isFetching} />}
 
       {!isFetching && children}

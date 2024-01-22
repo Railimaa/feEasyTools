@@ -7,7 +7,7 @@ import { Input } from '../../components/Input';
 import { Container } from './style';
 import { useSignup } from './useSignup';
 
-export function Signup() {
+export default function Signup() {
   const { handleSubmit, register, errors, isLoading } = useSignup();
 
   return (

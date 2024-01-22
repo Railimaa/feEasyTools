@@ -1,10 +1,14 @@
 import { useState } from 'react';
 
+import { useTheme } from '../../../../../contexts/useTheme';
 import { useBankAccounts } from '../../../../../hooks/useBankAccounts';
 
 export function useFilterModal() {
+  const { theme } = useTheme();
   const { accounts } = useBankAccounts();
+
   const [selectYear, setSelectYear] = useState(new Date().getFullYear());
+
   const [selectBankAccount, setSelectBankAccount] = useState<
     string | undefined
   >(undefined);
@@ -25,5 +29,6 @@ export function useFilterModal() {
     handleChangeYear,
     selectBankAccount,
     handleSelectBankAccount,
+    theme,
   };
 }

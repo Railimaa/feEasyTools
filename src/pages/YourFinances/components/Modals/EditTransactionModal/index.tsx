@@ -36,6 +36,7 @@ export function EditTransactionModal({
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteTransaction,
+    theme,
   } = useEditTransactionModal(transaction, handleCloseModal);
 
   const isExpense = transaction.type === 'EXPENSE';
@@ -62,7 +63,7 @@ export function EditTransactionModal({
         </button>
       }
     >
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} theme={theme}>
         <span id="saldoInicial">
           {isExpense ? 'Valor da despesa' : 'Valor da receita'}
         </span>

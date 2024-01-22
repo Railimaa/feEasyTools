@@ -40,6 +40,7 @@ export function EditAccountModal() {
     handleOpenDeleteModal,
     handleCloseDeleteModal,
     handleDeleteAccount,
+    theme,
   } = useEditAccountModal();
 
   if (openDeleteModal) {
@@ -66,7 +67,7 @@ export function EditAccountModal() {
           </button>
         }
       >
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} theme={theme}>
           <span id="saldoInicial">Saldo inicial</span>
           <div className="valueAccount">
             <span id="RS">R$</span>
