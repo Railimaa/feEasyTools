@@ -5,21 +5,20 @@ import { ICategoryTransaction } from '../../../../../types/CategoryTransaction';
 import { Container } from './style';
 
 interface ICardCategoryProps {
-  filteredCategories: ICategoryTransaction[];
+  category: ICategoryTransaction;
   handleOpenEditCategoryModal: (category: ICategoryTransaction) => void;
 }
 
 export function CardCategory({
-  filteredCategories,
+  category,
   handleOpenEditCategoryModal,
 }: ICardCategoryProps) {
   const { theme } = useTheme();
 
-  return filteredCategories.map((category) => (
+  return (
     <Container
       theme={theme}
       onClick={() => handleOpenEditCategoryModal(category)}
-      key={category.id}
       role="button"
     >
       <span>{category.name}</span>
@@ -29,5 +28,5 @@ export function CardCategory({
         category={category?.icon}
       />
     </Container>
-  ));
+  );
 }

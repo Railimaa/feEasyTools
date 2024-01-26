@@ -1,5 +1,15 @@
 import styled, { css, keyframes } from 'styled-components';
 
+const overlayIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const overlayOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
+
 const fadeIn = keyframes`
  from {
     transform: translateX(-100%);
@@ -19,16 +29,6 @@ const fadeOut = keyframes`
     transform: translateX(-100%);
     opacity: 0;
   }
-`;
-
-const fadeInOverlay = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`;
-
-const fadeOutOverlay = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
 `;
 
 export const Container = styled.div<{
@@ -67,13 +67,13 @@ export const Overlay = styled.div<{ $isLeaving: boolean }>`
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(1px);
-  animation: ${fadeInOverlay} 0.3s forwards;
+  backdrop-filter: blur(2px);
   z-index: 998;
+  animation: ${overlayIn} 0.3s forwards;
 
   ${({ $isLeaving }) =>
     $isLeaving &&
     css`
-      animation: ${fadeOutOverlay} 0.3s forwards;
+      animation: ${overlayOut} 0.3s forwards;
     `}
 `;

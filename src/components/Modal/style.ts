@@ -1,22 +1,28 @@
-import { keyframes, styled } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 
-const fadeIn = keyframes`
-   from { opacity: 0; }
-   to { opacity: 1; }
+const overlayIn = keyframes`
+  from { opacity: 0;}
+  to { opacity: 1;}
+`;
+
+const overlayOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0;  }
 `;
 
 const scaleIn = keyframes`
-  from { transform: translate(-50%, -50%) scale(0);  }
-  to { transform: translate(-50%, -50%) scale(1);  }
+  from { transform: translate(-50%, -50%) scale(0); }
+  to { transform: translate(-50%, -50%) scale(1); }
 `;
 
-// const scaleOut =
-//   from { transform: translate(-50%, -50%) scale(1); }
-//   to { transform: translate(-50%, -50%) scale(0); }
-// `;
+const scaleOut = keyframes`
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(0); }
+`;
 
 export const Container = styled.div<{
   theme: 'dark' | 'light';
+  $isLeaving: boolean;
 }>`
   .overlay {
     position: fixed;
@@ -25,9 +31,15 @@ export const Container = styled.div<{
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     z-index: 401;
-    animation: ${fadeIn} 0.3s forwards;
+    animation: ${overlayIn} 0.3s forwards;
+
+    ${({ $isLeaving }) =>
+      $isLeaving &&
+      css`
+        animation: ${overlayOut} 0.3s forwards;
+      `}
   }
 
   .content {
@@ -43,6 +55,12 @@ export const Container = styled.div<{
     z-index: 402;
     outline: none;
     animation: ${scaleIn} 0.3s forwards;
+
+    ${({ $isLeaving }) =>
+      $isLeaving &&
+      css`
+        animation: ${scaleOut} 0.3s forwards;
+      `}
 
     header {
       display: flex;

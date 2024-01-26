@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   span {
-    color: #fff;
+    color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
     font-size: 18px;
     font-weight: 700;
     line-height: 23.4px;
@@ -27,11 +27,12 @@ export const Container = styled.div`
       border: none;
       background: none;
       outline: none;
-      color: #fff;
+      color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
       transition: 0.1s ease;
 
       &:hover {
-        background: #383838;
+        background: ${({ theme }) =>
+          theme === 'dark' ? '#383838' : 'rgba(0, 0, 0, 0.1)'};
       }
     }
   }
@@ -50,14 +51,22 @@ export const Container = styled.div`
 
       button {
         border: none;
+        width: 48px;
+        height: 48px;
         background: none;
         outline: none;
+      }
+
+      small {
+        font-size: 14px;
+        color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
       }
     }
   }
 
   .btn-active {
-    background: #525252 !important;
+    background: ${({ theme }) =>
+      theme === 'dark' ? '#525252' : 'rgba(0, 0, 0, 0.3)'} !important;
   }
 
   button {

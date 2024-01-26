@@ -1,44 +1,43 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  .button1 {
+  #btnLeft {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 48px;
-    height: 48px;
     top: 50%;
-    left: 0;
+    left: 1px;
     transform: translateY(-50%);
-    z-index: 10;
+    width: 60px;
+    height: 60px;
+    z-index: 90;
     border: none;
-    background: transparent;
     outline: none;
+    background: transparent;
 
     &:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
     }
   }
 
-  .button2 {
+  #btnRight {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 1px;
+    z-index: 90;
     transform: translateY(-50%);
-    z-index: 10;
-    height: 48px;
-    width: 48px;
-    display: flex;
+    width: 60px;
+    height: 60px;
     border: none;
-    background: transparent;
     outline: none;
+    background: transparent;
 
     &:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
     }
   }
 `;

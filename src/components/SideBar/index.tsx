@@ -25,7 +25,6 @@ export function SideBar({ open, handleCloseSideBar }: ISideBarProps) {
             <Cross2Icon width={33} height={33} color="#5F3DC4" />
           </button>
         </div>
-
         <SideBarItem />
       </Container>
     </Overlay>

@@ -5,9 +5,8 @@ import * as RdxDialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import React from 'react';
 
-import { useTheme } from '../../contexts/useTheme';
-
 import { Container } from './style';
+import { useModal } from './useModal';
 
 interface IModalProps {
   open: boolean;
@@ -24,12 +23,12 @@ export function Modal({
   onClose,
   rightAction,
 }: IModalProps) {
-  const { theme } = useTheme();
+  const { theme, shoulderRender } = useModal(open);
 
   return (
-    <RdxDialog.Root open={open} onOpenChange={onClose}>
+    <RdxDialog.Root open={shoulderRender} onOpenChange={onClose}>
       <RdxDialog.Portal>
-        <Container theme={theme}>
+        <Container theme={theme} $isLeaving={!open}>
           <RdxDialog.Overlay className="overlay" />
 
           <RdxDialog.Content className="content">

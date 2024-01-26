@@ -1,20 +1,20 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useMemo, useState } from 'react';
 
-interface IThemeContextValue {
+interface IThemeContextValues {
   theme: 'dark' | 'light';
-  handleToggleTheme: () => void;
+  handleToggleTheme: (theme: 'dark' | 'light') => void;
 }
 
-export const ThemeContext = createContext({} as IThemeContextValue);
+export const ThemeContext = createContext({} as IThemeContextValues);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const storageTheme = localStorage.getItem('theme') as 'dark' | 'light';
-  const [theme, setTheme] = useState<'dark' | 'light'>(storageTheme || 'dark');
+  const [theme, setTheme] = useState(storageTheme || 'dark');
 
-  const handleToggleTheme = useCallback(() => {
-    setTheme((prevState) => {
-      const newValue = prevState === 'dark' ? 'light' : 'dark';
+  // eslint-disable-next-line no-shadow
+  const handleToggleTheme = useCallback((theme: 'dark' | 'light') => {
+    setTheme(() => {
+      const newValue = theme;
 
       localStorage.setItem('theme', newValue);
 
@@ -22,13 +22,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const contextValues = useMemo(
+    () => ({
+      theme,
+      handleToggleTheme,
+    }),
+    [theme, handleToggleTheme],
+  );
+
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        handleToggleTheme,
-      }}
-    >
+    <ThemeContext.Provider value={contextValues}>
       {children}
     </ThemeContext.Provider>
   );

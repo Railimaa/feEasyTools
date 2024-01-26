@@ -8,8 +8,10 @@ const animationTitle = keyframes`
 export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   padding-top: 120px;
+  padding-bottom: 80px;
   gap: 16px;
   width: 100%;
   height: 100%;
