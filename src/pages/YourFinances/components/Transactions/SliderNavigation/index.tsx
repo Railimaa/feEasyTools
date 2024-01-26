@@ -6,13 +6,25 @@ import { useTheme } from '../../../../../contexts/useTheme';
 
 import { Container } from './style';
 
-export function SliderNavigation() {
+interface ISliderNavigationProps {
+  isBeginning: boolean;
+  isEnd: boolean;
+}
+
+export function SliderNavigation({
+  isBeginning,
+  isEnd,
+}: ISliderNavigationProps) {
   const swiper = useSwiper();
   const { theme } = useTheme();
 
   return (
     <Container>
-      <button onClick={() => swiper.slidePrev()} className="button1">
+      <button
+        onClick={() => swiper.slidePrev()}
+        disabled={isBeginning}
+        className="button1"
+      >
         <ChevronLeftIcon
           width={24}
           height={24}
@@ -20,7 +32,11 @@ export function SliderNavigation() {
         />
       </button>
 
-      <button onClick={() => swiper.slideNext()} className="button2">
+      <button
+        onClick={() => swiper.slideNext()}
+        disabled={isEnd}
+        className="button2"
+      >
         <ChevronRightIcon
           width={24}
           height={24}

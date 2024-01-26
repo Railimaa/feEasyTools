@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-expressions */
-import { PlusIcon } from '@radix-ui/react-icons';
 import 'swiper/css';
+import 'swiper/css/effect-cards';
+
+import { PlusIcon } from '@radix-ui/react-icons';
+import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { EyIcon } from '../../../../assets/Icons/EyeIcon';
@@ -68,13 +72,21 @@ export function Accounts() {
               <div>
                 <Swiper
                   spaceBetween={16}
-                  slidesPerView={windowWidth >= 500 ? 2.1 : 1.1}
+                  slidesPerView={windowWidth >= 500 ? 1.9 : 1.1}
                   onSlideChange={(swiper) => {
                     setSliderState({
                       isBeginning: swiper.isBeginning,
                       isEnd: swiper.isEnd,
                     });
                   }}
+                  modules={[EffectCards]}
+                  effect="cards"
+                  cardsEffect={{
+                    perSlideOffset: windowWidth >= 500 ? 12 : 8,
+                    perSlideRotate: windowWidth >= 500 ? 4 : 5,
+                  }}
+                  centeredSlides
+                  speed={500}
                 >
                   <div className="titleAcc" slot="container-start">
                     <strong>Minhas contas</strong>

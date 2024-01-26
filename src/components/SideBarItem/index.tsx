@@ -8,6 +8,7 @@ import {
 import { NavLink } from 'react-router-dom';
 
 import { useTheme } from '../../contexts/useTheme';
+import { SwitchTheme } from '../SwitchTheme';
 import { UserMenu } from '../UserMenu';
 
 import { Container } from './style';
@@ -19,6 +20,8 @@ export function SideBarItem() {
     <Container theme={theme}>
       <div className="userOptions">
         <UserMenu />
+
+        <SwitchTheme />
       </div>
 
       <NavLink to="/">

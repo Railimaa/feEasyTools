@@ -24,9 +24,7 @@ export function useSideBar(open: boolean, handleCloseSideBar: () => void) {
       }, 300);
     }
 
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    return () => clearTimeout(timeoutId);
   }, [open]);
 
   useEffect(() => {

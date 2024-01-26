@@ -8,6 +8,8 @@ import {
   useState,
 } from 'react';
 
+import { useTheme } from '../../contexts/useTheme';
+
 import { Container, Input } from './style';
 
 interface IInputSearchProps extends ComponentProps<'input'> {
@@ -16,6 +18,7 @@ interface IInputSearchProps extends ComponentProps<'input'> {
 
 export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
   ({ style, value, ...props }, ref) => {
+    const { theme } = useTheme();
     const [visible, setVisible] = useState<boolean>(false);
     const inputFocusOn = useRef<HTMLInputElement>(null);
 
@@ -41,10 +44,11 @@ export const InputSearch = forwardRef<HTMLInputElement, IInputSearchProps>(
           $visible={visible}
           onBlur={handleOnBlur}
           style={style}
+          theme={theme}
         />
 
         <button onClick={handleVisibleInput} type="button">
-          <MagnifyingGlassIcon color="#fff" />
+          <MagnifyingGlassIcon color={theme === 'dark' ? '#fff' : '#000'} />
         </button>
       </Container>
     );

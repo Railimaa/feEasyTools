@@ -41,11 +41,13 @@ export function Tasks() {
       {!initialLoading && (
         <>
           <Header>
-            <FilterTaskModal
-              open={openFilterModal}
-              handleCloseModal={handleCloseFilterModal}
-              handleApplyFilterCategoryId={handleApplyFilterCategoryId}
-            />
+            {!isEmptyList && (
+              <FilterTaskModal
+                open={openFilterModal}
+                handleCloseModal={handleCloseFilterModal}
+                handleApplyFilterCategoryId={handleApplyFilterCategoryId}
+              />
+            )}
 
             <InputSearch
               value={searchInput}

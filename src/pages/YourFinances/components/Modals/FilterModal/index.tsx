@@ -27,11 +27,12 @@ export function FilterModal({
     handleChangeYear,
     selectBankAccount,
     handleSelectBankAccount,
+    theme,
   } = useFilterModal();
 
   return (
     <Modal open={open} onClose={handleCloseFilterModal} title="Filtros">
-      <Container>
+      <Container theme={theme}>
         <span>Conta</span>
 
         <div className="accounts">
@@ -53,13 +54,21 @@ export function FilterModal({
 
           <div className="action">
             <button type="button" onClick={() => handleChangeYear(-1)}>
-              <ChevronLeftIcon width={48} height={18} color="#fff" />
+              <ChevronLeftIcon
+                width={48}
+                height={18}
+                color={theme === 'dark' ? '#fff' : '#000'}
+              />
             </button>
 
             <small>{selectYear}</small>
 
             <button type="button" onClick={() => handleChangeYear(+1)}>
-              <ChevronRightIcon width={48} height={18} color="#fff" />
+              <ChevronRightIcon
+                width={48}
+                height={18}
+                color={theme === 'dark' ? '#fff' : '#000'}
+              />
             </button>
           </div>
         </div>

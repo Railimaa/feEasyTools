@@ -11,6 +11,10 @@ export function useTransaction() {
   const { theme } = useTheme();
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [sliderState, setSliderState] = useState({
+    isBeginning: true,
+    isEnd: false,
+  });
 
   const [openEditTransactionModal, setOpenEditTransactionModal] =
     useState<boolean>(false);
@@ -93,5 +97,7 @@ export function useTransaction() {
     handleCloseFilterModal,
     handleApplyFilters,
     theme,
+    sliderState,
+    setSliderState,
   };
 }

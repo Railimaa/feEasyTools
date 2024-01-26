@@ -11,6 +11,10 @@ export function useCategories() {
 
   const { theme } = useTheme();
 
+  const [sliderState, setSliderState] = useState({
+    isBeginning: true,
+    isEnd: false,
+  });
   const [filters, setFilters] = useState<CategoryTransactionFilter>({});
   const [searchInput, setSearchInput] = useState<string>('');
 
@@ -57,5 +61,7 @@ export function useCategories() {
     searchInput,
     handleSearchInputChange,
     filteredCategories,
+    sliderState,
+    setSliderState,
   };
 }

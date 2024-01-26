@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import styled, { css, keyframes } from 'styled-components';
 
 const animation = keyframes`
@@ -27,16 +28,23 @@ export const Container = styled.div<{ $visible: boolean }>`
   }
 `;
 
-export const Input = styled.input<{ $visible: boolean }>`
+export const Input = styled.input<{
+  $visible: boolean;
+  theme: 'dark' | 'light';
+}>`
   width: ${({ $visible }) => ($visible ? '100%' : '0%')};
   height: 52px;
   padding-left: 35px;
   padding-right: 35px;
-  background: transparent;
-  border: ${({ $visible }) =>
-    $visible ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'};
+  background: none;
+  border: ${({ $visible, theme }) =>
+    $visible && theme === 'dark'
+      ? '1px solid rgba(255, 255, 255, 0.1)'
+      : $visible && theme === 'light'
+      ? '1px solid rgba(0, 0, 0, 0.1)'
+      : 'none'};
   outline: none;
-  color: #fff;
+  color: ${({ theme }) => (theme === 'dark' ? '#fff' : '#000')};
   font-weight: 500;
   border-radius: 16px;
 

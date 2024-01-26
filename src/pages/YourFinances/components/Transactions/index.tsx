@@ -33,6 +33,8 @@ export function Transactions() {
     handleOpenFilterModal,
     handleApplyFilters,
     theme,
+    sliderState,
+    setSliderState,
   } = useTransaction();
 
   const hasTransactions = transactions.length > 0;
@@ -71,10 +73,17 @@ export function Transactions() {
               initialSlide={filters.month}
               onSlideChange={(swiper) => {
                 setActiveIndex(swiper.activeIndex);
+                setSliderState({
+                  isBeginning: swiper.isBeginning,
+                  isEnd: swiper.isEnd,
+                });
                 handleChangeFilters('month')(swiper.realIndex);
               }}
             >
-              <SliderNavigation />
+              <SliderNavigation
+                isBeginning={sliderState.isBeginning}
+                isEnd={sliderState.isEnd}
+              />
               {MONTHS.map((month, index) => (
                 <SwiperSlide
                   key={month}

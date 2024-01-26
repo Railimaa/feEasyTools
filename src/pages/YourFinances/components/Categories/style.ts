@@ -4,7 +4,9 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 600px;
   height: 100%;
+  margin: 0 auto;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 32px;
@@ -40,14 +42,8 @@ export const Container = styled.div<{ theme: 'dark' | 'light' }>`
   }
 
   .content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex: 1;
-    height: 100%;
-    max-height: 50vh;
-    overflow-y: auto;
-    margin-top: 20px;
+    position: relative;
+    margin-top: 40px;
 
     .isLoading {
       display: flex;
