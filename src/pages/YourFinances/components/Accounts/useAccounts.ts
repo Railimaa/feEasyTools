@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { useTheme } from '../../../../contexts/useTheme';
 import { useBankAccounts } from '../../../../hooks/useBankAccounts';
+import { useCategoriesBankAccounts } from '../../../../hooks/useCategoriesBankAccounts';
 import { UseWindowWidth } from '../../../../hooks/UseWindowWidht';
 import { useYourFinancesContext } from '../YourFinancesContext/useYourFinancesContext';
 
@@ -13,6 +14,7 @@ export function useAccounts() {
 
   const windowWidth = UseWindowWidth();
 
+  const { categoriesBankAccounts } = useCategoriesBankAccounts();
   const { accounts, isFetching } = useBankAccounts();
 
   const [sliderState, setSliderState] = useState({
@@ -42,5 +44,6 @@ export function useAccounts() {
     handleOpenNewAccountModal,
     currentBalance,
     theme,
+    categoriesBankAccounts,
   };
 }

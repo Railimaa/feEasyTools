@@ -1,6 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { useSwiper } from 'swiper/react';
 
+import { useTheme } from '../../../../../contexts/useTheme';
+
 import { Container } from './style';
 
 interface ISliderNavigationProps {
@@ -12,6 +14,7 @@ export function SliderNavigation({
   isBeginning,
   isEnd,
 }: ISliderNavigationProps) {
+  const { theme } = useTheme();
   const swiper = useSwiper();
 
   return (
@@ -22,7 +25,11 @@ export function SliderNavigation({
         disabled={isEnd}
         id="btnRight"
       >
-        <ChevronRightIcon color="#fff" width={24} height={24} />
+        <ChevronRightIcon
+          color={theme === 'dark' ? '#fff' : '#000'}
+          width={24}
+          height={24}
+        />
       </button>
 
       <button
@@ -31,7 +38,11 @@ export function SliderNavigation({
         type="button"
         id="btnLeft"
       >
-        <ChevronLeftIcon color="#fff" width={24} height={24} />
+        <ChevronLeftIcon
+          color={theme === 'dark' ? '#fff' : '#000'}
+          width={24}
+          height={24}
+        />
       </button>
     </Container>
   );

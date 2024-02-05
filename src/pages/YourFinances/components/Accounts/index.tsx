@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-expressions */
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
@@ -72,7 +70,7 @@ export function Accounts() {
               <div>
                 <Swiper
                   spaceBetween={16}
-                  slidesPerView={windowWidth >= 500 ? 1.9 : 1.1}
+                  slidesPerView={windowWidth >= 500 ? 2.1 : 1.1}
                   onSlideChange={(swiper) => {
                     setSliderState({
                       isBeginning: swiper.isBeginning,
@@ -82,11 +80,9 @@ export function Accounts() {
                   modules={[EffectCards]}
                   effect="cards"
                   cardsEffect={{
-                    perSlideOffset: windowWidth >= 500 ? 12 : 8,
-                    perSlideRotate: windowWidth >= 500 ? 4 : 5,
+                    perSlideOffset: 10,
                   }}
                   centeredSlides
-                  speed={500}
                 >
                   <div className="titleAcc" slot="container-start">
                     <strong>Minhas contas</strong>

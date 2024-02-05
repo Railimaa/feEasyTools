@@ -36,7 +36,7 @@ export function useEditAccountModal() {
       z.number(),
     ]),
     name: z.string().min(1, 'Nome da conta é obrigatório.'),
-    color: z.string().min(1, 'Cor é obrigatório.'),
+    categoryId: z.string().min(1, 'Categoria é obrigatório.'),
     type: z.enum(['CHECKING', 'INVESTMENT', 'CASH']),
   });
 
@@ -53,7 +53,7 @@ export function useEditAccountModal() {
     defaultValues: {
       initialBalance: accountIsBeingEdited?.initialBalance,
       name: accountIsBeingEdited?.name,
-      color: accountIsBeingEdited?.color,
+      categoryId: accountIsBeingEdited?.categoryBankAccount.id,
       type: accountIsBeingEdited?.type,
     },
   });

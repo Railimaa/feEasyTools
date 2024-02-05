@@ -54,9 +54,9 @@ export function useNewTransactionModal() {
         type: newTransactionType!,
         date: data.date.toISOString(),
       });
+      reset();
       useQuery.invalidateQueries(['transactions']);
       useQuery.invalidateQueries(['bankAccounts']);
-      reset();
       handleCloseNewTransactionModal();
       toast.success(
         newTransactionType === 'EXPENSE'

@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 
+import { BankAccountIconsDropdownInput } from '../../../../../components/BankAccountIconsDropdownInput';
 import { Button } from '../../../../../components/Button';
-import { ColorsDropdownInput } from '../../../../../components/ColorsDropdownInput';
 import { Input } from '../../../../../components/Input';
 import { InputCurrency } from '../../../../../components/InputCurrency';
 import { Modal } from '../../../../../components/Modal';
@@ -87,11 +87,11 @@ export function NewAccountModal() {
 
             <Controller
               control={control}
-              name="color"
+              name="categoryId"
               defaultValue=""
               render={({ field: { onChange, value } }) => (
-                <ColorsDropdownInput
-                  error={errors.color?.message}
+                <BankAccountIconsDropdownInput
+                  error={errors.categoryId?.message}
                   onChange={onChange}
                   value={value}
                 />
