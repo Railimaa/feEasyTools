@@ -3,7 +3,7 @@ import { httpClient } from '../httpClient';
 interface ICreateBankAccountBody {
   initialBalance: number;
   name: string;
-  color: string;
+  categoryId: string;
   type: 'CHECKING' | 'INVESTMENT' | 'CASH';
 }
 

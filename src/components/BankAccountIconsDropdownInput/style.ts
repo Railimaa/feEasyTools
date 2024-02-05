@@ -11,22 +11,21 @@ export const Container = styled.div`
     background: #f3f0ff;
     border: 2px solid ${({ color }) => (color ? '#C92A2A' : '#9775fa')};
     border-radius: 8px;
-    margin-top: 20px;
     color: #272727;
     font-weight: bold;
     outline: none;
   }
 
-  .iconChevronDown {
+  .default {
     position: absolute;
     top: 50%;
-    right: 0px;
+    right: 13px;
     transform: translateY(-50%);
     color: #272727;
     font-weight: bold;
   }
 
-  .iconColor {
+  .icon {
     position: absolute;
     top: 50%;
     right: 13px;

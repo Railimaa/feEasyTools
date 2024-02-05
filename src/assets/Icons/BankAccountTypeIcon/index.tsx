@@ -1,11 +1,11 @@
 import { IconstMap } from './IconsMap';
 
 interface IBankAccountTypeIcon {
-  type: keyof typeof IconstMap;
+  type: string;
 }
 
 export function BankAccountTypeIcon({ type }: IBankAccountTypeIcon) {
-  const Icon = IconstMap[type];
+  const Icon = IconstMap[type as keyof typeof IconstMap];
 
   return <Icon />;
 }

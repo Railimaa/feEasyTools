@@ -1,4 +1,5 @@
 import { BankAccountTypeIcon } from '../../../../../assets/Icons/BankAccountTypeIcon';
+import { IconsBank } from '../../../../../components/BankAccountIconsDropdownInput/IconsBank';
 import { useTheme } from '../../../../../contexts/useTheme';
 import { IBankAccount } from '../../../../../types/BankAccount';
 import { FormatCurrency } from '../../../../../utils/formatCurrency';
@@ -12,21 +13,20 @@ interface IAccountCardProps {
 }
 
 export function AccountCard({ account, valuesVisible }: IAccountCardProps) {
-  const { color, name, type, currentBalance } = account;
+  const { name, type, currentBalance, categoryBankAccount } = account;
   const { handleOpenEditAccountModal } = useYourFinancesContext();
   const { theme } = useTheme();
 
   return (
     <Container
-      color={color}
+      color={categoryBankAccount.color}
       theme={theme}
       role="button"
       onClick={() => handleOpenEditAccountModal(account)}
     >
-      <div className="content">
-        <BankAccountTypeIcon type={type} />
-        <span>{name}</span>
-      </div>
+      <BankAccountTypeIcon type={type} />
+
+      <span id="name">{name}</span>
 
       <div className="saldo">
         <span style={{ filter: valuesVisible ? 'blur(8px)' : 'none' }}>
@@ -34,6 +34,10 @@ export function AccountCard({ account, valuesVisible }: IAccountCardProps) {
         </span>
 
         <small>Saldo atual</small>
+      </div>
+
+      <div className="img">
+        <IconsBank iconName={categoryBankAccount.icon} />
       </div>
     </Container>
   );

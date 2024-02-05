@@ -4,7 +4,7 @@ interface IUpdateBankAccount {
   id: string;
   initialBalance: number;
   name: string;
-  color: string;
+  categoryId: string;
   type: 'CHECKING' | 'INVESTMENT' | 'CASH';
 }
 

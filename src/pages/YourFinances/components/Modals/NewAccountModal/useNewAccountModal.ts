@@ -24,7 +24,7 @@ export function useNewAccountModal() {
   const schema = z.object({
     initialBalance: z.string().min(1, 'Saldo inicial é obrigatório.'),
     name: z.string().min(1, 'Nome da conta é obrigatório.'),
-    color: z.string().min(1, 'Cor é obrigatório.'),
+    categoryId: z.string().min(1, 'Informe a categoria'),
     type: z.enum(['CHECKING', 'INVESTMENT', 'CASH']),
   });
 
@@ -51,9 +51,9 @@ export function useNewAccountModal() {
         initialBalance: currencyStringToNumber(data.initialBalance),
       });
       queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
-      toast.success('Conta cadastrada com sucesso!');
-      handleCloseNewAccountModal();
       reset();
+      handleCloseNewAccountModal();
+      toast.success('Conta cadastrada com sucesso!');
     } catch {
       toast.error('Erro ao cadastrar a conta!');
     } finally {

@@ -71,9 +71,9 @@ export function useEditTransactionModal(
         value: currencyStringToNumber(data.value),
         date: data.date.toISOString(),
       });
+      reset();
       useQuery.invalidateQueries(['transactions']);
       useQuery.invalidateQueries(['bankAccounts']);
-      reset();
       handleCloseModal();
       toast.success(
         transaction.type === 'EXPENSE'

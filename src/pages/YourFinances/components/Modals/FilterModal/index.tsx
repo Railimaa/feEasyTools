@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 
-import { BankAccountTypeIcon } from '../../../../../assets/Icons/BankAccountTypeIcon';
+import { IconsBank } from '../../../../../components/BankAccountIconsDropdownInput/IconsBank';
 import { Button } from '../../../../../components/Button';
 import { Modal } from '../../../../../components/Modal';
 
@@ -44,7 +44,10 @@ export function FilterModal({
               className={selectBankAccount === account.id ? 'btn-active' : ''}
             >
               {account.name}
-              <BankAccountTypeIcon type={account.type} />
+              <IconsBank
+                originColor
+                iconName={account.categoryBankAccount.icon}
+              />
             </button>
           ))}
         </div>

@@ -1,8 +1,8 @@
 import { Controller } from 'react-hook-form';
 
 import { Trash } from '../../../../../assets/Icons/Trash';
+import { BankAccountIconsDropdownInput } from '../../../../../components/BankAccountIconsDropdownInput';
 import { Button } from '../../../../../components/Button';
-import { ColorsDropdownInput } from '../../../../../components/ColorsDropdownInput';
 import { ConfirmDeleteModal } from '../../../../../components/ConfirmDeleteModal';
 import { Input } from '../../../../../components/Input';
 import { InputCurrency } from '../../../../../components/InputCurrency';
@@ -108,11 +108,11 @@ export function EditAccountModal() {
 
             <Controller
               control={control}
-              name="color"
+              name="categoryId"
               defaultValue=""
               render={({ field: { onChange, value } }) => (
-                <ColorsDropdownInput
-                  error={errors.color?.message}
+                <BankAccountIconsDropdownInput
+                  error={errors.categoryId?.message}
                   onChange={onChange}
                   value={value}
                 />
